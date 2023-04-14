@@ -1,5 +1,9 @@
 {
-  "extends": "@tsconfig/node18-strictest-esm/tsconfig.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": [
+    "@tsconfig/strictest/tsconfig.json",
+    "@tsconfig/esm/tsconfig.json"
+  ],
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -25,8 +29,9 @@
       "@modules/*": ["./modules/*"]
     },
     "noPropertyAccessFromIndexSignature": false,
+    "ignoreDeprecations": "5.0",
     "isolatedModules": true,
-    "ignoreDeprecations": "5.0"
+    "verbatimModuleSyntax": false
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
