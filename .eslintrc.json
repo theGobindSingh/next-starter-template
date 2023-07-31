@@ -83,7 +83,9 @@
           "caseInsensitive": true
         }
       }
-    ]
+    ],
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off"
   },
   "ignorePatterns": ["node_modules", "**/*.js"]
 }
