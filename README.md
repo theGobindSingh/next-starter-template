@@ -5,6 +5,4 @@ This template includes the following features:
 
   * [TypeScript](https://www.typescriptlang.org/)
   * [ESLint](https://eslint.org/) with plugins 
-  * [Sass](https://sass-lang.com/)
-
-FYI: I have git ignored all css files and any lock files. 
+  * [Emotion Css](https://emotion.sh/docs/introduction)
