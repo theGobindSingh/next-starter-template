@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "prettier --config .prettierrc 'src//*.(ts|js|tsx|jsx)' --write && eslint --ext .js,.jsx,.ts,.tsx src",
-    "lint:fix": "prettier --config .prettierrc 'src//*.(ts|js|tsx|jsx)' --write && eslint --ext .js,.jsx,.ts,.tsx src --fix"
+    "lint": "prettier --config .prettierrc \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\"",
+    "lint:fix": "prettier --config .prettierrc \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
