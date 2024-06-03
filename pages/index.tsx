@@ -1,7 +1,5 @@
-export default function Home() {
-  return (
-    <section id="home" aria-label="home">
-      <div>hello world</div>
-    </section>
-  );
+import HomeModule from '@modules/home';
+
+export default function HomePage() {
+  return <HomeModule />;
 }
