@@ -27,77 +27,6 @@
     "max-len": ["error", 120],
     "camelcase": "error",
     "react/jsx-indent-props": ["warn", 2],
-    "import/no-unresolved": "error",
-    "import/order": [
-      "warn",
-      {
-        "newlines-between": "never",
-        "groups": ["builtin", "external", "internal"],
-        "pathGroups": [
-          {
-            "pattern": "react",
-            "group": "external",
-            "position": "before"
-          },
-          {
-            "pattern": "next",
-            "group": "external",
-            "position": "before"
-          },
-          {
-            "pattern": "next/**",
-            "group": "external",
-            "position": "before"
-          },
-          {
-            "pattern": "@material-ui",
-            "group": "external",
-            "position": "before"
-          },
-          {
-            "pattern": "~/**",
-            "group": "external",
-            "position": "before"
-          },
-          {
-            "pattern": "@src/**",
-            "group": "internal"
-          },
-          {
-            "pattern": "@pages/**",
-            "group": "internal"
-          },
-          {
-            "pattern": "@layouts/**",
-            "group": "internal"
-          },
-          {
-            "pattern": "@components/**",
-            "group": "internal"
-          },
-          {
-            "pattern": "@assets/**",
-            "group": "internal"
-          },
-          {
-            "pattern": "~/styles/**",
-            "group": "internal"
-          },
-          {
-            "pattern": "~/*.css",
-            "group": "internal",
-            "position": "after"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["react"],
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
-      }
-    ],
-    "import/no-named-as-default": "off",
-    "import/no-named-as-default-member": "off",
     "react-refresh/only-export-components": [
       "warn",
       { "allowConstantExport": true }
@@ -118,7 +47,6 @@
         "ignores": ["modules"]
       }
     ],
-    "import/extensions": ["off", "never"],
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
@@ -129,13 +57,7 @@
     "@typescript-eslint/no-unsafe-argument": "warn",
     "@typescript-eslint/no-unsafe-call": "warn",
     "@typescript-eslint/no-unsafe-return": "warn",
-    "import/prefer-default-export": "off",
     "react/require-default-props": "off",
     "react-hooks/exhaustive-deps": "warn"
-  },
-  "settings": {
-    "import/resolver": {
-      "typescript": {}
-    }
   }
 }
