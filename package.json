@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "npm run lint",
+    "prebuild": "npm run lint:fix",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
