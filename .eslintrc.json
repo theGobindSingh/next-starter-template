@@ -58,6 +58,7 @@
     "@typescript-eslint/no-unsafe-call": "warn",
     "@typescript-eslint/no-unsafe-return": "warn",
     "react/require-default-props": "off",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
   }
 }
