@@ -59,6 +59,15 @@
     "@typescript-eslint/no-unsafe-return": "warn",
     "react/require-default-props": "off",
     "react-hooks/exhaustive-deps": "warn",
-    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "func-style": ["error", "expression"],
+    "prefer-arrow-callback": "error"
   }
 }
