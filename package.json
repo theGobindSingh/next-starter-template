@@ -1,24 +1,33 @@
 {
   "name": "next-starter-template",
   "version": "0.1.0",
+  "author": {
+    "name": "Gobind Singh",
+    "email": "thesinghgobind@gmail.com",
+    "url": "https://github.com/theGobindSingh/"
+  },
   "private": true,
   "scripts": {
     "prebuild": "npm run lint:fix",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "prettier --config .prettierrc \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\"",
-    "lint:fix": "prettier --config .prettierrc \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public}/**/*.{ts,js,tsx,jsx}\" --fix"
+    "lint": "prettier --config .prettierrc \"{components,hooks,modules,pages,public,styles}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public,styles}/**/*.{ts,js,tsx,jsx}\"",
+    "lint:fix": "prettier --config .prettierrc \"{components,hooks,modules,pages,public,styles}/**/*.{ts,js,tsx,jsx}\" --write && eslint \"{components,hooks,modules,pages,public,styles}/**/*.{ts,js,tsx,jsx}\" --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@kami-ui/next-theme": "^0.0.10",
+    "@kami-ui/react-components": "^0.0.1",
+    "@kami-ui/theme-shop": "^0.0.1",
     "@types/node": "^20.14.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "next": "^14.2.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@eslint/js": "^8",
@@ -38,9 +47,22 @@
     "eslint-plugin-react": "^7.34.2",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "glob": "^9",
     "prettier": "^3.3.3",
     "prettier-plugin-organize-imports": "^4.0.0",
+    "rimraf": "^4",
     "typescript": "~5.5",
     "typescript-eslint": "^7.11.0"
+  },
+  "overrides": {
+    "rimraf": "^4",
+    "glob": "^9"
+  },
+  "resolutions": {
+    "rimraf": "^4",
+    "glob": "^9"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }
