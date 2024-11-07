@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 import { defaultLightTheme } from '@kami-ui/theme-shop';
-// eslint-disable-next-line import/no-extraneous-dependencies, node/no-extraneous-import
 import { ThemeObject } from '@kami-ui/types';
 import { breakpoints } from '@styles/global';
 import {
