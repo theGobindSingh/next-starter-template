@@ -21,7 +21,9 @@
     },
     "noPropertyAccessFromIndexSignature": false,
     "ignoreDeprecations": "5.0",
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": false,
+    "allowUnusedLabels": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "next-env.d.ts",

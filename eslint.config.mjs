@@ -1,9 +1,11 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/ban-ts-comment -- eslint modules*/
 import pluginJs from '@eslint/js';
 // @ts-ignore
 import next from '@next/eslint-plugin-next';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
+// @ts-ignore
+import eslintComments from 'eslint-plugin-eslint-comments';
 import prettier from 'eslint-plugin-prettier';
 import pluginReact from 'eslint-plugin-react';
 // @ts-ignore
@@ -30,6 +32,7 @@ export default [
       'react-refresh': pluginReactRefresh,
       '@next/next': next,
       '@typescript-eslint': tsPlugin,
+      'eslint-comments': eslintComments,
     },
     rules: {
       ...pluginJs.configs.recommended.rules,
@@ -37,6 +40,7 @@ export default [
       ...tsPlugin.configs['stylistic-type-checked']?.rules,
       ...pluginReact.configs.flat?.recommended?.rules,
       ...next.configs.recommended.rules,
+      'no-undef': 'off',
       'max-len': ['error', 120],
       camelcase: 'error',
       'react/jsx-indent-props': ['warn', 2],
@@ -62,6 +66,13 @@ export default [
       '@typescript-eslint/no-unsafe-argument': 'warn',
       '@typescript-eslint/no-unsafe-call': 'warn',
       '@typescript-eslint/no-unsafe-return': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_$',
+          varsIgnorePattern: '^_$',
+        },
+      ],
       'react/require-default-props': 'off',
       'react-hooks/exhaustive-deps': 'warn',
       'react-hooks/rules-of-hooks': 'error',
@@ -75,6 +86,7 @@ export default [
       ],
       'func-style': ['error', 'expression'],
       'prefer-arrow-callback': 'error',
+      'eslint-comments/require-description': 'error',
     },
     settings: {
       react: { version: 'detect' },
