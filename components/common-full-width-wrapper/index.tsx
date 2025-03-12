@@ -2,18 +2,18 @@ import {
   containerSize,
   containerStyles,
   wrapperStyles,
-} from '@components/common-full-width-wrapper/styles';
+} from "@components/common-full-width-wrapper/styles";
 import {
   FullWidthWrapper,
   FullWidthWrapperProps,
-} from '@kami-ui/react-components';
-import { forwardRef, PropsWithChildren, Ref } from 'react';
+} from "@kami-ui/react-components";
+import { forwardRef, PropsWithChildren, Ref } from "react";
 
 interface CommonFullWidthWrapperProps {
   className?: string;
-  element?: FullWidthWrapperProps['element'];
-  wrapperCss?: FullWidthWrapperProps['wrapperCss'];
-  wrapperClassName?: FullWidthWrapperProps['wrapperClassName'];
+  element?: FullWidthWrapperProps["element"];
+  wrapperCss?: FullWidthWrapperProps["wrapperCss"];
+  wrapperClassName?: FullWidthWrapperProps["wrapperClassName"];
   bg?: string;
 }
 
@@ -21,7 +21,7 @@ const CommonFullWidthWrapperWithoutRef = (
   {
     className,
     children,
-    element = 'section',
+    element = "section",
     wrapperCss,
     wrapperClassName,
     bg,

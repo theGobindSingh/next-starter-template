@@ -1,9 +1,9 @@
-import { css } from '@emotion/react';
-import { mediaQuery } from '@styles/global';
+import { css } from "@emotion/react";
+import { mediaQuery } from "@styles/global";
 
-export const containerSize = '85%';
-export const tabletContainerSize = '90%';
-export const mobileContainerSize = '90%';
+export const containerSize = "85%";
+export const tabletContainerSize = "90%";
+export const mobileContainerSize = "90%";
 
 export const containerStyles = css`
   ${mediaQuery.tablet} {
