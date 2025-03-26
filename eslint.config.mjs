@@ -1,11 +1,11 @@
 import pluginJs from "@eslint/js";
-// @ts-ignore
+// @ts-expect-error -- expected
 import next from "@next/eslint-plugin-next";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
-// @ts-ignore
+// @ts-expect-error -- expected
 import eslintComments from "eslint-plugin-eslint-comments";
-// @ts-ignore
+// @ts-expect-error -- expected
 import importPlugin from "eslint-plugin-import";
 import prettier from "eslint-plugin-prettier";
 import pluginReact from "eslint-plugin-react";
