@@ -42,19 +42,29 @@ const getColor = ({
   $color,
   $colorWeight,
 }: Pick<CommonTextProps, "$color" | "$colorWeight">) => {
-  if (!$color) return "var(--color-gray-800)";
+  if (!$color) return "inherit";
   if ($color === "black" || $color === "white") {
     return `var(--color-${$color})`;
   }
   return `var(--color-${$color}-${$colorWeight ?? "400"})`;
 };
 
+const letterSpacingFn = ({
+  $letterSpacing,
+}: Pick<CommonTextProps, "$letterSpacing">) => $letterSpacing ?? "normal";
+
+const lineHeightFn = ({ $lineHeight }: Pick<CommonTextProps, "$lineHeight">) =>
+  $lineHeight ?? "normal";
+
+const marginFn = ({ $margin }: Pick<CommonTextProps, "$margin">) =>
+  $margin ?? "0";
+
 export const H1 = styled.h1<CommonTextProps>`
   font-size: ${({ $size }) => fontSizes[$size ?? "4xl"]};
   margin: ${({ $margin }) => $margin ?? "0 0 0.75em 0"};
   font-weight: ${({ $weight }) => $weight ?? "700"};
-  line-height: ${({ $lineHeight }) => $lineHeight ?? "normal"};
-  letter-spacing: ${({ $letterSpacing }) => $letterSpacing ?? "normal"};
+  line-height: ${lineHeightFn};
+  letter-spacing: ${letterSpacingFn};
   color: ${getColor};
 `;
 
@@ -62,8 +72,8 @@ export const H2 = styled.h2<CommonTextProps>`
   font-size: ${({ $size }) => fontSizes[$size ?? "2xl"]};
   margin: ${({ $margin }) => $margin ?? "0 0 0.5em 0"};
   font-weight: ${({ $weight }) => $weight ?? "700"};
-  line-height: ${({ $lineHeight }) => $lineHeight ?? "normal"};
-  letter-spacing: ${({ $letterSpacing }) => $letterSpacing ?? "normal"};
+  line-height: ${lineHeightFn};
+  letter-spacing: ${letterSpacingFn};
   color: ${getColor};
 `;
 
@@ -71,31 +81,31 @@ export const H3 = styled.h3<CommonTextProps>`
   font-size: ${({ $size }) => fontSizes[$size ?? "m"]};
   margin: ${({ $margin }) => $margin ?? "0 0 0.25em 0"};
   font-weight: ${({ $weight }) => $weight ?? "500"};
-  line-height: ${({ $lineHeight }) => $lineHeight ?? "normal"};
-  letter-spacing: ${({ $letterSpacing }) => $letterSpacing ?? "normal"};
+  line-height: ${lineHeightFn};
+  letter-spacing: ${letterSpacingFn};
   color: ${getColor};
 `;
 
 export const P = styled.p<CommonTextProps>`
   font-size: ${({ $size }) => fontSizes[$size ?? "2xs"]};
-  margin: ${({ $margin }) => $margin ?? "0"};
   font-weight: ${({ $weight }) => $weight ?? "400"};
-  line-height: ${({ $lineHeight }) => $lineHeight ?? "normal"};
-  letter-spacing: ${({ $letterSpacing }) => $letterSpacing ?? "normal"};
+  margin: ${marginFn};
+  line-height: ${lineHeightFn};
+  letter-spacing: ${letterSpacingFn};
   color: ${getColor};
 `;
 
 export const Span = styled.span<CommonTextProps>`
   font-size: ${({ $size }) => fontSizes[$size ?? "1xs"]};
-  margin: ${({ $margin }) => $margin ?? "0"};
   font-weight: ${({ $weight }) => $weight ?? "400"};
-  line-height: ${({ $lineHeight }) => $lineHeight ?? "normal"};
-  letter-spacing: ${({ $letterSpacing }) => $letterSpacing ?? "normal"};
+  margin: ${marginFn};
+  line-height: ${lineHeightFn};
+  letter-spacing: ${letterSpacingFn};
   color: ${getColor};
 `;
 
 export const Hr = styled.hr<{ $margin?: string }>`
   border: 1px solid var(--color-gray-100);
   width: 100%;
-  margin: ${({ $margin }) => $margin ?? "0"};
+  margin: ${marginFn};
 `;
