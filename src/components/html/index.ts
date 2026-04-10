@@ -51,44 +51,72 @@ const getColor = ({
 
 const letterSpacingFn = ({
   $letterSpacing,
-}: Pick<CommonTextProps, "$letterSpacing">) => $letterSpacing ?? "normal";
+}: Pick<CommonTextProps, "$letterSpacing">) => {
+  return $letterSpacing ?? "normal";
+};
 
-const lineHeightFn = ({ $lineHeight }: Pick<CommonTextProps, "$lineHeight">) =>
-  $lineHeight ?? "normal";
+const lineHeightFn = ({
+  $lineHeight,
+}: Pick<CommonTextProps, "$lineHeight">) => {
+  return $lineHeight ?? "normal";
+};
 
-const marginFn = ({ $margin }: Pick<CommonTextProps, "$margin">) =>
-  $margin ?? "0";
+const marginFn = ({ $margin }: Pick<CommonTextProps, "$margin">) => {
+  return $margin ?? "0";
+};
 
 export const H1 = styled.h1<CommonTextProps>`
-  font-size: ${({ $size }) => fontSizes[$size ?? "4xl"]};
-  margin: ${({ $margin }) => $margin ?? "0 0 0.75em 0"};
-  font-weight: ${({ $weight }) => $weight ?? "700"};
+  font-size: ${({ $size }) => {
+    return fontSizes[$size ?? "4xl"];
+  }};
+  margin: ${({ $margin }) => {
+    return $margin ?? "0 0 0.75em 0";
+  }};
+  font-weight: ${({ $weight }) => {
+    return $weight ?? "700";
+  }};
   line-height: ${lineHeightFn};
   letter-spacing: ${letterSpacingFn};
   color: ${getColor};
 `;
 
 export const H2 = styled.h2<CommonTextProps>`
-  font-size: ${({ $size }) => fontSizes[$size ?? "2xl"]};
-  margin: ${({ $margin }) => $margin ?? "0 0 0.5em 0"};
-  font-weight: ${({ $weight }) => $weight ?? "700"};
+  font-size: ${({ $size }) => {
+    return fontSizes[$size ?? "2xl"];
+  }};
+  margin: ${({ $margin }) => {
+    return $margin ?? "0 0 0.5em 0";
+  }};
+  font-weight: ${({ $weight }) => {
+    return $weight ?? "700";
+  }};
   line-height: ${lineHeightFn};
   letter-spacing: ${letterSpacingFn};
   color: ${getColor};
 `;
 
 export const H3 = styled.h3<CommonTextProps>`
-  font-size: ${({ $size }) => fontSizes[$size ?? "m"]};
-  margin: ${({ $margin }) => $margin ?? "0 0 0.25em 0"};
-  font-weight: ${({ $weight }) => $weight ?? "500"};
+  font-size: ${({ $size }) => {
+    return fontSizes[$size ?? "m"];
+  }};
+  margin: ${({ $margin }) => {
+    return $margin ?? "0 0 0.25em 0";
+  }};
+  font-weight: ${({ $weight }) => {
+    return $weight ?? "500";
+  }};
   line-height: ${lineHeightFn};
   letter-spacing: ${letterSpacingFn};
   color: ${getColor};
 `;
 
 export const P = styled.p<CommonTextProps>`
-  font-size: ${({ $size }) => fontSizes[$size ?? "2xs"]};
-  font-weight: ${({ $weight }) => $weight ?? "400"};
+  font-size: ${({ $size }) => {
+    return fontSizes[$size ?? "2xs"];
+  }};
+  font-weight: ${({ $weight }) => {
+    return $weight ?? "400";
+  }};
   margin: ${marginFn};
   line-height: ${lineHeightFn};
   letter-spacing: ${letterSpacingFn};
@@ -96,8 +124,12 @@ export const P = styled.p<CommonTextProps>`
 `;
 
 export const Span = styled.span<CommonTextProps>`
-  font-size: ${({ $size }) => fontSizes[$size ?? "1xs"]};
-  font-weight: ${({ $weight }) => $weight ?? "400"};
+  font-size: ${({ $size }) => {
+    return fontSizes[$size ?? "1xs"];
+  }};
+  font-weight: ${({ $weight }) => {
+    return $weight ?? "400";
+  }};
   margin: ${marginFn};
   line-height: ${lineHeightFn};
   letter-spacing: ${letterSpacingFn};

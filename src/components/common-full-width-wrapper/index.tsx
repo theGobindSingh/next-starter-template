@@ -7,39 +7,41 @@ import {
   FullWidthWrapper,
   FullWidthWrapperProps,
 } from "@kami-ui/react-components";
-import { forwardRef, PropsWithChildren, Ref } from "react";
+import { PropsWithChildren, Ref, RefObject } from "react";
 
 interface CommonFullWidthWrapperProps {
   className?: string;
   element?: FullWidthWrapperProps["element"];
   wrapperCss?: FullWidthWrapperProps["wrapperCss"];
-  wrapperClassName?: FullWidthWrapperProps["wrapperClassName"];
+  wrapperProps?: FullWidthWrapperProps["wrapperProps"];
   bg?: string;
+  ref?: RefObject<HTMLElement>;
 }
 
-const CommonFullWidthWrapperWithoutRef = (
+const CommonFullWidthWrapper = (
   {
     className,
     children,
     element = "section",
     wrapperCss,
-    wrapperClassName,
+    wrapperProps,
     bg,
   }: PropsWithChildren<CommonFullWidthWrapperProps>,
   ref: Ref<HTMLElement>,
-) => (
-  <FullWidthWrapper
-    wrapperClassName={wrapperClassName!}
-    className={className}
-    css={containerStyles}
-    wrapperCss={[wrapperStyles(bg), wrapperCss] as any}
-    containerSize={containerSize}
-    element={element}
-    ref={ref}
-  >
-    {children}
-  </FullWidthWrapper>
-);
+) => {
+  return (
+    <FullWidthWrapper
+      wrapperProps={wrapperProps!}
+      className={className}
+      css={containerStyles}
+      wrapperCss={[wrapperStyles(bg), wrapperCss] as any}
+      containerSize={containerSize}
+      element={element}
+      ref={ref}
+    >
+      {children}
+    </FullWidthWrapper>
+  );
+};
 
-const CommonFullWidthWrapper = forwardRef(CommonFullWidthWrapperWithoutRef);
 export default CommonFullWidthWrapper;

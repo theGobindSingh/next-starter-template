@@ -14,10 +14,12 @@ export const containerStyles = css`
   }
 `;
 
-export const wrapperStyles = (bg?: string) => css`
-  width: 100%;
-  ${bg &&
-  css`
-    background: ${bg};
-  `}
-`;
+export const wrapperStyles = (bg?: string) => {
+  return css`
+    width: 100%;
+    ${bg &&
+    css`
+      background: ${bg};
+    `}
+  `;
+};

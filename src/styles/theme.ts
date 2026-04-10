@@ -30,7 +30,7 @@ const fontCursive = Nothing_You_Could_Do({
 });
 
 const theme: ThemeObject = {
-  ...defaultLightTheme,
+  ...(defaultLightTheme as ThemeObject),
   typography: {
     fontSizes: [
       {
