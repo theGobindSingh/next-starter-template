@@ -52,7 +52,7 @@ export default config;
 ## Requirements
 
 - **Node.js** `>=22`
-- **pnpm** `10.33.0`
+- **pnpm** `11.5.0`
 
 > The required Node version comes from `package.json`. Using an older version may
 > show engine warnings.
@@ -72,6 +72,30 @@ export default config;
    ```
 
 3. Open [http://localhost:3000](http://localhost:3000).
+
+## Working with AI Assistants
+
+This template ships with a curated set of agent skills and workflow rules that make AI coding assistants substantially more useful out of the box. Here is what you need to know.
+
+**Start here:** [AGENTS.md](AGENTS.md) is the single source of truth for how AI agents should behave in this repo. Read it when onboarding, and update it early when this template becomes a real product — the more context you add there, the better the AI output gets.
+
+The project also includes [PROJECT_STANDARD_CONSTANTS.md](PROJECT_STANDARD_CONSTANTS.md), a reference file that captures breakpoints, type scales, font choices, path aliases, and layout constants in one place. Design and architecture-focused skills read this automatically so they stay aligned with the actual codebase.
+
+### Skills
+
+Skills are modular instruction sets that extend AI behavior for specific kinds of work. They live in [.agents/skills/](.agents/skills/) and activate based on the task at hand:
+
+| Situation                                            | Skills that activate                                     |
+| ---------------------------------------------------- | -------------------------------------------------------- |
+| Starting a new session                               | `using-superpowers`                                      |
+| Recalling or saving context across sessions          | `mem`                                                    |
+| Building or changing UI                              | `impeccable`, `emil-design-eng`, `design-taste-frontend` |
+| Adding new files, modules, or architectural patterns | `opinionated-nextjs-systems`                             |
+| Executing any multi-step implementation              | `subagent-driven-development`                            |
+
+The `subagent-driven-development` skill enforces a specific execution style: the main agent acts as coordinator, breaks work into the smallest practical independent pieces, and delegates as much as possible to focused subagents running in parallel. This keeps quality high and context clean.
+
+`mem` gives the AI persistent memory across sessions — it searches stored decisions and preferences before asking you to repeat yourself, and saves important new context automatically.
 
 ## Available Scripts
 
