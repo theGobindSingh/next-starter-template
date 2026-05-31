@@ -11,6 +11,7 @@ This repository is a batteries-included Next.js starter template. Keep this file
 ## Skill Boot Order
 
 - At the start of every new chat/session, invoke `using-superpowers` first.
+- For cross-session context, use `mem` to both recall and save: search memory first before asking the user to repeat information, and persist important new decisions, preferences, and snippets.
 - If the task includes new or changed UI/design implementation, load [PROJECT_STANDARD_CONSTANTS.md](PROJECT_STANDARD_CONSTANTS.md) first, then invoke these skills in order:
   1. `impeccable`
   2. `emil-design-eng`
