@@ -14,8 +14,7 @@ This repository is a batteries-included Next.js starter template. Keep this file
 - For cross-session context, use `mem` to both recall and save: search memory first before asking the user to repeat information, and persist important new decisions, preferences, and snippets.
 - If the task includes new or changed UI/design implementation, load [PROJECT_STANDARD_CONSTANTS.md](PROJECT_STANDARD_CONSTANTS.md) first, then invoke these skills in order:
   1. `impeccable`
-  2. `emil-design-eng`
-  3. `design-taste-frontend`
+  2. `ui-ux-pro-max`
 - If the task includes new files/folders, architecture, or pattern decisions, invoke `opinionated-nextjs-systems` before implementation.
 - For implementation work, invoke `subagent-driven-development` and enforce this execution policy:
   1. Break work into the smallest practical independent subtasks.

@@ -4,7 +4,7 @@ Shared source-of-truth constants for design and architecture workflows.
 
 ## Runtime + Tooling
 
-- `node_version`: `>=22`
+- `node_version`: `>=24`
 - `package_manager`: `pnpm@11.5.0`
 - `router_mode`: `next-pages-router`
 
@@ -72,5 +72,5 @@ Phone/tablet type scale (`src/styles/theme.ts`):
 
 ## Usage Rule For Skills
 
-- For design implementation tasks, read this file before invoking `impeccable`, `emil-design-eng`, and `design-taste-frontend`.
+- For design implementation tasks, read this file before invoking `impeccable` and `ui-ux-pro-max`.
 - For file/folder/architecture/pattern decisions, combine this file with `opinionated-nextjs-systems` guidance.
