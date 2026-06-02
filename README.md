@@ -1,23 +1,21 @@
 # Next.js Starter Template
 
-A minimal starter for building apps with [Next.js](https://nextjs.org/),
-[TypeScript](https://www.typescriptlang.org/),
-[Emotion](https://emotion.sh/docs/introduction), and
-[Kami UI](https://www.npmjs.com/package/@kami-ui/next-theme).
+A minimal starter for building apps with [Next.js](https://nextjs.org/)
+and [TypeScript](https://www.typescriptlang.org/).
 
-This repository is set up with the **Pages Router** (`src/pages`) and provides
-an opinionated structure for modules, shared components, global styles, and
-responsive theming.
+This repository is set up with the **App Router** (`src/app`) and provides an
+opinionated structure for co-located routes, shared components, and a plain
+CSS + CSS modules styling baseline.
 
 ## Features
 
 - **Next.js 16** with **React 19**
+- **App Router** structure with route files in `src/app`
 - **TypeScript** with strict config presets
-- **Emotion** for styling and global CSS
-- **Kami UI** theme provider integration
-- **Google font** setup in the shared theme
+- **Plain CSS** baseline for global app styling
+- **CSS modules** for route/component-level styling
 - **All-batteries-included ESLint config** via [`@kami-ui/eslint-config`](https://www.npmjs.com/package/@kami-ui/eslint-config)
-- Path aliases such as `@components/*`, `@modules/*`, and `@styles/*`
+- Path aliases such as `@components/*`, `@hooks/*`, and `@styles/*`
 
 ## ESLint Setup
 
@@ -73,6 +71,14 @@ export default config;
 
 3. Open [http://localhost:3000](http://localhost:3000).
 
+## Migration Checklist (After Cloning Template)
+
+- Rename app metadata and project title defaults (for example in `src/app/layout.tsx`, `package.json`, and this README).
+- Update `AGENTS.md` with your product context, testing stack, deployment workflow, and security/compliance constraints.
+- Validate local runtime matches requirements: Node.js `>=22` and `pnpm` `11.5.0`.
+- Replace the starter home route implementation in `src/app/page.tsx` with your product entry experience.
+- Define `images.remotePatterns` in `next.config.js` if your app loads remote image hosts.
+
 ## Working with AI Assistants
 
 This template ships with a curated set of agent skills and workflow rules that make AI coding assistants substantially more useful out of the box. Here is what you need to know.
@@ -89,7 +95,7 @@ Skills are modular instruction sets that extend AI behavior for specific kinds o
 | ---------------------------------------------------- | -------------------------------------------------------- |
 | Starting a new session                               | `using-superpowers`                                      |
 | Recalling or saving context across sessions          | `mem`                                                    |
-| Building or changing UI                              | `impeccable`, `emil-design-eng`, `design-taste-frontend` |
+| Building or changing UI                              | `impeccable`, `ui-ux-pro-max`                    |
 | Adding new files, modules, or architectural patterns | `opinionated-nextjs-systems`                             |
 | Executing any multi-step implementation              | `subagent-driven-development`                            |
 
@@ -110,41 +116,34 @@ The `subagent-driven-development` skill enforces a specific execution style: the
 ## Project Structure
 
 ```text
+public/
+  assets/
+    fonts/
+    images/
+  favicon.ico
 src/
+  app/
+    globals.css
+    layout.tsx
+    page.module.css
+    page.tsx
   components/
-    common-full-width-wrapper/
-    html/
   hooks/
-  modules/
-    home/
-  pages/
-    _app.tsx
-    _document.tsx
-    index.tsx
-  public/
-    assets/
-      fonts/
-      images/
   styles/
-    global.ts
-    theme.ts
 ```
 
 ## Key Files
 
-- `src/pages/_app.tsx` — wires in `ThemeProvider` and global styles
-- `src/pages/_document.tsx` — base HTML document setup
-- `src/modules/home/` — example home page module
-- `src/styles/theme.ts` — Kami UI theme and font configuration
-- `src/styles/global.ts` — global CSS, breakpoints, and media helpers
-- `src/components/common-full-width-wrapper/` — reusable layout wrapper
+- `src/app/layout.tsx` — root layout for the App Router tree
+- `src/app/page.tsx` — home route entry in the App Router
+- `src/app/globals.css` — global CSS baseline
+- `src/app/page.module.css` — route-scoped CSS module styles
 
 ## Path Aliases
 
 The project includes aliases configured in `tsconfig.json`:
 
 - `@components/*`
-- `@modules/*`
 - `@hooks/*`
 - `@styles/*`
 - `@assets/*`
@@ -153,14 +152,15 @@ The project includes aliases configured in `tsconfig.json`:
 
 ## Customization Tips
 
-- Update `src/modules/home/index.tsx` to replace the starter home screen
-- Adjust typography and fonts in `src/styles/theme.ts`
-- Add shared design tokens or helpers in `src/styles/global.ts`
+- Update `src/app/page.tsx` to replace the starter home screen
+- Adjust typography and global defaults in `src/app/globals.css`
+- Add route-scoped styles in CSS modules (for example `src/app/page.module.css`)
 - Place reusable UI pieces in `src/components/`
 
 ## Notes
 
-- This starter currently uses the **Pages Router**, not the App Router.
-- Static assets in this repo live under `src/public/`.
+- This starter uses the **App Router** via `src/app`.
+- Static assets in this repo live at the project root under `public/`.
+- Tailwind v4 is planned as a follow-up after plain CSS stabilization.
 - The formatting and lint scripts target the `src/` directory structure used by
   this template.

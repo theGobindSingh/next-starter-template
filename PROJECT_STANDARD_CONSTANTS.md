@@ -4,17 +4,16 @@ Shared source-of-truth constants for design and architecture workflows.
 
 ## Runtime + Tooling
 
-- `node_version`: `>=24`
+- `node_version`: `>=22`
 - `package_manager`: `pnpm@11.5.0`
-- `router_mode`: `next-pages-router`
+- `router_mode`: `next-app-router`
 
 ## Core Styling Stack
 
-- `css_in_js`: `@emotion/react`, `@emotion/styled`
-- `theme_provider`: `@kami-ui/next-theme`
-- `theme_base`: `@kami-ui/theme-shop` (`defaultLightTheme`)
-- `theme_entry`: `src/styles/theme.ts`
-- `global_styles_entry`: `src/styles/global.ts`
+- `styling_baseline`: `plain-css`
+- `route_styles`: `css-modules`
+- `global_styles_entry`: `src/app/globals.css`
+- `tailwind_v4_plan`: `post-stabilization`
 
 ## Responsive Constants
 
@@ -30,7 +29,6 @@ Shared source-of-truth constants for design and architecture workflows.
 - `container_size.default`: `85%`
 - `container_size.tablet`: `90%`
 - `container_size.mobile`: `90%`
-- `full_width_wrapper_component`: `src/components/common-full-width-wrapper`
 
 ## Typography Constants
 
@@ -39,36 +37,34 @@ Shared source-of-truth constants for design and architecture workflows.
 - `font_family.mono`: `DM Mono`
 - `font_family.cursive`: `Nothing You Could Do`
 - `body_default_font`: `var(--font-sans)`
-- `body_default_font_size`: `var(--fs-2xs)`
+- `body_default_font_size`: `16px`
 - `body_default_text_color`: `var(--color-gray-800)`
 
-Desktop type scale (`src/styles/theme.ts`):
+Desktop type scale:
 
 - `12, 14, 16, 18, 20, 24, 30, 36, 44, 52, 60` px
 
-Phone/tablet type scale (`src/styles/theme.ts`):
+Phone/tablet type scale:
 
 - `11, 12, 14, 16, 18, 20, 24, 30, 36, 44, 52` px
 
 ## Path Alias Constants
 
-- `@assets/* -> ./src/public/assets/*`
-- `@images/* -> ./src/public/assets/images/*`
-- `@public/* -> ./src/public/*`
+- `@assets/* -> ./public/assets/*`
+- `@images/* -> ./public/assets/images/*`
+- `@public/* -> ./public/*`
 - `@components/* -> ./src/components/*`
-- `@modules/* -> ./src/modules/*`
-- `@pages/* -> ./src/pages/*`
 - `@hooks/* -> ./src/hooks/*`
 - `@styles/* -> ./src/styles/*`
 - `@/* -> ./src/*`
 
 ## Structural Constraints
 
-- Keep route files in `src/pages` thin.
-- Put view composition and page logic in `src/modules`.
+- Keep route files in `src/app` thin.
+- Co-locate route-specific UI and logic in route segments.
 - Reusable pieces belong in `src/components`.
 - Prefer module shape: `index.tsx`, `styles.ts`, `types.ts`.
-- Do not mix App Router patterns unless migration is intentional.
+- Do not mix Pages Router patterns unless migration is intentional.
 
 ## Usage Rule For Skills
 

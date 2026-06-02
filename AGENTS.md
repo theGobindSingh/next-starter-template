@@ -39,19 +39,19 @@ Notes:
 
 ## Project Shape
 
-- `src/pages`: Next.js Pages Router entry points (`_app.tsx`, `_document.tsx`, routes)
-- `src/modules`: feature/page modules (example: `home`)
+- `src/app`: Next.js App Router route segments, layouts, and route entry points
 - `src/components`: reusable shared components
-- `src/styles`: theme, global styles, breakpoints, media helpers
-- `src/public/assets`: static assets (fonts, images)
+- `src/app/*.css + *.module.css`: global CSS and route-scoped CSS modules
+- `public/assets`: static assets (fonts, images)
 
 ## Conventions
 
-- Use the Pages Router pattern already in place; do not mix App Router patterns unless intentionally migrating.
-- Keep route files in `src/pages` thin; delegate UI and logic to `src/modules` and shared components.
-- Prefer path aliases from `tsconfig.json` (`@modules/*`, `@components/*`, `@styles/*`, etc.) over deep relative imports.
+- Use the App Router pattern already in place; do not mix legacy router patterns unless intentionally migrating.
+- Keep route files in `src/app` focused on route concerns; colocate route-specific UI and logic with each route segment, and share reusable pieces via `src/components`.
+- Prefer path aliases from `tsconfig.json` (`@components/*`, `@hooks/*`, `@styles/*`, etc.) over deep relative imports.
 - Follow the module file pattern where practical: `index.tsx`, `styles.ts`, `types.ts`.
-- Use Emotion (`@emotion/styled`, `@emotion/react`) and existing helpers from `src/styles/global.ts` (`breakpoints`, `mediaQuery`).
+- Use plain CSS for global styling and CSS modules for route/component-scoped styles.
+- Tailwind v4 is a planned follow-up after stabilization; do not assume it is available yet.
 
 ## Quality Gates
 

@@ -7,14 +7,11 @@
   "compilerOptions": {
     "target": "es6",
     "forceConsistentCasingInFileNames": true,
-    "jsxImportSource": "@emotion/react",
     "paths": {
-      "@assets/*": ["./src/public/assets/*"],
-      "@images/*": ["./src/public/assets/images/*"],
-      "@public/*": ["./src/public/*"],
+      "@assets/*": ["./public/assets/*"],
+      "@images/*": ["./public/assets/images/*"],
+      "@public/*": ["./public/*"],
       "@components/*": ["./src/components/*"],
-      "@modules/*": ["./src/modules/*"],
-      "@pages/*": ["./src/pages/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@styles/*": ["./src/styles/*"],
       "@/*": ["./src/*"]
