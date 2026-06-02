@@ -73,6 +73,12 @@
       "skillPath": "skills/opinionated-nextjs-systems/SKILL.md",
       "computedHash": "0ee311ee0ed8b15b333207c9fa2a9cba45e864997e33409216c598c5d0031b7b"
     },
+    "prompt-optimizer": {
+      "source": "affaan-m/ECC",
+      "sourceType": "github",
+      "skillPath": "skills/prompt-optimizer/SKILL.md",
+      "computedHash": "e9383cadec96d132d4b48937b115ea4906391d2539122a5e37ee7b9d387e5df4"
+    },
     "react-best-practices": {
       "source": "vercel-labs/vercel-plugin",
       "sourceType": "github",

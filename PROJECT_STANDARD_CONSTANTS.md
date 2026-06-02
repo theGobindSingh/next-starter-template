@@ -38,7 +38,9 @@ Shared source-of-truth constants for design and architecture workflows.
 - `font_family.cursive`: `Nothing You Could Do`
 - `body_default_font`: `var(--font-sans)`
 - `body_default_font_size`: `16px`
-- `body_default_text_color`: `var(--color-gray-800)`
+- `body_default_text_color`: `var(--color-ink)`
+- `dark_mode_supported`: `true`
+- `theme_toggle_location`: `src/components/theme-toggle.tsx`
 
 Note: "serif" and "sans" keys reflect project token names (--font-serif/--font-sans), not strict font taxonomy. In this template, --font-serif maps to Inter and --font-sans maps to Poppins.
 
