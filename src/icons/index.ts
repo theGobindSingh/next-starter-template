@@ -1,0 +1,10 @@
+export { CheckmarkIcon } from "./checkmark-icon";
+export { CheckmarkSmallIcon } from "./checkmark-small-icon";
+export { CheckmarkThinIcon } from "./checkmark-thin-icon";
+export { ChevronLeftIcon } from "./chevron-left-icon";
+export { ChevronRightIcon } from "./chevron-right-icon";
+export { CopyIcon } from "./copy-icon";
+export { LayersIcon } from "./layers-icon";
+export { MoonIcon } from "./moon-icon";
+export { SunIcon } from "./sun-icon";
+export { UploadIcon } from "./upload-icon";

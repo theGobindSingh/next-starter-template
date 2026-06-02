@@ -68,6 +68,9 @@ const LandingHero = () => {
           >
             View on GitHub
           </HeroButton>
+          <HeroButton href="/wizard" variant="primary">
+            Config Wizard
+          </HeroButton>
         </div>
       </div>
     </SectionWrapper>

@@ -9,6 +9,10 @@ export default [
         "error",
         { argsIgnorePattern: "/^_[A-Za-z0-9]+$/" },
       ],
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true, allowExportNames: ["metadata"] },
+      ],
     },
   },
 ];

@@ -5,7 +5,7 @@
     "@tsconfig/next/tsconfig.json"
   ],
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2017",
     "forceConsistentCasingInFileNames": true,
     "paths": {
       "@assets/*": ["./public/assets/*"],
@@ -14,6 +14,7 @@
       "@components/*": ["./src/components/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@styles/*": ["./src/styles/*"],
+      "@utils/*": ["./src/utils/*"],
       "@/*": ["./src/*"]
     },
     "noPropertyAccessFromIndexSignature": false,

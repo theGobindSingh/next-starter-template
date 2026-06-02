@@ -17,6 +17,8 @@
   --color-bronze: #6b5a4d;
   --color-gold-muted: #f0e6c8;
 
+  --shadow-rgb: 59 130 246;
+
   --color-primary-100: #dbeafe;
   --color-primary-200: #bfdbfe;
   --color-primary-300: #93c5fd;
@@ -203,6 +205,8 @@
   --color-error-600: #f87171;
   --color-error-700: #fca5a5;
   --color-error-800: #fecaca;
+
+  --shadow-rgb: 96 165 250;
 }
 
 @theme {
@@ -287,6 +291,32 @@ body::before {
 
 html.dark body::before {
   opacity: 0.05;
+}
+
+/* ─── Desktop Scrollbar ─── */
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-muted);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
 }
 
 /* ─── Shared Ambient Glow Layer ─── */

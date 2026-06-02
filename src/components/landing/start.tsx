@@ -76,7 +76,7 @@ const LandingStart = () => {
 
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           <a
-            href="#config"
+            href="/wizard"
             className="inline-flex items-center gap-2 font-mono text-sm font-medium tracking-widest uppercase px-8 py-4 rounded-lg bg-gold text-black hover:bg-gold-deep transition-all duration-200 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-gold/30"
           >
             Configure Your Brand

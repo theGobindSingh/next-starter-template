@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CONFIG_STEPS } from "./data";
 import SectionWrapper from "./section-wrapper";
 
@@ -10,7 +11,7 @@ interface ConfigCardProps {
 
 const ConfigCard = ({ title, file, description, items }: ConfigCardProps) => {
   return (
-    <div className="rounded-xl border border-border bg-surface p-8 transition-all duration-200 hover:border-gold/40">
+    <div className="rounded-xl border border-border bg-surface p-8 transition-all duration-200 hover:border-gold/40 hover:-translate-y-1 hover:shadow-lg">
       <p
         className="font-mono text-xs font-semibold tracking-widest uppercase mb-2"
         style={{ color: "var(--color-gold)" }}
@@ -73,6 +74,38 @@ const LandingConfig = () => {
           This template ships with sensible defaults, but every value is meant
           to be changed. Work through these files in order.
         </p>
+
+        <Link
+          href="/wizard"
+          className="group block w-full rounded-xl border border-gold/30 bg-gold/[0.04] hover:bg-gold/[0.08] hover:border-gold/60 transition-all duration-200 mb-12 p-6"
+        >
+          <div className="flex items-center justify-between gap-4 flex-wrap">
+            <div>
+              <p
+                className="font-mono text-xs font-semibold tracking-widest uppercase mb-1"
+                style={{ color: "var(--color-gold)" }}
+              >
+                Visual Config Wizard
+              </p>
+              <p
+                className="font-serif text-sm"
+                style={{ color: "var(--color-muted)" }}
+              >
+                Prefer a guided experience? Try the interactive config wizard
+                instead.
+              </p>
+            </div>
+            <span
+              className="font-mono text-sm font-semibold tracking-widest uppercase shrink-0 flex items-center gap-2 group-hover:gap-3 transition-all"
+              style={{ color: "var(--color-gold)" }}
+            >
+              Open Wizard
+              <span className="text-lg leading-none" aria-hidden="true">
+                &rarr;
+              </span>
+            </span>
+          </div>
+        </Link>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {CONFIG_STEPS.map((step) => {

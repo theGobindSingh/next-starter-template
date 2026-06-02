@@ -57,12 +57,14 @@ Notes:
 - Follow the module file pattern where practical: `index.tsx`, `styles.ts`, `types.ts`.
 - Tailwind v4 is available and is the primary styling path for routes and components.
 - Use CSS modules optionally for edge cases where utility classes are not a good fit.
+- NEVER use anonymous/unnamed functions. Every function must be assigned to a named `const` or `function` declaration before being passed as a callback or handler. For example, `onClick={() => { return onTabChange("preview"); }}` is forbidden — extract to `const handleTabChange = () => onTabChange("preview")` first, then pass `onClick={handleTabChange}`.
 
 ## Quality Gates
 
 - Before finishing code changes, run at least: `pnpm lint`.
 - If adding build-time or runtime behavior, verify with: `pnpm build`.
 - If `pnpm lint` or `pnpm build` exits with errors, do not mark the task complete. Fix all reported errors before finishing, or explicitly surface the unresolved errors to the user with the full error output.
+- No generated or modified file shall exceed 150 lines of code. If a file exceeds 150 LOC, split it into a modular folder structure (index.ts barrel + focused sibling files). Apply this proactively — before writing, break large outputs into modules; after writing, audit and refactor any file that exceeds the limit.
 
 ## Security
 
