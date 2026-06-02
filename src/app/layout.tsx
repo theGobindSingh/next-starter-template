@@ -9,19 +9,19 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 const fontSansSerif = Inter({
-  variable: "--font-serif",
+  variable: "--font-inter",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin", "latin-ext"],
 });
 
 const fontMono = DmMono({
-  variable: "--font-mono",
+  variable: "--font-dm-mono",
   weight: ["400", "500"],
   subsets: ["latin", "latin-ext"],
 });
 
 const fontSans = Poppins({
-  variable: "--font-sans",
+  variable: "--font-poppins",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin", "latin-ext"],
 });
@@ -34,7 +34,8 @@ const fontCursive = NothingYouCouldDo({
 
 export const metadata: Metadata = {
   title: "Next.js Starter Template",
-  description: "Starter template with Next.js, TypeScript, and plain CSS.",
+  description:
+    "Starter template with Next.js, TypeScript, and Tailwind baseline.",
 };
 
 interface RootLayoutProps {

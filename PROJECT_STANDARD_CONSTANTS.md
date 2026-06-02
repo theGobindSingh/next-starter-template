@@ -4,16 +4,16 @@ Shared source-of-truth constants for design and architecture workflows.
 
 ## Runtime + Tooling
 
-- `node_version`: `>=22`
+- `node_version`: `>=24`
 - `package_manager`: `pnpm@11.5.0`
 - `router_mode`: `next-app-router`
 
 ## Core Styling Stack
 
-- `styling_baseline`: `plain-css`
-- `route_styles`: `css-modules`
+- `styling_baseline`: `tailwind-v4`
+- `route_styles`: `tailwind-utilities`
 - `global_styles_entry`: `src/app/globals.css`
-- `tailwind_v4_plan`: `post-stabilization`
+- `tailwind_v4_plan`: `active`
 
 ## Responsive Constants
 
@@ -39,6 +39,8 @@ Shared source-of-truth constants for design and architecture workflows.
 - `body_default_font`: `var(--font-sans)`
 - `body_default_font_size`: `16px`
 - `body_default_text_color`: `var(--color-gray-800)`
+
+Note: "serif" and "sans" keys reflect project token names (--font-serif/--font-sans), not strict font taxonomy. In this template, --font-serif maps to Inter and --font-sans maps to Poppins.
 
 Desktop type scale:
 
@@ -69,4 +71,3 @@ Phone/tablet type scale:
 ## Usage Rule For Skills
 
 - For design implementation tasks, read this file before invoking `impeccable` and `ui-ux-pro-max`.
-- For file/folder/architecture/pattern decisions, combine this file with `opinionated-nextjs-systems` guidance.

@@ -12,16 +12,16 @@ This repository is a batteries-included Next.js starter template. Keep this file
 
 - At the start of every new chat/session, invoke `using-superpowers` first.
 - For cross-session context, use `mem` to both recall and save: search memory first before asking the user to repeat information, and persist important new decisions, preferences, and snippets.
-- If the task includes new or changed UI/design implementation, load [PROJECT_STANDARD_CONSTANTS.md](PROJECT_STANDARD_CONSTANTS.md) first, then invoke these skills in order:
+- If the task touches any visual output (new components, layout changes, style updates, or new pages), load [PROJECT_STANDARD_CONSTANTS.md](PROJECT_STANDARD_CONSTANTS.md) first — if the file does not exist, notify the user and ask whether to create it or continue without it — then invoke these skills in order:
   1. `impeccable`
   2. `ui-ux-pro-max`
-- If the task includes new files/folders, architecture, or pattern decisions, invoke `opinionated-nextjs-systems` before implementation.
 - For implementation work, invoke `subagent-driven-development` and enforce this execution policy:
-  1. Break work into the smallest practical independent subtasks.
+  1. Break work into subtasks each completable in a single file or a single well-defined function change, unless a natural larger boundary exists (e.g., a full API route).
   2. Delegate as many subtasks as possible to fresh subagents.
   3. Prefer parallel subagents for independent subtasks; keep sequential order only where dependencies require it.
   4. Keep the main agent as coordinator/reviewer, not primary implementer, unless delegation is blocked.
-- Use `caveman` as the default response style for this user (full intensity) unless the user asks to stop or switch level.
+- If a task qualifies as both UI/design and implementation work, run the UI skill sequence first (`impeccable`, `ui-ux-pro-max`), then invoke `subagent-driven-development`. All branches still follow `using-superpowers` at session start.
+- Use `caveman` as the default response style for this user (full intensity) unless the user asks to stop or switch level. Apply caveman style to prose responses only; all code, file edits, and structured output must remain precise and professional.
 
 ## Commands
 
@@ -41,7 +41,8 @@ Notes:
 
 - `src/app`: Next.js App Router route segments, layouts, and route entry points
 - `src/components`: reusable shared components
-- `src/app/*.css + *.module.css`: global CSS and route-scoped CSS modules
+- `src/app/globals.css`: Tailwind v4 import, global layer styles, and app-wide defaults
+- `src/app/*.module.css`: optional scoped styles for edge-case components/routes
 - `public/assets`: static assets (fonts, images)
 
 ## Conventions
@@ -50,13 +51,21 @@ Notes:
 - Keep route files in `src/app` focused on route concerns; colocate route-specific UI and logic with each route segment, and share reusable pieces via `src/components`.
 - Prefer path aliases from `tsconfig.json` (`@components/*`, `@hooks/*`, `@styles/*`, etc.) over deep relative imports.
 - Follow the module file pattern where practical: `index.tsx`, `styles.ts`, `types.ts`.
-- Use plain CSS for global styling and CSS modules for route/component-scoped styles.
-- Tailwind v4 is a planned follow-up after stabilization; do not assume it is available yet.
+- Tailwind v4 is available and is the primary styling path for routes and components.
+- Use CSS modules optionally for edge cases where utility classes are not a good fit.
 
 ## Quality Gates
 
 - Before finishing code changes, run at least: `pnpm lint`.
 - If adding build-time or runtime behavior, verify with: `pnpm build`.
+- If `pnpm lint` or `pnpm build` exits with errors, do not mark the task complete. Fix all reported errors before finishing, or explicitly surface the unresolved errors to the user with the full error output.
+
+## Security
+
+- Never commit secrets, API keys, or credentials to source files.
+- Use `.env` for secrets; never commit `.env` to version control.
+- Never read `.env` or `.env.*` files. If a secret needs to be present, updated, or verified, instruct the user to do it manually.
+- If a secret is detected in code, halt and alert the user before proceeding.
 
 ## Known Pitfalls
 

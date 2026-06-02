@@ -4,16 +4,16 @@ A minimal starter for building apps with [Next.js](https://nextjs.org/)
 and [TypeScript](https://www.typescriptlang.org/).
 
 This repository is set up with the **App Router** (`src/app`) and provides an
-opinionated structure for co-located routes, shared components, and a plain
-CSS + CSS modules styling baseline.
+opinionated structure for co-located routes, shared components, and a Tailwind
+v4-first styling baseline.
 
 ## Features
 
 - **Next.js 16** with **React 19**
 - **App Router** structure with route files in `src/app`
 - **TypeScript** with strict config presets
-- **Plain CSS** baseline for global app styling
-- **CSS modules** for route/component-level styling
+- **Tailwind v4** baseline for utility-first app styling
+- **Global styling entry** in `src/app/globals.css` for app-wide defaults
 - **All-batteries-included ESLint config** via [`@kami-ui/eslint-config`](https://www.npmjs.com/package/@kami-ui/eslint-config)
 - Path aliases such as `@components/*`, `@hooks/*`, and `@styles/*`
 
@@ -85,7 +85,7 @@ This template ships with a curated set of agent skills and workflow rules that m
 
 **Start here:** [AGENTS.md](AGENTS.md) is the single source of truth for how AI agents should behave in this repo. Read it when onboarding, and update it early when this template becomes a real product — the more context you add there, the better the AI output gets.
 
-The project also includes [PROJECT_STANDARD_CONSTANTS.md](PROJECT_STANDARD_CONSTANTS.md), a reference file that captures breakpoints, type scales, font choices, path aliases, and layout constants in one place. Design and architecture-focused skills read this automatically so they stay aligned with the actual codebase.
+The project also includes [PROJECT_STANDARD_CONSTANTS.md](PROJECT_STANDARD_CONSTANTS.md), a reference file that captures breakpoints, type scales, font choices, path aliases, and layout constants in one place. For design and architecture tasks, read this file first so skill execution stays aligned with the current codebase.
 
 ### Skills
 
@@ -125,7 +125,6 @@ src/
   app/
     globals.css
     layout.tsx
-    page.module.css
     page.tsx
   components/
   hooks/
@@ -136,8 +135,7 @@ src/
 
 - `src/app/layout.tsx` — root layout for the App Router tree
 - `src/app/page.tsx` — home route entry in the App Router
-- `src/app/globals.css` — global CSS baseline
-- `src/app/page.module.css` — route-scoped CSS module styles
+- `src/app/globals.css` — Tailwind v4 import and global app layer styles
 
 ## Path Aliases
 
@@ -153,14 +151,14 @@ The project includes aliases configured in `tsconfig.json`:
 ## Customization Tips
 
 - Update `src/app/page.tsx` to replace the starter home screen
-- Adjust typography and global defaults in `src/app/globals.css`
-- Add route-scoped styles in CSS modules (for example `src/app/page.module.css`)
+- Build route UI with Tailwind utility classes directly in route/components
+- Adjust global defaults and shared layers in `src/app/globals.css`
 - Place reusable UI pieces in `src/components/`
 
 ## Notes
 
 - This starter uses the **App Router** via `src/app`.
 - Static assets in this repo live at the project root under `public/`.
-- Tailwind v4 is planned as a follow-up after plain CSS stabilization.
+- Tailwind v4 is active baseline styling approach in this template.
 - The formatting and lint scripts target the `src/` directory structure used by
   this template.
