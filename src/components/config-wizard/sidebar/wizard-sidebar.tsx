@@ -13,16 +13,16 @@ export const WizardSidebar = ({
   onTabChange,
 }: WizardSidebarProps) => {
   return (
-    <div className="hidden lg:flex w-96 shrink-0 self-start sticky top-4 flex-col rounded-xl border border-border bg-surface overflow-hidden h-[calc(100dvh-8rem)]">
-      <div className="flex border-b border-border shrink-0">
+    <div className="hidden lg:flex w-96 shrink-0 self-start sticky top-4 flex-col rounded-xl border border-grey-300 bg-grey-200 overflow-hidden h-[calc(100dvh-8rem)]">
+      <div className="flex border-b border-grey-300 shrink-0">
         <button
           onClick={() => {
             return onTabChange("preview");
           }}
           className={`flex-1 px-4 py-2.5 font-mono text-[10px] font-semibold tracking-widest uppercase transition-colors ${
             activeTab === "preview"
-              ? "bg-gold/10 text-gold border-b-2 border-gold"
-              : "text-muted hover:text-ink"
+              ? "bg-accent/10 text-accent border-b-2 border-accent"
+              : "text-grey-500 hover:text-grey-900"
           }`}
         >
           Live Preview
@@ -33,11 +33,11 @@ export const WizardSidebar = ({
           }}
           className={`flex-1 px-4 py-2.5 font-mono text-[10px] font-semibold tracking-widest uppercase transition-colors ${
             activeTab === "colors"
-              ? "bg-gold/10 text-gold border-b-2 border-gold"
-              : "text-muted hover:text-ink"
+              ? "bg-accent/10 text-accent border-b-2 border-accent"
+              : "text-grey-500 hover:text-grey-900"
           }`}
         >
-          :root Colors
+          Global CSS
         </button>
       </div>
       {activeTab === "preview" ? <LivePreview /> : <ColorCSSPanel />}

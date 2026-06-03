@@ -9,10 +9,10 @@ export const Step1Product = () => {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h2 className="font-sans text-2xl font-bold text-ink">
+        <h2 className="font-sans text-2xl font-bold text-grey-900">
           Product Identity
         </h2>
-        <p className="font-serif text-sm text-muted mt-1">
+        <p className="font-serif text-sm text-grey-500 mt-1">
           Define who this is for and how it should feel.
         </p>
       </div>

@@ -64,6 +64,15 @@ const hasAgentChanges = (state: WizardState): boolean => {
   );
 };
 
+const hasStructureChanges = (state: WizardState): boolean => {
+  return (
+    state.namingConvention !== DEFAULT_STATE.namingConvention ||
+    state.componentPlacement !== DEFAULT_STATE.componentPlacement ||
+    state.useBarrelExports !== DEFAULT_STATE.useBarrelExports ||
+    state.folderPerComponent !== DEFAULT_STATE.folderPerComponent
+  );
+};
+
 export {
   hasAgentChanges,
   hasDesignChanges,
@@ -71,4 +80,5 @@ export {
   hasMetadataChanges,
   hasPackageChanges,
   hasProductChanges,
+  hasStructureChanges,
 };

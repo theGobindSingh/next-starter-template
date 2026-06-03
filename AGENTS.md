@@ -25,6 +25,7 @@ This repository is a batteries-included Next.js starter template. Keep this file
   4. Keep the main agent as coordinator/reviewer, not primary implementer, unless delegation is blocked.
 - If a task qualifies as both UI/design and implementation work, run the UI skill sequence first (`impeccable`, `ui-ux-pro-max`, `tailwind-design-system`), then invoke `subagent-driven-development`. All branches still follow `using-superpowers` at session start.
 - Use `caveman` as the default response style for this user (full intensity) unless the user asks to stop or switch level. Apply caveman style to prose responses only; all code, file edits, and structured output must remain precise and professional.
+- **English only** — all agent communication must be in English unless the user explicitly requests otherwise.
 - Use `stop-slop` whenever the user requests to write text content for the website, product, or codebase but not actual code.
 
 ## Commands
@@ -53,8 +54,11 @@ Notes:
 
 - Use the App Router pattern already in place; do not mix legacy router patterns unless intentionally migrating.
 - Keep route files in `src/app` focused on route concerns; colocate route-specific UI and logic with each route segment, and share reusable pieces via `src/components`.
+- Use `kebab-case` for all file and folder names.
+- **Component placement** — global/reusable components live in `src/components/`, page-specific components are co-located in `app/<route>/components/`.
+- **Folder-per-component** — each component gets its own directory with `index.tsx` as the component entry point and co-located types.
 - Prefer path aliases from `tsconfig.json` (`@components/*`, `@hooks/*`, `@styles/*`, etc.) over deep relative imports.
-- Follow the module file pattern where practical: `index.tsx`, `styles.ts`, `types.ts`.
+- Follow the module file pattern where practical: `index.tsx`, `types.ts`.
 - Tailwind v4 is available and is the primary styling path for routes and components.
 - Use CSS modules optionally for edge cases where utility classes are not a good fit.
 - NEVER use anonymous/unnamed functions. Every function must be assigned to a named `const` or `function` declaration before being passed as a callback or handler. For example, `onClick={() => { return onTabChange("preview"); }}` is forbidden — extract to `const handleTabChange = () => onTabChange("preview")` first, then pass `onClick={handleTabChange}`.
@@ -64,7 +68,7 @@ Notes:
 - Before finishing code changes, run at least: `pnpm lint`.
 - If adding build-time or runtime behavior, verify with: `pnpm build`.
 - If `pnpm lint` or `pnpm build` exits with errors, do not mark the task complete. Fix all reported errors before finishing, or explicitly surface the unresolved errors to the user with the full error output.
-- No generated or modified file shall exceed 150 lines of code. If a file exceeds 150 LOC, split it into a modular folder structure (index.ts barrel + focused sibling files). Apply this proactively — before writing, break large outputs into modules; after writing, audit and refactor any file that exceeds the limit.
+- No generated or modified file shall exceed 150 lines of code. If a file exceeds 150 LOC, split it into a modular folder structure (index.tsx entry + focused sibling files). Apply this proactively — before writing, break large outputs into modules; after writing, audit and refactor any file that exceeds the limit.
 
 ## Security
 

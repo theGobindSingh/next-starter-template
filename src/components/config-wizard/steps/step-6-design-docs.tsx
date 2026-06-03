@@ -23,7 +23,7 @@ const NORTH_STAR_OPTIONS = [
 
 const CUSTOM_VALUE = "__custom__";
 
-export const Step4DesignDocs = () => {
+export const Step6DesignDocs = () => {
   const { state, dispatch } = useWizard();
   const selectId = useId();
   const inputId = useId();
@@ -73,10 +73,10 @@ export const Step4DesignDocs = () => {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h2 className="font-sans text-2xl font-bold text-ink">
+        <h2 className="font-sans text-2xl font-bold text-grey-900">
           Design System Docs
         </h2>
-        <p className="font-serif text-sm text-muted mt-1">
+        <p className="font-serif text-sm text-grey-500 mt-1">
           Define your visual direction and guardrails.
         </p>
       </div>
@@ -85,7 +85,7 @@ export const Step4DesignDocs = () => {
         <div className="flex flex-col gap-1.5">
           <label
             htmlFor={selectId}
-            className="font-mono text-xs font-semibold tracking-widest uppercase text-muted"
+            className="font-mono text-xs font-semibold tracking-widest uppercase text-grey-500"
           >
             Creative North Star Metaphor
           </label>
@@ -95,7 +95,7 @@ export const Step4DesignDocs = () => {
             onChange={(e) => {
               return handleSelect(e.target.value);
             }}
-            className="w-full px-3 py-2.5 rounded-lg border border-border bg-canvas text-ink font-serif text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 transition-colors"
+            className="w-full px-3 py-2.5 rounded-lg border border-grey-300 bg-grey-100 text-grey-900 font-serif text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-colors"
           >
             <option value="" disabled>
               Select a north star…
@@ -118,11 +118,11 @@ export const Step4DesignDocs = () => {
               return handleCustomChange(e.target.value);
             }}
             placeholder='e.g. "The Monograph", "The Gallery"'
-            className="w-full px-3 py-2.5 rounded-lg border border-border bg-canvas text-ink font-serif text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 transition-colors placeholder:text-muted/60"
+            className="w-full px-3 py-2.5 rounded-lg border border-grey-300 bg-grey-100 text-grey-900 font-serif text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-colors placeholder:text-grey-500/60"
           />
         )}
         {state.creativeNorthStar && !isCustom && (
-          <p className="font-serif text-xs text-muted italic leading-relaxed">
+          <p className="font-serif text-xs text-grey-500 italic leading-relaxed">
             {NORTH_STAR_INFO[state.creativeNorthStar]}
           </p>
         )}

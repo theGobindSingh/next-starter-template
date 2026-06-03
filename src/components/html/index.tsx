@@ -26,7 +26,6 @@ type WeightToken =
 type ColorToken =
   | "primary"
   | "secondary"
-  | "tertiary"
   | "accent"
   | "success"
   | "caution"

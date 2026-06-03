@@ -6,6 +6,7 @@ import {
   hasMetadataChanges,
   hasPackageChanges,
   hasProductChanges,
+  hasStructureChanges,
 } from "./detect-changes";
 import { generateAgentsMD } from "./generators/agents";
 import { generateDesignMD } from "./generators/design";
@@ -68,11 +69,11 @@ const generatePrompt = (state: WizardState): string => {
     );
   }
 
-  if (hasAgentChanges(state)) {
+  if (hasAgentChanges(state) || hasStructureChanges(state)) {
     appendSection(
       sections,
       order,
-      `\`AGENTS.md\` — update agent configuration`,
+      `\`AGENTS.md\` — update agent configuration and project conventions`,
       "markdown",
       generateAgentsMD(state),
     );
@@ -97,7 +98,7 @@ pnpm build
 Confirm no errors.
   `);
     sections.unshift(
-      `Update these files (and related configurations) (Use sub-agents for each edit/file if possible):`,
+      `Update AGENTS.md and the following files (and related configurations) (Use sub-agents for each edit/file if possible):`,
     );
     if (state.brandName) {
       sections.unshift(

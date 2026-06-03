@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@components/button";
+
 interface UnsavedWarningProps {
   show: boolean;
   onNavigate: () => void;
@@ -17,28 +19,36 @@ export const UnsavedWarning = ({
 
   return (
     <div className="mb-4 rounded-lg border border-caution/30 bg-caution/5 p-4 flex items-center justify-between">
-      <p className="font-serif text-sm text-ink">
+      <p className="font-serif text-sm text-grey-900">
         You have unsaved changes. Navigate away?
       </p>
       <div className="flex gap-2">
-        <button
+        <Button
+          variant="outlined"
+          color="caution"
+          size="s"
+          className="text-xs font-mono tracking-widest uppercase leading-none border-grey-300"
           onClick={onNavigate}
-          className="font-mono text-xs font-semibold tracking-widest uppercase leading-none px-3 py-1.5 rounded-lg border border-border text-caution hover:bg-caution/10 transition-colors"
         >
           Navigate
-        </button>
-        <button
+        </Button>
+        <Button
+          variant="filled"
+          color="primary"
+          size="s"
+          className="text-xs font-mono tracking-widest uppercase leading-none border border-grey-300 hover:bg-primary/80"
           onClick={onSaveAndNavigate}
-          className="font-mono text-xs font-semibold tracking-widest uppercase leading-none px-3 py-1.5 rounded-lg border border-border bg-primary text-white hover:bg-primary/80 transition-colors"
         >
           Save & Navigate
-        </button>
-        <button
+        </Button>
+        <Button
+          variant="outlined"
+          size="s"
+          className="text-xs font-mono tracking-widest uppercase leading-none border-grey-300 text-grey-900 hover:bg-grey-200"
           onClick={onCancel}
-          className="font-mono text-xs font-semibold tracking-widest uppercase leading-none px-3 py-1.5 rounded-lg border border-border text-ink hover:bg-surface transition-colors"
         >
           Stay
-        </button>
+        </Button>
       </div>
     </div>
   );

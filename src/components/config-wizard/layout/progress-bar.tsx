@@ -22,20 +22,20 @@ export const ProgressBar = ({ currentStep, onStepClick }: ProgressBarProps) => {
             }}
             className={`flex items-center gap-1.5 shrink-0 px-2 py-1.5 rounded-lg transition-colors ${
               isActive
-                ? "bg-gold/10 text-gold"
+                ? "bg-accent/10 text-accent"
                 : isComplete
-                  ? "text-ink"
-                  : "text-muted/40"
+                  ? "text-grey-900"
+                  : "text-grey-500/40"
             }`}
             aria-current={isActive ? "step" : undefined}
           >
             <span
               className={`flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-mono font-bold border ${
                 isActive
-                  ? "border-gold bg-gold text-black"
+                  ? "border-accent bg-accent text-black"
                   : isComplete
-                    ? "border-gold/50 bg-gold/10 text-gold"
-                    : "border-border"
+                    ? "border-accent/50 bg-accent/10 text-accent"
+                    : "border-grey-300"
               }`}
             >
               {isComplete ? <CheckmarkSmallIcon /> : i}

@@ -3,13 +3,7 @@ export interface ColorToken {
   varName: string;
   hex: string;
   cssVar: string;
-  group:
-    | "primary"
-    | "secondary"
-    | "tertiary"
-    | "accent"
-    | "neutral"
-    | "semantic";
+  group: "primary" | "secondary" | "accent" | "neutral" | "semantic";
 }
 
 export interface FeatureItem {

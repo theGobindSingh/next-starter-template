@@ -4,7 +4,9 @@ export const STEP_LABELS = [
   "Welcome",
   "Product Identity",
   "Visual Tokens",
+  "Color System",
   "Agent Config",
+  "Project Structure",
   "Design Docs",
   "Live Mode",
   "Review",
@@ -29,6 +31,10 @@ export const DEFAULT_STATE: WizardState = {
   shadowIntensity: 2,
   motionSpeed: "normal",
 
+  primaryColor: "#3b82f6",
+  secondaryColor: "#8b5cf6",
+  overriddenColors: {},
+
   productContext: "",
   testingFramework: "none",
   deploymentTarget: "vercel",
@@ -38,6 +44,11 @@ export const DEFAULT_STATE: WizardState = {
   designOverview: "",
   componentVariants: "",
   dosAndDonts: "",
+
+  namingConvention: "kebab-case",
+  componentPlacement: "hybrid",
+  useBarrelExports: true,
+  folderPerComponent: true,
 
   liveMode: false,
 };

@@ -6,16 +6,16 @@ import Link from "next/link";
 
 const WizardPage = () => {
   return (
-    <div className="min-h-dvh bg-canvas">
-      <header className="border-b border-border">
+    <div className="min-h-dvh bg-grey-100">
+      <header className="border-b border-grey-300">
         <div className="mx-auto w-[90%] max-w-[1400px] flex items-center justify-between h-14">
           <Link
             href="/"
-            className="font-mono text-xs font-semibold tracking-widest uppercase text-muted hover:text-gold transition-colors"
+            className="font-mono text-xs font-semibold tracking-widest uppercase text-grey-500 hover:text-accent transition-colors"
           >
             &larr; Back to Home
           </Link>
-          <p className="font-mono text-[10px] text-muted/40">
+          <p className="font-mono text-[10px] text-grey-500/40">
             next-starter-template / configure
           </p>
         </div>

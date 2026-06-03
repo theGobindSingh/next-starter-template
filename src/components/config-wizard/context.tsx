@@ -38,13 +38,13 @@ export const WizardProvider = ({ children }: WizardProviderProps) => {
   const [state, dispatch] = useReducer(wizardReducer, DEFAULT_STATE);
   const [currentStep, setCurrentStep] = useReducer(
     (_prev: number, next: number) => {
-      return Math.max(0, Math.min(next, 5));
+      return Math.max(0, Math.min(next, 8));
     },
     0,
   );
 
   const nextStep = useCallback(() => {
-    setCurrentStep(Math.min(currentStep + 1, 5));
+    setCurrentStep(Math.min(currentStep + 1, 8));
   }, [currentStep]);
 
   const prevStep = useCallback(() => {
@@ -60,7 +60,7 @@ export const WizardProvider = ({ children }: WizardProviderProps) => {
         setStep: setCurrentStep,
         nextStep,
         prevStep,
-        totalSteps: 6,
+        totalSteps: 8,
       }}
     >
       {children}

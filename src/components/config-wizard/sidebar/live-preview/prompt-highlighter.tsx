@@ -8,10 +8,10 @@ const CodeBlock = ({
   codeLines: string[];
 }) => {
   return (
-    <div className="my-3 rounded-lg border border-border bg-elevated overflow-hidden">
+    <div className="my-3 rounded-lg border border-grey-300 bg-grey-50 overflow-hidden">
       {lang && (
-        <div className="px-3 py-1.5 border-b border-border bg-surface">
-          <span className="font-mono text-[10px] font-semibold tracking-widest uppercase text-muted/60">
+        <div className="px-3 py-1.5 border-b border-grey-300 bg-grey-200">
+          <span className="font-mono text-[10px] font-semibold tracking-widest uppercase text-grey-500/60">
             {lang}
           </span>
         </div>
@@ -54,7 +54,7 @@ export const PromptHighlighter = ({ text }: { text: string }) => {
 
     if (line.startsWith("# ")) {
       elements.push(
-        <span key={key} className="block text-gold font-bold text-sm mb-2">
+        <span key={key} className="block text-accent font-bold text-sm mb-2">
           {line}
         </span>,
       );
@@ -66,7 +66,7 @@ export const PromptHighlighter = ({ text }: { text: string }) => {
       );
     } else if (line.startsWith("- ")) {
       elements.push(
-        <span key={key} className="block text-muted">
+        <span key={key} className="block text-grey-500">
           {line}
         </span>,
       );
@@ -84,7 +84,7 @@ export const PromptHighlighter = ({ text }: { text: string }) => {
       );
     } else {
       elements.push(
-        <span key={key} className="block text-ink/80">
+        <span key={key} className="block text-grey-900/80">
           {line}
         </span>,
       );

@@ -20,7 +20,7 @@ const Input = ({
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={id}
-        className="font-mono text-xs font-semibold tracking-widest uppercase text-muted"
+        className="font-mono text-xs font-semibold tracking-widest uppercase text-grey-500"
       >
         {label}
         {required && <span className="text-error ml-1">*</span>}
@@ -33,7 +33,7 @@ const Input = ({
           return onChange(e.target.value);
         }}
         placeholder={placeholder}
-        className="w-full px-3 py-2.5 rounded-lg border border-border bg-canvas text-ink font-serif text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 transition-colors placeholder:text-muted/60"
+        className="w-full px-3 py-2.5 rounded-lg border border-grey-300 bg-grey-100 text-grey-900 font-serif text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-colors placeholder:text-grey-500/60"
         aria-required={required}
       />
     </div>
@@ -60,7 +60,7 @@ const Textarea = ({
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={id}
-        className="font-mono text-xs font-semibold tracking-widest uppercase text-muted"
+        className="font-mono text-xs font-semibold tracking-widest uppercase text-grey-500"
       >
         {label}
         {required && <span className="text-error ml-1">*</span>}
@@ -73,7 +73,7 @@ const Textarea = ({
         }}
         placeholder={placeholder}
         rows={rows}
-        className="w-full px-3 py-2.5 rounded-lg border border-border bg-canvas text-ink font-serif text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 transition-colors resize-y min-h-[80px] placeholder:text-muted/60"
+        className="w-full px-3 py-2.5 rounded-lg border border-grey-300 bg-grey-100 text-grey-900 font-serif text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-colors resize-y min-h-[80px] placeholder:text-grey-500/60"
         aria-required={required}
       />
     </div>
@@ -96,7 +96,7 @@ const Select = ({
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={id}
-        className="font-mono text-xs font-semibold tracking-widest uppercase text-muted"
+        className="font-mono text-xs font-semibold tracking-widest uppercase text-grey-500"
       >
         {label}
       </label>
@@ -106,7 +106,7 @@ const Select = ({
         onChange={(e) => {
           return onChange(e.target.value);
         }}
-        className="w-full px-3 py-2.5 rounded-lg border border-border bg-canvas text-ink font-serif text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 transition-colors"
+        className="w-full px-3 py-2.5 rounded-lg border border-grey-300 bg-grey-100 text-grey-900 font-serif text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-colors"
       >
         {options.map((opt) => {
           return (

@@ -11,14 +11,16 @@ export const Step2Visual = () => {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h2 className="font-sans text-2xl font-bold text-ink">Visual Tokens</h2>
-        <p className="font-serif text-sm text-muted mt-1">
+        <h2 className="font-sans text-2xl font-bold text-grey-900">
+          Visual Tokens
+        </h2>
+        <p className="font-serif text-sm text-grey-500 mt-1">
           Customize typography and spacing for your brand.
         </p>
       </div>
 
       <div className="flex flex-col gap-4">
-        <h3 className="font-mono text-xs font-semibold tracking-widest uppercase text-gold">
+        <h3 className="font-mono text-xs font-semibold tracking-widest uppercase text-accent">
           Typography
         </h3>
         {(["display", "body", "label", "cursive"] as const).map((role) => {
@@ -37,13 +39,13 @@ export const Step2Visual = () => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <h3 className="font-mono text-xs font-semibold tracking-widest uppercase text-gold">
+        <h3 className="font-mono text-xs font-semibold tracking-widest uppercase text-accent">
           Tokens
         </h3>
 
         <div className="flex justify-center py-6">
           <div
-            className="h-24 w-48 bg-elevated border border-border flex items-center justify-center font-mono text-xs text-muted transition-all duration-150"
+            className="h-24 w-48 bg-grey-50 border border-grey-300 flex items-center justify-center font-mono text-xs text-grey-500 transition-all duration-150"
             style={{
               borderRadius: `${state.borderRadius}px`,
               boxShadow: [
@@ -62,7 +64,7 @@ export const Step2Visual = () => {
 
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-1.5">
-            <label className="font-mono text-xs font-semibold tracking-widest uppercase text-muted">
+            <label className="font-mono text-xs font-semibold tracking-widest uppercase text-grey-500">
               Border Radius: {state.borderRadius}px
             </label>
             <input
@@ -82,7 +84,7 @@ export const Step2Visual = () => {
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="font-mono text-xs font-semibold tracking-widest uppercase text-muted">
+            <label className="font-mono text-xs font-semibold tracking-widest uppercase text-grey-500">
               Shadow Intensity: {state.shadowIntensity}/5
             </label>
             <input

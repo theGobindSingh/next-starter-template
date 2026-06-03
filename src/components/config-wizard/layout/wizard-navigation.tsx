@@ -6,6 +6,7 @@ import {
   ChevronRightIcon,
   CopyIcon,
 } from "@/icons";
+import { Button } from "@components/button";
 
 interface WizardNavigationProps {
   currentStep: number;
@@ -31,28 +32,35 @@ export const WizardNavigation = ({
   if (currentStep === 0) return null;
 
   return (
-    <div className="flex items-center justify-between mt-8 pt-6 border-t border-border">
-      <button
+    <div className="flex items-center justify-between mt-8 pt-6 border-t border-grey-300">
+      <Button
+        variant="outlined"
+        size="l"
+        className="text-xs font-mono tracking-widest uppercase border-grey-300 text-grey-900 hover:bg-grey-200"
         onClick={onPrev}
-        className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-widest uppercase px-5 py-2.5 rounded-lg border border-border text-ink hover:bg-surface transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/30"
       >
         <ChevronLeftIcon />
         Back
-      </button>
+      </Button>
 
       <div className="flex items-center gap-3">
         {currentStep === totalSteps ? (
           <>
-            <button
+            <Button
+              variant="filled"
+              color="accent"
+              size="l"
+              className="px-6 text-xs font-mono tracking-widest uppercase"
               onClick={onGenerate}
-              className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-widest uppercase px-6 py-2.5 rounded-lg bg-gold text-black hover:bg-gold-deep transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/30"
             >
               Generate Prompt
-            </button>
+            </Button>
             {generatedPrompt && (
-              <button
+              <Button
+                variant="outlined"
+                size="l"
+                className="px-6 text-xs font-mono tracking-widest uppercase border-grey-300 text-grey-900 hover:bg-grey-200"
                 onClick={onCopy}
-                className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-widest uppercase px-6 py-2.5 rounded-lg border border-border text-ink hover:bg-surface transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/30"
               >
                 {copied ? (
                   <>
@@ -65,17 +73,20 @@ export const WizardNavigation = ({
                     Copy
                   </>
                 )}
-              </button>
+              </Button>
             )}
           </>
         ) : (
-          <button
+          <Button
+            variant="filled"
+            color="accent"
+            size="l"
+            className="px-6 text-xs font-mono tracking-widest uppercase"
             onClick={onNext}
-            className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-widest uppercase px-6 py-2.5 rounded-lg bg-gold text-black hover:bg-gold-deep transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/30"
           >
             Next
             <ChevronRightIcon />
-          </button>
+          </Button>
         )}
       </div>
     </div>

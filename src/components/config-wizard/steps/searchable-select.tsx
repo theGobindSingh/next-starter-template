@@ -112,7 +112,7 @@ export const SearchableSelect = ({
     <div className="flex flex-col gap-1.5 relative" ref={containerRef}>
       <label
         htmlFor={id}
-        className="font-mono text-xs font-semibold tracking-widest uppercase text-muted"
+        className="font-mono text-xs font-semibold tracking-widest uppercase text-grey-500"
       >
         {label}
       </label>
@@ -128,7 +128,7 @@ export const SearchableSelect = ({
         }}
         onKeyDown={handleKeyDown}
         placeholder="Type to search..."
-        className="w-full px-3 py-2.5 rounded-lg border border-border bg-canvas text-ink font-serif text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 transition-colors placeholder:text-muted/60"
+        className="w-full px-3 py-2.5 rounded-lg border border-grey-300 bg-grey-100 text-grey-900 font-serif text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-colors placeholder:text-grey-500/60"
         role="combobox"
         aria-expanded={open}
         aria-autocomplete="list"
@@ -140,10 +140,10 @@ export const SearchableSelect = ({
           ref={listRef}
           id={`${id}-listbox`}
           role="listbox"
-          className="absolute top-full mt-1 left-0 right-0 z-50 max-h-60 overflow-auto rounded-lg border border-border bg-canvas shadow-lg"
+          className="absolute top-full mt-1 left-0 right-0 z-50 max-h-60 overflow-auto rounded-lg border border-grey-300 bg-grey-100 shadow-lg"
         >
           {filtered.length === 0 ? (
-            <div className="px-3 py-2 text-sm text-muted/60 font-serif">
+            <div className="px-3 py-2 text-sm text-grey-500/60 font-serif">
               No fonts found
             </div>
           ) : (
@@ -155,10 +155,10 @@ export const SearchableSelect = ({
                   aria-selected={opt.value === value}
                   className={`px-3 py-2 text-sm font-serif cursor-pointer transition-colors ${
                     opt.value === value
-                      ? "bg-gold/10 text-gold font-semibold"
+                      ? "bg-accent/10 text-accent font-semibold"
                       : idx === focusedIdx
-                        ? "bg-elevated text-ink"
-                        : "text-ink hover:bg-elevated"
+                        ? "bg-grey-50 text-grey-900"
+                        : "text-grey-900 hover:bg-grey-50"
                   }`}
                   onClick={() => {
                     return handleSelect(opt);

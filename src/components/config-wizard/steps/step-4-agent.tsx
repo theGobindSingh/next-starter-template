@@ -25,7 +25,7 @@ const COMPLIANCE_OPTIONS = [
   { value: "GDPR", label: "GDPR" },
 ];
 
-export const Step3Agent = () => {
+export const Step4Agent = () => {
   const { state, dispatch } = useWizard();
 
   const toggleCompliance = useCallback(
@@ -44,10 +44,10 @@ export const Step3Agent = () => {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h2 className="font-sans text-2xl font-bold text-ink">
+        <h2 className="font-sans text-2xl font-bold text-grey-900">
           Agent Configuration
         </h2>
-        <p className="font-serif text-sm text-muted mt-1">
+        <p className="font-serif text-sm text-grey-500 mt-1">
           Tell AI assistants how to work in your project.
         </p>
       </div>
@@ -91,7 +91,7 @@ export const Step3Agent = () => {
       />
 
       <div className="flex flex-col gap-2">
-        <p className="font-mono text-xs font-semibold tracking-widest uppercase text-muted">
+        <p className="font-mono text-xs font-semibold tracking-widest uppercase text-grey-500">
           Security & Compliance
         </p>
         <div className="flex flex-wrap gap-3">
@@ -101,8 +101,8 @@ export const Step3Agent = () => {
                 key={opt.value}
                 className={`flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer transition-colors ${
                   state.compliance.includes(opt.value)
-                    ? "border-gold bg-gold/10 text-ink"
-                    : "border-border bg-canvas text-muted hover:border-gold/40"
+                    ? "border-accent bg-accent/10 text-grey-900"
+                    : "border-grey-300 bg-grey-100 text-grey-500 hover:border-accent/40"
                 }`}
               >
                 <input
@@ -116,8 +116,8 @@ export const Step3Agent = () => {
                 <div
                   className={`w-4 h-4 rounded border flex items-center justify-center ${
                     state.compliance.includes(opt.value)
-                      ? "bg-gold border-gold"
-                      : "border-border"
+                      ? "bg-accent border-accent"
+                      : "border-grey-300"
                   }`}
                 >
                   {state.compliance.includes(opt.value) && (

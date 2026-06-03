@@ -1,8 +1,43 @@
 import {
+  generateGreyHslBaseScale,
+  generateHslBaseScale,
+  generatePalette,
+  type Palette,
+} from "@/lib/color-palette";
+import {
   DEFAULT_STATE,
   NORTH_STAR_INFO,
 } from "@components/config-wizard/constants";
 import type { WizardState } from "@components/config-wizard/types";
+
+const COLOR_ENTRIES = [
+  "grey-50",
+  "grey-100",
+  "grey-200",
+  "grey-300",
+  "grey-400",
+  "grey-500",
+  "grey-600",
+  "grey-700",
+  "grey-800",
+  "grey-900",
+  "grey-950",
+  "primary-500",
+  "primary-700",
+  "primary-100",
+  "secondary-500",
+  "secondary-700",
+  "secondary-100",
+  "accent-500",
+  "accent-700",
+  "accent-100",
+  "success-500",
+  "caution-500",
+  "info-500",
+  "error-500",
+  "black",
+  "white",
+] as const;
 
 const generateDesignMD = (state: WizardState): string => {
   const frontMatter: string[] = [];
@@ -14,6 +49,62 @@ const generateDesignMD = (state: WizardState): string => {
   }
   if (state.productDescription) {
     frontMatter.push(`description: ${state.productDescription}`);
+  }
+
+  const palette = generatePalette(state.primaryColor, state.secondaryColor);
+  const effectiveColors = { ...palette };
+  for (const [key, hex] of Object.entries(state.overriddenColors)) {
+    effectiveColors[key as keyof Palette] = hex;
+  }
+
+  const greyScale = generateGreyHslBaseScale();
+  const primaryScale = generateHslBaseScale(effectiveColors.primary);
+  const secondaryScale = generateHslBaseScale(effectiveColors.secondary);
+  const accentScale = generateHslBaseScale(effectiveColors.accent, 45);
+  const successScale = generateHslBaseScale(effectiveColors.success, 145, 63);
+  const cautionScale = generateHslBaseScale(effectiveColors.caution, 30);
+  const infoScale = generateHslBaseScale(effectiveColors.info, 200);
+  const errorScale = generateHslBaseScale(effectiveColors.error, 0);
+
+  const colorMap: Record<string, string | undefined> = {
+    "grey-50": greyScale[50],
+    "grey-100": greyScale[100],
+    "grey-200": greyScale[200],
+    "grey-300": greyScale[300],
+    "grey-400": greyScale[400],
+    "grey-500": greyScale[500],
+    "grey-600": greyScale[600],
+    "grey-700": greyScale[700],
+    "grey-800": greyScale[800],
+    "grey-900": greyScale[900],
+    "grey-950": greyScale[950],
+    "primary-500": primaryScale[500],
+    "primary-700": primaryScale[700],
+    "primary-100": primaryScale[100],
+    "secondary-500": secondaryScale[500],
+    "secondary-700": secondaryScale[700],
+    "secondary-100": secondaryScale[100],
+    "accent-500": accentScale[500],
+    "accent-700": accentScale[700],
+    "accent-100": accentScale[100],
+    "success-500": successScale[500],
+    "caution-500": cautionScale[500],
+    "info-500": infoScale[500],
+    "error-500": errorScale[500],
+    black: "#000000",
+    white: "#ffffff",
+  };
+
+  const colorLines: string[] = [];
+  for (const entry of COLOR_ENTRIES) {
+    const val = colorMap[entry];
+    if (val) {
+      colorLines.push(`  ${entry}: "${val}"`);
+    }
+  }
+  if (colorLines.length > 0) {
+    frontMatter.push("colors:");
+    frontMatter.push(colorLines.join("\n"));
   }
 
   const typographyLines: string[] = [];

@@ -19,6 +19,10 @@ export interface WizardState {
   shadowIntensity: number;
   motionSpeed: "slow" | "normal" | "fast";
 
+  primaryColor: string;
+  secondaryColor: string;
+  overriddenColors: Record<string, string>;
+
   productContext: string;
   testingFramework: "vitest" | "jest" | "playwright" | "none";
   deploymentTarget: "vercel" | "netlify" | "docker" | "other";
@@ -28,6 +32,11 @@ export interface WizardState {
   designOverview: string;
   componentVariants: string;
   dosAndDonts: string;
+
+  namingConvention: "kebab-case" | "camelCase" | "PascalCase";
+  componentPlacement: "hybrid" | "all-global" | "page-only";
+  useBarrelExports: boolean;
+  folderPerComponent: boolean;
 
   liveMode: boolean;
 }

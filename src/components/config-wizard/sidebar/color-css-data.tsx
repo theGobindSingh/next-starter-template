@@ -1,143 +1,562 @@
-import { type ReactNode } from "react";
+import {
+  generateGreyHslBaseScale,
+  generateHslBaseScale,
+  generatePalette,
+  SHADE_NUMBERS,
+  type Palette,
+} from "@/lib/color-palette";
+import type { WizardState } from "../types";
 
-export const ROOT_CSS = `:root {
-  --color-black: #000000;
-  --color-white: #ffffff;
+const HARDCODED_HUES: Record<string, number> = {
+  primary: -1,
+  secondary: -1,
+  accent: -1,
+  success: 145,
+  caution: 30,
+  info: 200,
+  error: 0,
+};
 
-  --color-canvas: #f5f0eb;
-  --color-surface: #e8dfd5;
-  --color-elevated: #faf6f2;
-  --color-border: #d0c5b8;
-  --color-ink: #2a2520;
-  --color-muted: #6b5a4d;
+const COLOR_FAMILIES = [
+  "primary",
+  "secondary",
+  "accent",
+  "success",
+  "caution",
+  "info",
+  "error",
+] as const;
 
-  --color-gold: #c9a84c;
-  --color-gold-deep: #b8943a;
-  --color-bronze: #6b5a4d;
-  --color-gold-muted: #f0e6c8;
+const SEMANTIC_ALIASES: { alias: string; shade: number }[] = [
+  { alias: "primary", shade: 500 },
+  { alias: "primary-deep", shade: 700 },
+  { alias: "primary-muted", shade: 100 },
+  { alias: "secondary", shade: 500 },
+  { alias: "secondary-deep", shade: 700 },
+  { alias: "secondary-muted", shade: 100 },
+  { alias: "accent", shade: 500 },
+  { alias: "accent-deep", shade: 700 },
+  { alias: "accent-muted", shade: 100 },
+  { alias: "success", shade: 500 },
+  { alias: "caution", shade: 500 },
+  { alias: "info", shade: 500 },
+  { alias: "error", shade: 500 },
+];
 
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
+export const generateColorCSS = (state: WizardState): string => {
+  const palette = generatePalette(state.primaryColor, state.secondaryColor);
+  const effectiveColors = { ...palette };
+  for (const [key, hex] of Object.entries(state.overriddenColors)) {
+    effectiveColors[key as keyof Palette] = hex;
+  }
 
-  --color-secondary-100: #ede9fe;
-  --color-secondary-200: #ddd6fe;
-  --color-secondary-300: #c4b5fd;
-  --color-secondary-400: #a78bfa;
-  --color-secondary-500: #8b5cf6;
-  --color-secondary-600: #7c3aed;
-  --color-secondary-700: #6d28d9;
-  --color-secondary-800: #5b21b6;
+  const greyScale = generateGreyHslBaseScale();
 
-  --color-tertiary-100: #fce8e8;
-  --color-tertiary-200: #f9d0d0;
-  --color-tertiary-300: #f4a8a8;
-  --color-tertiary-400: #e87a7a;
-  --color-tertiary-500: #cd5c5c;
-  --color-tertiary-600: #b94444;
-  --color-tertiary-700: #a03030;
-  --color-tertiary-800: #802020;
+  const familyScales: Record<string, Record<number, string>> = {};
+  for (const family of COLOR_FAMILIES) {
+    const hex = effectiveColors[family];
+    const fixedHue = HARDCODED_HUES[family];
+    const hue = fixedHue && fixedHue >= 0 ? fixedHue : undefined;
+    familyScales[family] = generateHslBaseScale(hex, hue);
+  }
 
-  --color-accent-100: #fef3c7;
-  --color-accent-200: #fde68a;
-  --color-accent-300: #fcd34d;
-  --color-accent-400: #fbbf24;
-  --color-accent-500: #f59e0b;
-  --color-accent-600: #d97706;
-  --color-accent-700: #b45309;
-  --color-accent-800: #92400e;
+  const primaryScale = familyScales.primary!;
+  const lines: string[] = [];
 
-  --color-success-100: #d1fae5;
-  --color-success-200: #a7f3d0;
-  --color-success-300: #6ee7b7;
-  --color-success-400: #34d399;
-  --color-success-500: #10b981;
-  --color-success-600: #059669;
-  --color-success-700: #047857;
-  --color-success-800: #065f46;
+  lines.push(":root,");
+  lines.push(".light {");
+  lines.push("  --color-black: #000000;");
+  lines.push("  --color-white: #ffffff;");
+  lines.push("");
+  lines.push(
+    `  --shadow-hsl: ${primaryScale[400]!.split(",")[0]!.trim()} 100% 70%;`,
+  );
+  lines.push("");
 
-  --color-caution-100: #ffedd5;
-  --color-caution-200: #fed7aa;
-  --color-caution-300: #fdba74;
-  --color-caution-400: #fb923c;
-  --color-caution-500: #f97316;
-  --color-caution-600: #ea580c;
-  --color-caution-700: #c2410c;
-  --color-caution-800: #9a3412;
-
-  --color-info-100: #e0f2fe;
-  --color-info-200: #bae6fd;
-  --color-info-300: #7dd3fc;
-  --color-info-400: #38bdf8;
-  --color-info-500: #0ea5e9;
-  --color-info-600: #0284c7;
-  --color-info-700: #0369a1;
-  --color-info-800: #075985;
-
-  --color-error-100: #fee2e2;
-  --color-error-200: #fecaca;
-  --color-error-300: #fca5a5;
-  --color-error-400: #f87171;
-  --color-error-500: #ef4444;
-  --color-error-600: #dc2626;
-  --color-error-700: #b91c1c;
-  --color-error-800: #991b1b;
-
-  --fs-4xs: 0.75rem;
-  --fs-3xs: 0.875rem;
-  --fs-2xs: 1rem;
-  --fs-1xs: 1.125rem;
-  --fs-s: 1.25rem;
-  --fs-m: 1.5rem;
-  --fs-l: 1.875rem;
-  --fs-1xl: 2.25rem;
-  --fs-2xl: 2.75rem;
-  --fs-3xl: 3.25rem;
-  --fs-4xl: 3.75rem;
-}`;
-
-const CSS_LINES = ROOT_CSS.split("\n");
-
-export const CSS_ELEMENTS: ReactNode[] = [];
-let emptyIndex = 0;
-for (const line of CSS_LINES) {
-  const key = line.trim() ? line : `empty-${++emptyIndex}`;
-  if (line.startsWith(":root")) {
-    CSS_ELEMENTS.push(
-      <span key={key} className="block text-gold font-bold text-sm mb-1">
-        {line}
-      </span>,
-    );
-  } else if (line.trim().startsWith("--")) {
-    const [prop, val] = line.split(":");
-    CSS_ELEMENTS.push(
-      <span key={key} className="block">
-        <span className="text-primary">{prop}:</span>
-        <span className="text-caution">{val}</span>
-      </span>,
-    );
-  } else if (line.trim() === "}" || line.trim() === "{") {
-    CSS_ELEMENTS.push(
-      <span key={key} className="block text-muted/60">
-        {line}
-      </span>,
-    );
-  } else if (line.trim() === "") {
-    CSS_ELEMENTS.push(
-      <span key={key} className="block">
-        &nbsp;
-      </span>,
-    );
-  } else {
-    CSS_ELEMENTS.push(
-      <span key={key} className="block text-muted">
-        {line}
-      </span>,
+  for (const shade of SHADE_NUMBERS) {
+    lines.push(`  --color-grey-${shade}-base: ${greyScale[shade]};`);
+    lines.push(
+      `  --color-grey-${shade}: hsl(var(--color-grey-${shade}-base));`,
     );
   }
+  lines.push("");
+
+  for (const family of COLOR_FAMILIES) {
+    const scale = familyScales[family]!;
+    for (const shade of SHADE_NUMBERS) {
+      lines.push(`  --color-${family}-${shade}-base: ${scale[shade]!};`);
+      lines.push(
+        `  --color-${family}-${shade}: hsl(var(--color-${family}-${shade}-base));`,
+      );
+    }
+    lines.push("");
+  }
+
+  lines.push("  --fs-4xs: 0.75rem;");
+  lines.push("  --fs-3xs: 0.875rem;");
+  lines.push("  --fs-2xs: 1rem;");
+  lines.push("  --fs-1xs: 1.125rem;");
+  lines.push("  --fs-s: 1.25rem;");
+  lines.push("  --fs-m: 1.5rem;");
+  lines.push("  --fs-l: 1.875rem;");
+  lines.push("  --fs-1xl: 2.25rem;");
+  lines.push("  --fs-2xl: 2.75rem;");
+  lines.push("  --fs-3xl: 3.25rem;");
+  lines.push("  --fs-4xl: 3.75rem;");
+  lines.push("}");
+  lines.push("");
+
+  lines.push(".dark {");
+  lines.push("  --color-white: #000000;");
+  lines.push("  --color-black: #ffffff;");
+  lines.push("");
+  lines.push(
+    `  --shadow-hsl: ${primaryScale[400]!.split(",")[0]!.trim()} 100% 56%;`,
+  );
+  lines.push("");
+
+  const reversed = [...SHADE_NUMBERS].reverse();
+  for (const shade of reversed) {
+    const mappedShade = SHADE_NUMBERS[reversed.indexOf(shade)] ?? shade;
+    lines.push(`  --color-grey-${shade}-base: ${greyScale[mappedShade]};`);
+    lines.push(
+      `  --color-grey-${shade}: hsl(var(--color-grey-${shade}-base));`,
+    );
+  }
+  lines.push("");
+
+  for (const family of COLOR_FAMILIES) {
+    const scale = familyScales[family]!;
+    for (const shade of reversed) {
+      const mappedShade = SHADE_NUMBERS[reversed.indexOf(shade)] ?? shade;
+      lines.push(`  --color-${family}-${shade}-base: ${scale[mappedShade]!};`);
+      lines.push(
+        `  --color-${family}-${shade}: hsl(var(--color-${family}-${shade}-base));`,
+      );
+    }
+    lines.push("");
+  }
+
+  lines.push("  --fs-4xs: 0.75rem;");
+  lines.push("  --fs-3xs: 0.875rem;");
+  lines.push("  --fs-2xs: 1rem;");
+  lines.push("  --fs-1xs: 1.125rem;");
+  lines.push("  --fs-s: 1.25rem;");
+  lines.push("  --fs-m: 1.5rem;");
+  lines.push("  --fs-l: 1.875rem;");
+  lines.push("  --fs-1xl: 2.25rem;");
+  lines.push("  --fs-2xl: 2.75rem;");
+  lines.push("  --fs-3xl: 3.25rem;");
+  lines.push("  --fs-4xl: 3.75rem;");
+  lines.push("}");
+  lines.push("");
+
+  lines.push("@theme {");
+  lines.push("  --color-grey-50: var(--color-grey-50);");
+  lines.push("  --color-grey-100: var(--color-grey-100);");
+  lines.push("  --color-grey-200: var(--color-grey-200);");
+  lines.push("  --color-grey-300: var(--color-grey-300);");
+  lines.push("  --color-grey-400: var(--color-grey-400);");
+  lines.push("  --color-grey-500: var(--color-grey-500);");
+  lines.push("  --color-grey-600: var(--color-grey-600);");
+  lines.push("  --color-grey-700: var(--color-grey-700);");
+  lines.push("  --color-grey-800: var(--color-grey-800);");
+  lines.push("  --color-grey-900: var(--color-grey-900);");
+  lines.push("  --color-grey-950: var(--color-grey-950);");
+  for (const { alias, shade } of SEMANTIC_ALIASES) {
+    lines.push(`  --color-${alias}: var(--color-${alias}-${shade});`);
+  }
+  lines.push("  --text-headline: var(--fs-1xl);");
+  lines.push("  --text-title: var(--fs-m);");
+  lines.push("}");
+  lines.push("");
+
+  lines.push("@media (max-width: 1024px) {");
+  lines.push("  :root {");
+  lines.push("    --fs-4xs: 0.6875rem;");
+  lines.push("    --fs-3xs: 0.75rem;");
+  lines.push("    --fs-2xs: 0.875rem;");
+  lines.push("    --fs-1xs: 1rem;");
+  lines.push("    --fs-s: 1.125rem;");
+  lines.push("    --fs-m: 1.25rem;");
+  lines.push("    --fs-l: 1.5rem;");
+  lines.push("    --fs-1xl: 1.875rem;");
+  lines.push("    --fs-2xl: 2.25rem;");
+  lines.push("    --fs-3xl: 2.75rem;");
+  lines.push("    --fs-4xl: 3.25rem;");
+  lines.push("  }");
+  lines.push("}\n\n");
+
+  lines.push(`
+    
+@theme {
+  --font-sans: var(--font-poppins);
+  --font-serif: var(--font-inter);
+  --font-mono: var(--font-dm-mono);
+
+  --color-grey-50: var(--color-grey-50);
+  --color-grey-100: var(--color-grey-100);
+  --color-grey-200: var(--color-grey-200);
+  --color-grey-300: var(--color-grey-300);
+  --color-grey-400: var(--color-grey-400);
+  --color-grey-500: var(--color-grey-500);
+  --color-grey-600: var(--color-grey-600);
+  --color-grey-700: var(--color-grey-700);
+  --color-grey-800: var(--color-grey-800);
+  --color-grey-900: var(--color-grey-900);
+  --color-grey-950: var(--color-grey-950);
+
+  --color-primary-50: var(--color-primary-50);
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-300: var(--color-primary-300);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-900: var(--color-primary-900);
+  --color-primary-950: var(--color-primary-950);
+  --color-primary: var(--color-primary-500);
+  --color-primary-deep: var(--color-primary-700);
+  --color-primary-muted: var(--color-primary-100);
+
+  --color-secondary-50: var(--color-secondary-50);
+  --color-secondary-100: var(--color-secondary-100);
+  --color-secondary-200: var(--color-secondary-200);
+  --color-secondary-300: var(--color-secondary-300);
+  --color-secondary-400: var(--color-secondary-400);
+  --color-secondary-500: var(--color-secondary-500);
+  --color-secondary-600: var(--color-secondary-600);
+  --color-secondary-700: var(--color-secondary-700);
+  --color-secondary-800: var(--color-secondary-800);
+  --color-secondary-900: var(--color-secondary-900);
+  --color-secondary-950: var(--color-secondary-950);
+  --color-secondary: var(--color-secondary-500);
+  --color-secondary-deep: var(--color-secondary-700);
+  --color-secondary-muted: var(--color-secondary-100);
+
+  --color-accent-50: var(--color-accent-50);
+  --color-accent-100: var(--color-accent-100);
+  --color-accent-200: var(--color-accent-200);
+  --color-accent-300: var(--color-accent-300);
+  --color-accent-400: var(--color-accent-400);
+  --color-accent-500: var(--color-accent-500);
+  --color-accent-600: var(--color-accent-600);
+  --color-accent-700: var(--color-accent-700);
+  --color-accent-800: var(--color-accent-800);
+  --color-accent-900: var(--color-accent-900);
+  --color-accent-950: var(--color-accent-950);
+  --color-accent: var(--color-accent-500);
+  --color-accent-deep: var(--color-accent-700);
+  --color-accent-muted: var(--color-accent-100);
+
+  --color-success: var(--color-success-500);
+  --color-caution: var(--color-caution-500);
+  --color-info: var(--color-info-500);
+  --color-error: var(--color-error-500);
+
+  --text-headline: var(--fs-1xl);
+  --text-title: var(--fs-m);
 }
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-grey-50);
+  color: var(--color-grey-900);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ─── Noise Grain ─── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+html.dark body::before {
+  opacity: 0.05;
+}
+
+/* ─── Desktop Scrollbar ─── */
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-grey-300);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-grey-500);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-grey-300) transparent;
+  }
+}
+
+/* ─── Shared Ambient Glow Layer ─── */
+.glow-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.glow-hero {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 45%;
+  background:
+    radial-gradient(
+      ellipse 800px 500px at 70% 80%,
+      var(--color-accent-400) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 500px 600px at 20% 20%,
+      var(--color-secondary) 0%,
+      transparent 65%
+    );
+  opacity: 0.12;
+  animation: glow-drift-hero 25s ease-in-out infinite;
+}
+
+.glow-features {
+  position: absolute;
+  top: 30%;
+  left: -10%;
+  width: 60%;
+  height: 35%;
+  background: radial-gradient(
+    ellipse 500px 500px at 30% 50%,
+    var(--color-secondary) 0%,
+    transparent 70%
+  );
+  opacity: 0.08;
+  animation: glow-drift-features 30s ease-in-out infinite;
+}
+
+.glow-start {
+  position: absolute;
+  bottom: 5%;
+  left: 15%;
+  width: 70%;
+  height: 25%;
+  background: radial-gradient(
+    ellipse 600px 400px at 50% 30%,
+    var(--color-accent-400) 0%,
+    transparent 70%
+  );
+  opacity: 0.06;
+  animation: glow-drift-start 20s ease-in-out infinite;
+}
+
+@keyframes glow-drift-hero {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(2%, -1.5%);
+  }
+  50% {
+    transform: translate(-1%, 1.5%);
+  }
+  75% {
+    transform: translate(-1.5%, -1%);
+  }
+}
+
+@keyframes glow-drift-features {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-2.5%, 1.5%) scale(1.05);
+  }
+  66% {
+    transform: translate(1.5%, -1%) scale(0.95);
+  }
+}
+
+@keyframes glow-drift-start {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(1.5%, 2%) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-hero,
+  .glow-features,
+  .glow-start {
+    animation: none;
+  }
+}
+
+.surface-bg {
+  position: relative;
+  background-color: var(--color-grey-100);
+}
+
+.surface-bg::before,
+.surface-bg::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  pointer-events: none;
+}
+
+.surface-bg::before {
+  top: -4rem;
+  background: linear-gradient(to bottom, transparent, var(--color-grey-100));
+}
+
+.surface-bg::after {
+  bottom: -4rem;
+  background: linear-gradient(to top, transparent, var(--color-grey-100));
+}
+
+/* ─── Ornamental Divider ─── */
+.ornamental-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 4rem 0;
+}
+
+.ornamental-divider .line {
+  height: 1px;
+  flex: 0 1 clamp(4rem, 15vw, 8rem);
+  background-color: var(--color-grey-300);
+}
+
+.ornamental-divider .diamond {
+  color: var(--color-accent-400);
+  font-size: 0.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+    `);
+
+  return lines.join("\n");
+};
+
+interface CSSElement {
+  key: string;
+  className: string;
+  text: string;
+  prop?: string;
+  val?: string;
+}
+
+export const generateCSSElements = (css: string): CSSElement[] => {
+  const lines = css.split("\n");
+  const elements: CSSElement[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]!;
+    const key = `css-line-${i}`;
+    if (line.startsWith(":root") || line.startsWith(".light")) {
+      elements.push({
+        key,
+        className: "block text-primary font-bold text-sm mb-1",
+        text: line,
+      });
+    } else if (
+      line.startsWith(".dark") ||
+      line.startsWith("@theme") ||
+      line.startsWith("@media")
+    ) {
+      elements.push({
+        key,
+        className: "block text-accent font-bold text-sm mb-1",
+        text: line,
+      });
+    } else if (line.trim().startsWith("--")) {
+      const colonIdx = line.indexOf(":");
+      const prop = line.slice(0, colonIdx + 1);
+      const val = line.slice(colonIdx + 1);
+      elements.push({
+        key,
+        className: "block",
+        text: "",
+        prop,
+        val,
+      });
+    } else if (line.trim() === "}" || line.trim() === "{") {
+      elements.push({
+        key,
+        className: "block text-grey-500/60",
+        text: line,
+      });
+    } else if (line.trim() === "") {
+      elements.push({
+        key,
+        className: "block",
+        text: "\u00A0",
+      });
+    } else {
+      elements.push({
+        key,
+        className: "block text-grey-500",
+        text: line,
+      });
+    }
+  }
+  return elements;
+};

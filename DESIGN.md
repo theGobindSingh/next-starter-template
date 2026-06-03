@@ -2,27 +2,32 @@
 name: Next.js Starter Template
 description: batteries-included Next.js foundation with a striking default look
 colors:
-  primary: "#3b82f6"
-  primary-deep: "#1e40af"
-  primary-muted: "#dbeafe"
-  secondary: "#8b5cf6"
-  secondary-deep: "#5b21b6"
-  secondary-muted: "#ede9fe"
-  tertiary: "#f43f5e"
-  tertiary-deep: "#9f1239"
-  tertiary-muted: "#ffe4e6"
-  accent: "#f59e0b"
-  accent-deep: "#92400e"
-  accent-muted: "#fef3c7"
-  neutral-bg: "#ffffff"
-  neutral-surface: "#f3f4f6"
-  neutral-border: "#e5e7eb"
-  neutral-text: "#1f2937"
-  neutral-muted: "#6b7280"
-  success: "#10b981"
-  caution: "#f97316"
-  info: "#0ea5e9"
-  error: "#ef4444"
+  grey-50: "210, 20%, 98%"
+  grey-100: "210, 16%, 93%"
+  grey-200: "210, 14%, 90%"
+  grey-300: "210, 12%, 85%"
+  grey-400: "210, 10%, 70%"
+  grey-500: "210, 8%, 50%"
+  grey-600: "210, 6%, 40%"
+  grey-700: "210, 4%, 30%"
+  grey-800: "210, 2%, 20%"
+  grey-900: "210, 1%, 10%"
+  grey-950: "210, 1%, 5%"
+  primary-500: "211, 100%, 56%"
+  primary-700: "211, 100%, 28%"
+  primary-100: "211, 100%, 96%"
+  secondary-500: "248, 100%, 56%"
+  secondary-700: "248, 100%, 28%"
+  secondary-100: "248, 100%, 96%"
+  accent-500: "45, 100%, 56%"
+  accent-700: "45, 100%, 28%"
+  accent-100: "45, 100%, 96%"
+  success-500: "145, 63%, 50%"
+  caution-500: "30, 100%, 56%"
+  info-500: "200, 100%, 56%"
+  error-500: "0, 100%, 56%"
+  black: "#000000"
+  white: "#ffffff"
 typography:
   display:
     fontFamily: "Poppins, 'Segoe UI', Roboto, sans-serif"
@@ -69,43 +74,43 @@ spacing:
   3xl: "6rem"
 components:
   button-primary:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.neutral-bg}"
+    backgroundColor: "primary"
+    textColor: "white"
     rounded: "{rounded.md}"
     padding: "0.75rem 1.5rem"
   button-primary-hover:
-    backgroundColor: "{colors.primary-deep}"
-    textColor: "{colors.neutral-bg}"
+    backgroundColor: "primary-deep"
+    textColor: "white"
     rounded: "{rounded.md}"
     padding: "0.75rem 1.5rem"
   button-ghost:
     backgroundColor: transparent
-    textColor: "{colors.neutral-text}"
+    textColor: "grey-900"
     rounded: "{rounded.md}"
     padding: "0.75rem 1.5rem"
   button-ghost-hover:
-    backgroundColor: "{colors.neutral-surface}"
-    textColor: "{colors.neutral-text}"
+    backgroundColor: "grey-100"
+    textColor: "grey-900"
     rounded: "{rounded.md}"
     padding: "0.75rem 1.5rem"
   card-default:
-    backgroundColor: "{colors.neutral-bg}"
-    textColor: "{colors.neutral-text}"
+    backgroundColor: "white"
+    textColor: "grey-900"
     rounded: "{rounded.lg}"
     padding: "{spacing.lg}"
   card-elevated:
-    backgroundColor: "{colors.neutral-bg}"
-    textColor: "{colors.neutral-text}"
+    backgroundColor: "grey-50"
+    textColor: "grey-900"
     rounded: "{rounded.lg}"
     padding: "{spacing.lg}"
   input-default:
-    backgroundColor: "{colors.neutral-bg}"
-    textColor: "{colors.neutral-text}"
+    backgroundColor: "grey-50"
+    textColor: "grey-900"
     rounded: "{rounded.md}"
     padding: "0.625rem 0.875rem"
   input-focus:
-    backgroundColor: "{colors.neutral-bg}"
-    textColor: "{colors.neutral-text}"
+    backgroundColor: "white"
+    textColor: "grey-900"
     rounded: "{rounded.md}"
     padding: "0.625rem 0.875rem"
 ---
@@ -117,9 +122,7 @@ components:
 > The structure follows the Google Stitch DESIGN.md format — keep the section headers
 > and YAML keys intact when customizing.
 
-<!-- Extracted from src/app/globals.css, src/components/html, and layout.tsx on 2026-06-02.
-     Creative North Star confirmed by user: "The Gallery" — clean, white-space-focused,
-     typography-forward brand identity. -->
+<!-- Extracted from src/app/globals.css on 2026-06-03. -->
 
 ## 1. Overview
 
@@ -127,42 +130,157 @@ components:
 
 A clean, white-space-focused brand identity where every component is a piece on the wall. The layout breathes; typography carries the voice; color is used with restraint and precision. This system rejects the saturated AI-generated web aesthetic — no gratuitous gradients, no glassmorphism by default, no over-rounded cards, no section eyebrow kickers in tracked uppercase. Instead, it earns attention through deliberate hierarchy, consistent rhythm, and the confidence of empty space.
 
-A dark, tactile, architecturally-inspired book of record. Every surface feels like the page of a limited-edition art monograph printed on heavy matte stock. The texture is felt before it's seen. Gold foil accents are used sparingly — a single ruled line, a diamond divider, a key word. The light mode is the same book printed on warm cream paper.
+A dark, tactile, architecturally-inspired book of record. Every surface feels like the page of a limited-edition art monograph printed on heavy matte stock. The texture is felt before it's seen. Gold foil accents are used sparingly — a single ruled line, a diamond divider, a key word. The light mode is the same book printed on bright white stock.
 
 **Key Characteristics:**
-- Warm-toned canvas (near-black dark / cream paper light) with noise grain texture
+
+- Bright white canvas in light mode / near-black dark with noise grain texture
 - Typography-led hierarchy with Poppins for display and Inter for body
-- Gold foil accent as the brand foil; primary/secondary colors used as cold-blue contrast against warm bases
-- Textured surfaces at rest; border shift to gold on interactive states
+- Gold accent as the brand foil; primary/secondary colors used as cold-blue contrast against warm bases
+- Textured surfaces at rest; interactive states shift color
 - Ornamental diamond dividers between sections as architectural punctuation
 - WCAG 2.1 AA contrast compliance throughout
 
-## 2. Colors
+## 2. Color System Architecture
 
-A restrained palette built for contrast and clarity. Neutrals are clean (zero-chroma near-whites and near-blacks). Accent colors are saturated but applied sparingly — their rarity is the point.
+A two-layer color system with HSL base variables consumed directly by CSS custom properties and exposed to Tailwind v4 via `@theme`.
 
-### Dark Mode Canvas
-- **Canvas** (`#0f0f12`): Body background. Near-black with subtle warm-violet cast.
-- **Surface** (`#1a1817`): Card backgrounds, secondary sections.
-- **Elevated** (`#252220`): Elevated surfaces, terminal mockup.
-- **Border** (`#3a3532`): Dividers, strokes, card borders.
-- **Ink** (`#e0d8d0`): Body text, headings. Warm off-white, ≥11.5:1 contrast.
-- **Muted** (`#88827c`): Secondary text, placeholders. ≥4.5:1 against canvas.
+### Layer 1: Raw HSL Tokens (`:root` / `.dark`)
 
-### Light Mode Canvas (Warm Paper)
-- **Canvas** (`#f5f0eb`): Body background. Warm cream paper stock.
-- **Surface** (`#e8dfd5`): Card backgrounds.
-- **Border** (`#d0c5b8`): Dividers, strokes.
-- **Ink** (`#2a2520`): Body text, headings. ~10:1 contrast.
+All color values live as HSL base strings with companion `hsl()` wrapper variables. The raw `-base` variables store hue, saturation, and lightness as comma-separated values so they can be inspected and manipulated programmatically.
 
-### Accent
-- **Gold** (`#c9a84c`): Brand foil. Decorative dividers, hover highlights, key-word emphasis. ≥6:1 on dark.
-- **Bronze** (`#6b5a4d`): Secondary warmth. Ambient glow source in hero/CTA sections.
+```css
+--color-primary-500-base: 211, 100%, 56%;
+--color-primary-500: hsl(var(--color-primary-500-base));
+```
+
+Each color family (grey, primary, secondary, accent, success, caution, info, error) supports shades 50–950.
+
+**Light mode** (`:root, .light`): shade number increases as color darkens (50=lightest, 950=darkest).
+
+**Dark mode** (`.dark`): shade scale inverts — what was shade 50 in light becomes shade 950 in dark, keeping the same perceived hierarchy.
+
+```css
+/* Light mode */
+:root {
+  --color-grey-50-base: 210, 20%, 98%;
+}
+
+/* Dark mode — same visual role, inverted shade */
+.dark {
+  --color-grey-950-base: 210, 20%, 98%;
+}
+```
+
+### Layer 2: Tailwind Theme (`@theme`)
+
+Generic variables are mapped to Tailwind v4 via `@theme` for utility class usage. Semantic aliases (`--color-primary`, `--color-primary-deep`, `--color-primary-muted`) point to specific shade numbers so components use intention-based names.
+
+```css
+@theme {
+  --color-primary: var(--color-primary-500);
+  --color-primary-deep: var(--color-primary-700);
+  --color-primary-muted: var(--color-primary-100);
+}
+```
+
+### Data Flow
+
+```
+HSL Base Values (-base)
+     ↓
+hsl() Wrapper Variables
+     ↓
+@theme Block  →  Components (bg-primary, text-grey-900)
+```
+
+### One-Line Rules
+
+1. All color values → `:root` / `.dark` only
+2. Light/dark defined separately with inverted shade numbers
+3. Components → semantic aliases or Tailwind utilities
+4. All colors → HSL with comma-separated `-base` string
+5. Every scale → shades 50–950
+6. Naming: `--color-{family}-{shade}[-base]`
+7. `--color-black` / `--color-white` swap in dark mode
+
+### Color Values
+
+#### Grey Scale (Neutral)
+
+Hue `210`. Saturation decreases from 20% (lightest) to 1% (darkest) for a subtle cool-neutral cast. Lightness ranges from 98% to 5%.
+
+| Shade | HSL             |
+| ----- | --------------- |
+| 50    | `210, 20%, 98%` |
+| 100   | `210, 16%, 93%` |
+| 200   | `210, 14%, 90%` |
+| 300   | `210, 12%, 85%` |
+| 400   | `210, 10%, 70%` |
+| 500   | `210, 8%, 50%`  |
+| 600   | `210, 6%, 40%`  |
+| 700   | `210, 4%, 30%`  |
+| 800   | `210, 2%, 20%`  |
+| 900   | `210, 1%, 10%`  |
+| 950   | `210, 1%, 5%`   |
+
+#### Primary (Blue) — `211` hue
+
+Full saturation (100%). Lightness ranges from 98% (50) to 2% (950). Midpoint (500): `211, 100%, 56%`.
+
+#### Secondary (Violet) — `248` hue
+
+Full saturation. Midpoint (500): `248, 100%, 56%`.
+
+#### Accent (Gold) — `45` hue
+
+Full saturation. Midpoint (500): `45, 100%, 56%`.
+
+#### Success — `145` hue, `63%` saturation
+
+Midpoint (500): `145, 63%, 50%`.
+
+#### Caution — `30` hue, full saturation
+
+Midpoint (500): `30, 100%, 56%`.
+
+#### Info — `200` hue, full saturation
+
+Midpoint (500): `200, 100%, 56%`.
+
+#### Error — `0` hue, full saturation
+
+Midpoint (500): `0, 100%, 56%`.
+
+#### Special Tokens
+
+- `--color-black`: `#000000` (light), `#ffffff` (dark)
+- `--color-white`: `#ffffff` (light), `#000000` (dark)
+- `--shadow-hsl`: `211 100% 70%` (light), `211 100% 56%` (dark) — shadow color, not opacity
+
+### Semantic Aliases (@theme)
+
+| Variable                  | Points to               |
+| ------------------------- | ----------------------- |
+| `--color-primary`         | `--color-primary-500`   |
+| `--color-primary-deep`    | `--color-primary-700`   |
+| `--color-primary-muted`   | `--color-primary-100`   |
+| `--color-secondary`       | `--color-secondary-500` |
+| `--color-secondary-deep`  | `--color-secondary-700` |
+| `--color-secondary-muted` | `--color-secondary-100` |
+| `--color-accent`          | `--color-accent-500`    |
+| `--color-accent-deep`     | `--color-accent-700`    |
+| `--color-accent-muted`    | `--color-accent-100`    |
+| `--color-success`         | `--color-success-500`   |
+| `--color-caution`         | `--color-caution-500`   |
+| `--color-info`            | `--color-info-500`      |
+| `--color-error`           | `--color-error-500`     |
 
 ### Named Rules
-**The Monograph Canvas Rule.** The canvas is no longer pure white — it is a warm-toned material surface. Dark mode: near-black with warm-violet cast. Light mode: warm cream paper. This intentional material feel replaces the previous Gallery White default.
 
-**The Foil Rule.** Gold is used sparingly (≤5% of any surface) so it reads as precious. When gold appears — a diamond divider, a key word in the hero, a hover border — it is the only accent on that surface. Restraint makes it feel like foil stamping.
+**The Inverted Shade Rule.** Dark mode inverts the shade scale — the lightest shade in light mode (50) becomes the darkest shade in dark mode (950), and vice versa. This ensures the same variable name (`--color-grey-50`) serves the same visual role (lightest background) regardless of theme.
+
+**The HSL Base Rule.** Every color variable has a companion `-base` variable storing only the comma-separated HSL triple. This enables theme switching and programmatic color manipulation without duplicating HSL values.
 
 ## 3. Typography
 
@@ -181,9 +299,13 @@ A restrained palette built for contrast and clarity. Neutrals are clean (zero-ch
 - **Label** (500, `0.875rem` / 14px, 1.4 line-height, 0.02em letter-spacing, uppercase): Buttons, form labels, badges, table headers, metadata. DM Mono gives code-adjacent clarity.
 
 ### Type Scale (Desktop)
+
 `0.75rem` (12px) · `0.875rem` (14px) · `1rem` (16px) · `1.125rem` (18px) · `1.25rem` (20px) · `1.5rem` (24px) · `1.875rem` (30px) · `2.25rem` (36px) · `2.75rem` (44px) · `3.25rem` (52px) · `3.75rem` (60px)
 
+The type scale is defined as CSS custom properties (`--fs-4xs` through `--fs-4xl`) at `:root` and scales down at the `1024px` breakpoint. Tailwind utilities `text-headline` and `text-title` map to the headline and title sizes.
+
 ### Named Rules
+
 **The Gallery Plinth Rule.** Display and headline sizes are reserved for the page's primary architectural elements — hero, major section intros, full-bleed banners. Do not use Display scale for card headings, sidebar titles, or modal headers. That is the training-data reflex; the gallery plinth is for the main exhibit only.
 
 ## 4. Elevation
@@ -191,29 +313,32 @@ A restrained palette built for contrast and clarity. Neutrals are clean (zero-ch
 Hybrid model: flat surfaces at rest, subtle shadow elevation on interactive states. The system does not simulate depth at rest beyond tonal layering (surface/background separation via color). Shadows appear only as a response to user action — hover, focus, active, or programmatic elevation.
 
 ### Shadow Vocabulary
-- **Gold Border Hover** (`border-color: var(--color-gold)` at 40% opacity): Card and interactive element hover state. A warm glow replaces the cold shadow.
-- **Focus Ring** (`0 0 0 2px var(--color-gold)`): Keyboard focus indicator.
+
+- **Hover Shadow** (`box-shadow` using `--shadow-hsl` at low opacity): Card and interactive element hover state. Defined via `--shadow-hsl` so the shadow picks up the primary hue.
+- **Focus Ring** (`0 0 0 2px var(--color-primary-500)`): Keyboard focus indicator.
 - **Ambient Glow** (shared layer of CSS radial gradients): Page-level atmosphere, not per-section elevation. Three gradient blobs on a shared `<main>` layer that span across section boundaries with no clipping. Each blob drifts via 20-30s CSS keyframe animation.
 
 ### Named Rules
+
 **The Flat-By-Default Rule.** Surfaces are flat at rest. Shadows must be earned through interaction. A card that casts a shadow at rest invites the user to wonder what is interactive about it; the answer should be obvious.
 
 ## 5. Texture
 
 ### Texture
-- **Noise Grain:** A subtle SVG feTurbulence film grain overlay on the body background. ~3% opacity in dark mode, ~2% opacity in light. Static — no animation. Applied via CSS `::before` pseudo-element with zero JavaScript.
+
+- **Noise Grain:** A subtle SVG feTurbulence film grain overlay on the body background. ~5% opacity in dark mode, ~3.5% opacity in light. Static — no animation. Applied via CSS `::before` pseudo-element with zero JavaScript.
 - **Ambient Glows:** Soft radial gradients rendered on a shared layer inside `<main>` spanning all sections. Three gradient blobs positioned at key zones (hero, features, start) — they naturally overlap and blend across section boundaries with no hard clipping. Each blob has a slow 20-30s CSS keyframe animation (translate + scale) for a barely-perceptible living drift. Disabled when `prefers-reduced-motion` is set.
-- **Cross-Section Blending:** Sections with alternate backgrounds (e.g., the tokens section on `--color-surface`) use `::before` and `::after` pseudo-elements that extend 4rem beyond the section bounds, filled with linear gradients (transparent → surface color). This eliminates hard color transitions where sections meet.
-- **Ornamental Dividers:** 1px ruled lines in border color flanking a gold diamond (◆). Used between major sections as architectural punctuation — replaces the eyebrow-kicker pattern entirely.
+- **Cross-Section Blending:** Sections with alternate backgrounds (e.g., `.surface-bg`) use `::before` and `::after` pseudo-elements that extend 4rem beyond the section bounds, filled with linear gradients (transparent → surface color). This eliminates hard color transitions where sections meet.
+- **Ornamental Dividers:** 1px ruled lines in `--color-grey-300` flanking a gold diamond (◆). Used between major sections as architectural punctuation — replaces the eyebrow-kicker pattern entirely.
 
 ## 6. Components
 
 ### Buttons
 
 - **Shape:** Gently curved corners (8px). Pill (`rounded-full`) reserved for tags and badges.
-- **Primary:** Signal Blue background, white text, 12px 24px padding. Hover: Signal Blue Deep. Transition: background 200ms ease.
-- **Focus:** 3px focus ring in Signal Blue at 30% opacity, offset by 2px.
-- **Ghost:** Transparent background, Ink text. Hover: Stone Surface fill. Active: slightly darker fill.
+- **Primary:** `--color-primary` background, white text, 12px 24px padding. Hover: `--color-primary-deep`. Transition: background 200ms ease.
+- **Focus:** 2px focus ring in `--color-primary-500`.
+- **Ghost:** Transparent background, `--color-grey-900` text. Hover: `--color-grey-100` fill.
 - **Disabled:** 40% opacity on both variants. No shadow, no hover effect.
 
 **States covered:** default, hover, focus-visible, active, disabled, loading (pulse animation on opacity).
@@ -221,49 +346,51 @@ Hybrid model: flat surfaces at rest, subtle shadow elevation on interactive stat
 ### Cards / Containers
 
 - **Corner Style:** Gentle curve (12px) for standalone cards. 8px for in-grid cards.
-- **Background:** Gallery White at rest. Stone Surface for secondary/callout variants.
-- **Border:** 1px solid Stone Border. Removed on elevated state (shadow replaces it).
-- **Shadow Strategy:** None at rest. Hover Glow (`0 4px 12px rgba(0,0,0,0.08)`) on hover.
+- **Background:** White at rest. `--color-grey-50` for secondary/callout variants.
+- **Border:** 1px solid `--color-grey-300`. Removed on elevated state.
+- **Shadow Strategy:** None at rest. Hover shadow (`--shadow-hsl` at 15% opacity) on hover.
 - **Internal Padding:** `--spacing-lg` (2rem) for hero cards, `--spacing-md` (1.5rem) for grid cards.
 
 ### Inputs / Fields
 
-- **Style:** 1px solid Stone Border, Gallery White background, 8px radius. 10px 14px internal padding.
-- **Focus:** Border shifts to Signal Blue. Focus ring applied. Transition: border-color 200ms ease.
-- **Placeholder:** Ink Muted (`#6b7280`). Minimum 4.5:1 contrast against white.
-- **Error:** Border shifts to Coral. Error text in Coral below the field.
+- **Style:** 1px solid `--color-grey-300`, `--color-grey-50` background, 8px radius. 10px 14px internal padding.
+- **Focus:** Border shifts to `--color-primary-500`. Focus ring applied. Transition: border-color 200ms ease.
+- **Placeholder:** `--color-grey-400`. Minimum 4.5:1 contrast against white.
+- **Error:** Border shifts to `--color-error`. Error text in `--color-error`.
 - **Disabled:** 40% opacity background, no border shift.
 
 ### Navigation
 
-- **Style:** Ink text, no background at rest. Hover: subtle background tint. Active/current: Signal Blue text or underline indicator.
-- **Mobile:** Standard hamburger with slide-in overlay at tablet breakpoint (641–1024px). Modal Lift shadow on overlay.
+- **Style:** `--color-grey-900` text, no background at rest. Hover: subtle `--color-grey-100` tint. Active/current: `--color-primary` text or underline indicator.
+- **Mobile:** Standard hamburger with slide-in overlay at tablet breakpoint (641–1024px).
 
 ### Common Layout Wrapper
 
 - **Behavior:** Full-width background container with centered content at 85% width (90% on tablet/mobile). Configurable element type (defaults to `<section>`). Background color passed as prop.
 
 ### Named Rules
+
 **The Card Indifference Rule.** Nested cards are strictly prohibited. A card inside a card means the layout hierarchy is wrong. Restructure into a single card with internal sections, or use tonal layering (two different surfaces) instead.
 
 ## 7. Do's and Don'ts
 
-### Do:
-- **Do** use warm-toned canvases — #f5f0eb for light mode, #0f0f12 for dark mode
-- **Do** use gold accent sparingly (≤5%) so it reads as foil stamping
-- **Do** use `text-wrap: balance` on h1–h3 headings and `text-wrap: pretty` on body paragraphs.
-- **Do** respect `prefers-reduced-motion` on every animation — provide instant crossfade as the alternative.
-- **Do** use semantic HTML: proper heading order (`h1` → `h2` → `h3`), landmark elements (`<nav>`, `<main>`, `<footer>`), and descriptive alt text on images.
-- **Do** test every color pair for WCAG 2.1 AA contrast (≥4.5:1 body, ≥3:1 large text).
-- **Do** use gold border transitions on hover instead of shadows for interactive elements
+### Do
 
-### Don't:
-- **Don't** use gradient text (`background-clip: text` with a gradient). Solid colors only.
-- **Don't** use glassmorphism (blur + semi-transparent backgrounds) as a default treatment. Only with explicit brief-driven consent.
-- **Don't** apply eyebrow kickers (small tracked uppercase text like "ABOUT" / "PROCESS" / "PRICING") above every section. If used, at most one per page, and it must be a deliberate brand choice.
-- **Don't** use numbered section markers (01 / 02 / 03) as default scaffolding. Numbers only when the sequence carries information (a real step-by-step process, not section decoration).
-- **Don't** render identical card grids (same-sized cards with icon + heading + text repeated endlessly). Vary content blocks by purpose.
-- **Don't** use hand-drawn or sketchy SVG illustrations. If you cannot render a scene with real assets, ship no illustration.
-- **Don't** use `border-left` or `border-right` > 1px as a colored accent stripe. Use full borders, background tints, or leading numbers/icons instead.
-- **Don't** use over-rounded corners on cards/sections (≥16px is too much). Cards cap at 12px; inputs and buttons at 8px; pill radius reserved for tags and badges only.
-- **Don't** use AI-generated default backgrounds (cream/sand/parchment/linen tones). The canvas is white; warmth lives in accents and imagery.
+- **Do** use HSL base variables (`--color-*-base`) for all color values
+- **Do** invert shade numbers in dark mode (50→950, 100→900, etc.)
+- **Do** use `text-wrap: balance` on h1–h3 headings and `text-wrap: pretty` on body paragraphs
+- **Do** respect `prefers-reduced-motion` on every animation — provide instant crossfade as the alternative
+- **Do** use semantic HTML: proper heading order (`h1` → `h2` → `h3`), landmark elements (`<nav>`, `<main>`, `<footer>`), and descriptive alt text on images
+- **Do** test every color pair for WCAG 2.1 AA contrast (≥4.5:1 body, ≥3:1 large text)
+- **Do** use `border-grey-300` for default borders and `border-primary` for interactive states
+
+### Don't
+
+- **Don't** use gradient text (`background-clip: text` with a gradient). Solid colors only
+- **Don't** use glassmorphism (blur + semi-transparent backgrounds) as a default treatment. Only with explicit brief-driven consent
+- **Don't** apply eyebrow kickers (small tracked uppercase text like "ABOUT" / "PROCESS" / "PRICING") above every section. If used, at most one per page, and it must be a deliberate brand choice
+- **Don't** use numbered section markers (01 / 02 / 03) as default scaffolding. Numbers only when the sequence carries information (a real step-by-step process, not section decoration)
+- **Don't** render identical card grids (same-sized cards with icon + heading + text repeated endlessly). Vary content blocks by purpose
+- **Don't** use hand-drawn or sketchy SVG illustrations. If you cannot render a scene with real assets, ship no illustration
+- **Don't** use `border-left` or `border-right` > 1px as a colored accent stripe. Use full borders, background tints, or leading numbers/icons instead
+- **Don't** use over-rounded corners on cards/sections (≥16px is too much). Cards cap at 12px; inputs and buttons at 8px; pill radius reserved for tags and badges only

@@ -10,19 +10,19 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 const fontSansSerif = Inter({
-  variable: "--font-inter",
+  variable: "--font-serif",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin", "latin-ext"],
 });
 
 const fontMono = DmMono({
-  variable: "--font-dm-mono",
+  variable: "--font-mono",
   weight: ["400", "500"],
   subsets: ["latin", "latin-ext"],
 });
 
 const fontSans = Poppins({
-  variable: "--font-poppins",
+  variable: "--font-sans",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin", "latin-ext"],
 });
