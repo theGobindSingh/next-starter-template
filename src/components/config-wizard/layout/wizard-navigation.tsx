@@ -17,6 +17,7 @@ interface WizardNavigationProps {
   onNext: () => void;
   onGenerate: () => void;
   onCopy: () => void;
+  onReset: () => void;
 }
 
 export const WizardNavigation = ({
@@ -28,6 +29,7 @@ export const WizardNavigation = ({
   onNext,
   onGenerate,
   onCopy,
+  onReset,
 }: WizardNavigationProps) => {
   if (currentStep === 0) return null;
 
@@ -41,6 +43,15 @@ export const WizardNavigation = ({
       >
         <ChevronLeftIcon />
         Back
+      </Button>
+
+      <Button
+        variant="text"
+        size="s"
+        className="text-[11px] font-mono tracking-widest uppercase text-grey-500 hover:text-red-500"
+        onClick={onReset}
+      >
+        Reset
       </Button>
 
       <div className="flex items-center gap-3">

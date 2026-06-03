@@ -29,7 +29,7 @@ export const Step5Structure = () => {
   const { state, dispatch } = useWizard();
 
   const toggleBoolean = useCallback(
-    (field: "useBarrelExports" | "folderPerComponent") => {
+    (field: "folderPerComponent") => {
       dispatch({
         type: "SET_FIELD",
         field,
@@ -130,39 +130,6 @@ export const Step5Structure = () => {
         <p className="font-mono text-xs font-semibold tracking-widest uppercase text-grey-500">
           Module Patterns
         </p>
-
-        <label className="flex items-center gap-3 cursor-pointer">
-          <button
-            role="switch"
-            aria-checked={state.useBarrelExports}
-            onClick={() => {
-              return toggleBoolean("useBarrelExports");
-            }}
-            className={`relative inline-flex h-6 w-11 rounded-full transition-colors shrink-0 ${
-              state.useBarrelExports ? "bg-accent" : "bg-border"
-            }`}
-          >
-            <span
-              className={`inline-block h-5 w-5 rounded-full bg-white shadow-sm transform transition-transform ${
-                state.useBarrelExports
-                  ? "translate-x-[22px]"
-                  : "translate-x-[2px]"
-              } mt-[2px]`}
-            />
-          </button>
-          <div>
-            <span className="font-serif text-sm text-grey-900">
-              Barrel Exports
-            </span>
-            <p className="font-serif text-[11px] text-grey-500">
-              Use{" "}
-              <code className="font-mono text-[10px] bg-grey-100 px-1 rounded">
-                index.ts
-              </code>{" "}
-              to re-export sibling modules
-            </p>
-          </div>
-        </label>
 
         <label className="flex items-center gap-3 cursor-pointer">
           <button

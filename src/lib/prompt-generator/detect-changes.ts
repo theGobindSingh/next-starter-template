@@ -36,15 +36,6 @@ const hasProductChanges = (state: WizardState): boolean => {
   );
 };
 
-const hasDesignChanges = (state: WizardState): boolean => {
-  return (
-    state.fonts.display !== DEFAULT_STATE.fonts.display ||
-    state.fonts.body !== DEFAULT_STATE.fonts.body ||
-    state.fonts.label !== DEFAULT_STATE.fonts.label ||
-    state.fonts.cursive !== DEFAULT_STATE.fonts.cursive
-  );
-};
-
 const hasDesignElevationChanges = (state: WizardState): boolean => {
   return (
     state.borderRadius !== DEFAULT_STATE.borderRadius ||
@@ -82,14 +73,12 @@ const hasStructureChanges = (state: WizardState): boolean => {
   return (
     state.namingConvention !== DEFAULT_STATE.namingConvention ||
     state.componentPlacement !== DEFAULT_STATE.componentPlacement ||
-    state.useBarrelExports !== DEFAULT_STATE.useBarrelExports ||
     state.folderPerComponent !== DEFAULT_STATE.folderPerComponent
   );
 };
 
 export {
   hasAgentChanges,
-  hasDesignChanges,
   hasDesignComponentsChanges,
   hasDesignDosDontsChanges,
   hasDesignElevationChanges,

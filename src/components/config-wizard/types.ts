@@ -35,7 +35,6 @@ export interface WizardState {
 
   namingConvention: "kebab-case" | "camelCase" | "PascalCase";
   componentPlacement: "hybrid" | "all-global" | "page-only";
-  useBarrelExports: boolean;
   folderPerComponent: boolean;
 
   liveMode: boolean;

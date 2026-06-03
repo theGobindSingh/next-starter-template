@@ -47,7 +47,6 @@ export const DEFAULT_STATE: WizardState = {
 
   namingConvention: "kebab-case",
   componentPlacement: "hybrid",
-  useBarrelExports: true,
   folderPerComponent: true,
 
   liveMode: false,

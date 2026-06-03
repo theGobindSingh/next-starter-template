@@ -8,6 +8,7 @@ import {
 } from "@/lib/color-palette";
 import { useCallback, useMemo, useRef } from "react";
 import { useWizard } from "../hooks/use-wizard";
+import { PaletteImporter } from "./palette-importer";
 
 interface PaletteItem {
   key: keyof Palette;
@@ -127,6 +128,8 @@ export const Step3Color = () => {
           All 11 shades per color family. Pick any main color to customize.
         </p>
       </div>
+
+      <PaletteImporter />
 
       {PALETTE_GROUPS.map((group) => {
         return (

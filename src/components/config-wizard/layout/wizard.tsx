@@ -12,8 +12,15 @@ import { StepRenderer } from "./step-renderer";
 import { WizardNavigation } from "./wizard-navigation";
 
 const ConfigWizard = () => {
-  const { currentStep, state, nextStep, prevStep, setStep, totalSteps } =
-    useWizard();
+  const {
+    currentStep,
+    state,
+    dispatch,
+    nextStep,
+    prevStep,
+    setStep,
+    totalSteps,
+  } = useWizard();
   const [generatedPrompt, setGeneratedPrompt] = useState<string>("");
   const [sidebarTab, setSidebarTab] = useState<"preview" | "colors">("preview");
   const promptRef = useRef<HTMLPreElement>(null);
@@ -40,6 +47,13 @@ const ConfigWizard = () => {
     setGeneratedPrompt(generatePrompt(state));
   }, [state]);
 
+  const handleReset = useCallback(() => {
+    if (!window.confirm("Reset all wizard settings?")) return;
+    dispatch({ type: "RESET" });
+    setStep(0);
+    setGeneratedPrompt("");
+  }, [dispatch, setStep]);
+
   return (
     <div className="flex flex-col lg:flex-row min-h-[calc(100dvh-2rem)] gap-4">
       <div className="flex-1 flex flex-col">
@@ -56,6 +70,7 @@ const ConfigWizard = () => {
           onNext={nextStep}
           onGenerate={handleGenerate}
           onCopy={handleCopy}
+          onReset={handleReset}
         />
 
         {generatedPrompt && currentStep === totalSteps && (
