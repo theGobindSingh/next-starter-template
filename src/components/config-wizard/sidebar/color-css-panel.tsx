@@ -1,10 +1,12 @@
 "use client";
 
 import { CheckmarkIcon, CopyIcon } from "@/icons";
+import { copyToClipboard } from "@/utils/clipboard";
 import { Button } from "@components/button";
 import { useCallback, useMemo, useState } from "react";
 import { useWizard } from "../hooks/use-wizard";
 import { generateColorCSS, generateCSSElements } from "./color-css-data";
+import { PanelShell } from "./panel-shell";
 
 export const ColorCSSPanel = () => {
   const { state } = useWizard();
@@ -19,8 +21,7 @@ export const ColorCSSPanel = () => {
   }, [css]);
 
   const handleCopy = useCallback(() => {
-    navigator.clipboard
-      .writeText(css)
+    copyToClipboard(css)
       .then(() => {
         setCopied(true);
         setTimeout(() => {
@@ -28,25 +29,14 @@ export const ColorCSSPanel = () => {
         }, 2000);
       })
       .catch(() => {
-        const ta = document.createElement("textarea");
-        ta.value = css;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-        setCopied(true);
-        setTimeout(() => {
-          return setCopied(false);
-        }, 2000);
+        return undefined;
       });
   }, [css]);
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-grey-300 bg-grey-100 shrink-0">
-        <p className="font-mono text-xs font-semibold tracking-widest uppercase text-grey-500">
-          Global CSS
-        </p>
+    <PanelShell
+      title="Global CSS"
+      headerRight={
         <Button
           variant="outlined"
           size="xs"
@@ -65,26 +55,23 @@ export const ColorCSSPanel = () => {
             </>
           )}
         </Button>
-      </div>
-      <div className="flex-1 overflow-auto p-4">
-        <pre className="font-mono text-xs leading-relaxed text-grey-900 whitespace-pre-wrap break-all">
-          {cssElements.map((el) => {
-            if (el.prop !== undefined) {
-              return (
-                <span key={el.key} className={el.className}>
-                  <span className="text-primary">{el.prop}</span>
-                  <span className="text-caution">{el.val}</span>
-                </span>
-              );
-            }
-            return (
-              <span key={el.key} className={el.className}>
-                {el.text}
-              </span>
-            );
-          })}
-        </pre>
-      </div>
-    </div>
+      }
+    >
+      {cssElements.map((el) => {
+        if (el.prop !== undefined) {
+          return (
+            <span key={el.key} className={el.className}>
+              <span className="text-primary">{el.prop}</span>
+              <span className="text-caution">{el.val}</span>
+            </span>
+          );
+        }
+        return (
+          <span key={el.key} className={el.className}>
+            {el.text}
+          </span>
+        );
+      })}
+    </PanelShell>
   );
 };
