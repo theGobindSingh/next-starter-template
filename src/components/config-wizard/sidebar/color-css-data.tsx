@@ -27,21 +27,21 @@ const COLOR_FAMILIES = [
   "error",
 ] as const;
 
-const SEMANTIC_ALIASES: { alias: string; shade: number }[] = [
-  { alias: "primary", shade: 500 },
-  { alias: "primary-deep", shade: 700 },
-  { alias: "primary-muted", shade: 100 },
-  { alias: "secondary", shade: 500 },
-  { alias: "secondary-deep", shade: 700 },
-  { alias: "secondary-muted", shade: 100 },
-  { alias: "accent", shade: 500 },
-  { alias: "accent-deep", shade: 700 },
-  { alias: "accent-muted", shade: 100 },
-  { alias: "success", shade: 500 },
-  { alias: "caution", shade: 500 },
-  { alias: "info", shade: 500 },
-  { alias: "error", shade: 500 },
-];
+// const SEMANTIC_ALIASES: { alias: string; shade: number }[] = [
+//   { alias: "primary", shade: 500 },
+//   { alias: "primary-deep", shade: 700 },
+//   { alias: "primary-muted", shade: 100 },
+//   { alias: "secondary", shade: 500 },
+//   { alias: "secondary-deep", shade: 700 },
+//   { alias: "secondary-muted", shade: 100 },
+//   { alias: "accent", shade: 500 },
+//   { alias: "accent-deep", shade: 700 },
+//   { alias: "accent-muted", shade: 100 },
+//   { alias: "success", shade: 500 },
+//   { alias: "caution", shade: 500 },
+//   { alias: "info", shade: 500 },
+//   { alias: "error", shade: 500 },
+// ];
 
 export const generateColorCSS = (state: WizardState): string => {
   const palette = generatePalette(state.primaryColor, state.secondaryColor);
@@ -63,6 +63,7 @@ export const generateColorCSS = (state: WizardState): string => {
   const primaryScale = familyScales.primary!;
   const lines: string[] = [];
 
+  lines.push(`@import "tailwindcss";\n`);
   lines.push(":root,");
   lines.push(".light {");
   lines.push("  --color-black: #000000;");
@@ -151,26 +152,6 @@ export const generateColorCSS = (state: WizardState): string => {
   lines.push("}");
   lines.push("");
 
-  lines.push("@theme {");
-  lines.push("  --color-grey-50: var(--color-grey-50);");
-  lines.push("  --color-grey-100: var(--color-grey-100);");
-  lines.push("  --color-grey-200: var(--color-grey-200);");
-  lines.push("  --color-grey-300: var(--color-grey-300);");
-  lines.push("  --color-grey-400: var(--color-grey-400);");
-  lines.push("  --color-grey-500: var(--color-grey-500);");
-  lines.push("  --color-grey-600: var(--color-grey-600);");
-  lines.push("  --color-grey-700: var(--color-grey-700);");
-  lines.push("  --color-grey-800: var(--color-grey-800);");
-  lines.push("  --color-grey-900: var(--color-grey-900);");
-  lines.push("  --color-grey-950: var(--color-grey-950);");
-  for (const { alias, shade } of SEMANTIC_ALIASES) {
-    lines.push(`  --color-${alias}: var(--color-${alias}-${shade});`);
-  }
-  lines.push("  --text-headline: var(--fs-1xl);");
-  lines.push("  --text-title: var(--fs-m);");
-  lines.push("}");
-  lines.push("");
-
   lines.push("@media (max-width: 1024px) {");
   lines.push("  :root {");
   lines.push("    --fs-4xs: 0.6875rem;");
@@ -185,10 +166,9 @@ export const generateColorCSS = (state: WizardState): string => {
   lines.push("    --fs-3xl: 2.75rem;");
   lines.push("    --fs-4xl: 3.25rem;");
   lines.push("  }");
-  lines.push("}\n\n");
+  lines.push("}");
 
   lines.push(`
-    
 @theme {
   --font-sans: var(--font-poppins);
   --font-serif: var(--font-inter);
@@ -251,10 +231,66 @@ export const generateColorCSS = (state: WizardState): string => {
   --color-accent-deep: var(--color-accent-700);
   --color-accent-muted: var(--color-accent-100);
 
+  --color-success-50: var(--color-success-50);
+  --color-success-100: var(--color-success-100);
+  --color-success-200: var(--color-success-200);
+  --color-success-300: var(--color-success-300);
+  --color-success-400: var(--color-success-400);
+  --color-success-500: var(--color-success-500);
+  --color-success-600: var(--color-success-600);
+  --color-success-700: var(--color-success-700);
+  --color-success-800: var(--color-success-800);
+  --color-success-900: var(--color-success-900);
+  --color-success-950: var(--color-success-950);
   --color-success: var(--color-success-500);
+  --color-success-deep: var(--color-success-700);
+  --color-success-muted: var(--color-success-100);
+
+  --color-caution-50: var(--color-caution-50);
+  --color-caution-100: var(--color-caution-100);
+  --color-caution-200: var(--color-caution-200);
+  --color-caution-300: var(--color-caution-300);
+  --color-caution-400: var(--color-caution-400);
+  --color-caution-500: var(--color-caution-500);
+  --color-caution-600: var(--color-caution-600);
+  --color-caution-700: var(--color-caution-700);
+  --color-caution-800: var(--color-caution-800);
+  --color-caution-900: var(--color-caution-900);
+  --color-caution-950: var(--color-caution-950);
   --color-caution: var(--color-caution-500);
+  --color-caution-deep: var(--color-caution-700);
+  --color-caution-muted: var(--color-caution-100);
+
+  --color-info-50: var(--color-info-50);
+  --color-info-100: var(--color-info-100);
+  --color-info-200: var(--color-info-200);
+  --color-info-300: var(--color-info-300);
+  --color-info-400: var(--color-info-400);
+  --color-info-500: var(--color-info-500);
+  --color-info-600: var(--color-info-600);
+  --color-info-700: var(--color-info-700);
+  --color-info-800: var(--color-info-800);
+  --color-info-900: var(--color-info-900);
+  --color-info-950: var(--color-info-950);
   --color-info: var(--color-info-500);
+  --color-info-deep: var(--color-info-700);
+  --color-info-muted: var(--color-info-100);
+
+  --color-error-50: var(--color-error-50);
+  --color-error-100: var(--color-error-100);
+  --color-error-200: var(--color-error-200);
+  --color-error-300: var(--color-error-300);
+  --color-error-400: var(--color-error-400);
+  --color-error-500: var(--color-error-500);
+  --color-error-600: var(--color-error-600);
+  --color-error-700: var(--color-error-700);
+  --color-error-800: var(--color-error-800);
+  --color-error-900: var(--color-error-900);
+  --color-error-950: var(--color-error-950);
   --color-error: var(--color-error-500);
+  --color-error-deep: var(--color-error-700);
+  --color-error-muted: var(--color-error-100);
+
 
   --text-headline: var(--fs-1xl);
   --text-title: var(--fs-m);
