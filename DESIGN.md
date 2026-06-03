@@ -2,32 +2,16 @@
 name: Next.js Starter Template
 description: batteries-included Next.js foundation with a striking default look
 colors:
-  grey-50: "210, 20%, 98%"
-  grey-100: "210, 16%, 93%"
-  grey-200: "210, 14%, 90%"
-  grey-300: "210, 12%, 85%"
-  grey-400: "210, 10%, 70%"
-  grey-500: "210, 8%, 50%"
-  grey-600: "210, 6%, 40%"
-  grey-700: "210, 4%, 30%"
-  grey-800: "210, 2%, 20%"
-  grey-900: "210, 1%, 10%"
-  grey-950: "210, 1%, 5%"
-  primary-500: "211, 100%, 56%"
-  primary-700: "211, 100%, 28%"
-  primary-100: "211, 100%, 96%"
-  secondary-500: "248, 100%, 56%"
-  secondary-700: "248, 100%, 28%"
-  secondary-100: "248, 100%, 96%"
-  accent-500: "45, 100%, 56%"
-  accent-700: "45, 100%, 28%"
-  accent-100: "45, 100%, 96%"
-  success-500: "145, 63%, 50%"
-  caution-500: "30, 100%, 56%"
-  info-500: "200, 100%, 56%"
-  error-500: "0, 100%, 56%"
-  black: "#000000"
-  white: "#ffffff"
+  grey: "Neutral (11 shades, 50–950 : 50, 100, 200 ... 800, 900, 950)"
+  primary: "Brand primary (11 shades)"
+  secondary: "Brand secondary (11 shades)"
+  accent: "Accent (11 shades)"
+  success: "Success (11 shades)"
+  caution: "Caution (11 shades)"
+  info: "Info (11 shades)"
+  error: "Error (11 shades)"
+  black: "Special — inverts in dark mode"
+  white: "Special — inverts in dark mode"
 typography:
   display:
     fontFamily: "Poppins, 'Segoe UI', Roboto, sans-serif"
@@ -161,14 +145,14 @@ Each color family (grey, primary, secondary, accent, success, caution, info, err
 **Dark mode** (`.dark`): shade scale inverts — what was shade 50 in light becomes shade 950 in dark, keeping the same perceived hierarchy.
 
 ```css
-/* Light mode */
+/* Light mode — shade 50 is lightest */
 :root {
-  --color-grey-50-base: 210, 20%, 98%;
+  --color-grey-50-base: <hsl-triple>;
 }
 
-/* Dark mode — same visual role, inverted shade */
+/* Dark mode — same visual role, inverted shade number */
 .dark {
-  --color-grey-950-base: 210, 20%, 98%;
+  --color-grey-950-base: <hsl-triple>;
 }
 ```
 
@@ -204,59 +188,25 @@ hsl() Wrapper Variables
 6. Naming: `--color-{family}-{shade}[-base]`
 7. `--color-black` / `--color-white` swap in dark mode
 
-### Color Values
+### Color Families
 
-#### Grey Scale (Neutral)
+The system provides 8 color families plus 2 special tokens, each with 11 shades (50 to 950 : 50, 100, 200...800, 900, 950; where 50 is lightest and 950 is darkest). Actual HSL values for all families are defined in `src/app/globals.css` as `--color-{family}-{shade}-base` custom properties. DESIGN.md documents the structure only — the CSS is the single source of truth for values.
 
-Hue `210`. Saturation decreases from 20% (lightest) to 1% (darkest) for a subtle cool-neutral cast. Lightness ranges from 98% to 5%.
+**Core families:**
 
-| Shade | HSL             |
-| ----- | --------------- |
-| 50    | `210, 20%, 98%` |
-| 100   | `210, 16%, 93%` |
-| 200   | `210, 14%, 90%` |
-| 300   | `210, 12%, 85%` |
-| 400   | `210, 10%, 70%` |
-| 500   | `210, 8%, 50%`  |
-| 600   | `210, 6%, 40%`  |
-| 700   | `210, 4%, 30%`  |
-| 800   | `210, 2%, 20%`  |
-| 900   | `210, 1%, 10%`  |
-| 950   | `210, 1%, 5%`   |
+- **grey** — Neutral scale (cool-leaning)
+- **primary** — Brand primary
+- **secondary** — Brand secondary
+- **accent** — Brand accent/highlight
+- **success** — Positive/success states
+- **caution** — Warning/caution states
+- **info** — Informational states
+- **error** — Error/negative states
 
-#### Primary (Blue) — `211` hue
+**Special tokens:**
 
-Full saturation (100%). Lightness ranges from 98% (50) to 2% (950). Midpoint (500): `211, 100%, 56%`.
-
-#### Secondary (Violet) — `248` hue
-
-Full saturation. Midpoint (500): `248, 100%, 56%`.
-
-#### Accent (Gold) — `45` hue
-
-Full saturation. Midpoint (500): `45, 100%, 56%`.
-
-#### Success — `145` hue, `63%` saturation
-
-Midpoint (500): `145, 63%, 50%`.
-
-#### Caution — `30` hue, full saturation
-
-Midpoint (500): `30, 100%, 56%`.
-
-#### Info — `200` hue, full saturation
-
-Midpoint (500): `200, 100%, 56%`.
-
-#### Error — `0` hue, full saturation
-
-Midpoint (500): `0, 100%, 56%`.
-
-#### Special Tokens
-
-- `--color-black`: `#000000` (light), `#ffffff` (dark)
-- `--color-white`: `#ffffff` (light), `#000000` (dark)
-- `--shadow-hsl`: `211 100% 70%` (light), `211 100% 56%` (dark) — shadow color, not opacity
+- `--color-black` / `--color-white` — Invert in dark mode (black → white, white → black)
+- `--shadow-hsl` — Shadow color (not opacity), derived from primary hue
 
 ### Semantic Aliases (@theme)
 

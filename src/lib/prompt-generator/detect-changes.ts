@@ -41,18 +41,32 @@ const hasDesignChanges = (state: WizardState): boolean => {
     state.fonts.display !== DEFAULT_STATE.fonts.display ||
     state.fonts.body !== DEFAULT_STATE.fonts.body ||
     state.fonts.label !== DEFAULT_STATE.fonts.label ||
-    state.fonts.cursive !== DEFAULT_STATE.fonts.cursive ||
+    state.fonts.cursive !== DEFAULT_STATE.fonts.cursive
+  );
+};
+
+const hasDesignElevationChanges = (state: WizardState): boolean => {
+  return (
     state.borderRadius !== DEFAULT_STATE.borderRadius ||
     state.shadowIntensity !== DEFAULT_STATE.shadowIntensity ||
-    state.motionSpeed !== DEFAULT_STATE.motionSpeed ||
-    state.brandName !== DEFAULT_STATE.brandName ||
-    state.brandPersonality !== DEFAULT_STATE.brandPersonality ||
+    state.motionSpeed !== DEFAULT_STATE.motionSpeed
+  );
+};
+
+const hasDesignOverviewChanges = (state: WizardState): boolean => {
+  return (
     state.creativeNorthStar !== DEFAULT_STATE.creativeNorthStar ||
     state.designOverview !== DEFAULT_STATE.designOverview ||
-    state.componentVariants !== DEFAULT_STATE.componentVariants ||
-    state.dosAndDonts !== DEFAULT_STATE.dosAndDonts ||
-    state.productDescription !== DEFAULT_STATE.productDescription
+    state.brandPersonality !== DEFAULT_STATE.brandPersonality
   );
+};
+
+const hasDesignComponentsChanges = (state: WizardState): boolean => {
+  return state.componentVariants !== DEFAULT_STATE.componentVariants;
+};
+
+const hasDesignDosDontsChanges = (state: WizardState): boolean => {
+  return state.dosAndDonts !== DEFAULT_STATE.dosAndDonts;
 };
 
 const hasAgentChanges = (state: WizardState): boolean => {
@@ -76,6 +90,10 @@ const hasStructureChanges = (state: WizardState): boolean => {
 export {
   hasAgentChanges,
   hasDesignChanges,
+  hasDesignComponentsChanges,
+  hasDesignDosDontsChanges,
+  hasDesignElevationChanges,
+  hasDesignOverviewChanges,
   hasFontChanges,
   hasMetadataChanges,
   hasPackageChanges,

@@ -8213,6 +8213,19 @@ void main() {
   // description as a last-resort fallback.
   function buildColorModels(fmColors, colorMeta, proseColors) {
     if (!fmColors) return [];
+    if (Array.isArray(fmColors)) {
+      return fmColors.map((name) => {
+        const m = (colorMeta || {})[name] || {};
+        return {
+          role: m.role || humanizeKey(name),
+          name: m.displayName || humanizeKey(name),
+          value: null,
+          canonical: m.canonical || null,
+          description: m.description || findProseDescription(proseColors, name, m.displayName),
+          tonalRamp: m.tonalRamp || null,
+        };
+      });
+    }
     const meta = colorMeta || {};
     return Object.entries(fmColors).map(([key, value]) => {
       const m = meta[key] || {};

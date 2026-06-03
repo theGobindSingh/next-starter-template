@@ -49,7 +49,8 @@ export type Action =
       value: string;
     }
   | { type: "SET_COMPLIANCE"; value: string[] }
-  | { type: "RESET" };
+  | { type: "RESET" }
+  | { type: "RESTORE_STATE"; state: WizardState };
 
 export interface WizardContextValue {
   state: WizardState;

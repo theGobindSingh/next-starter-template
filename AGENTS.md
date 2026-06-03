@@ -10,20 +10,20 @@ This repository is a batteries-included Next.js starter template. Keep this file
 
 ## Skill Usage Guidelines
 
-- At the start of every new chat/session, invoke `using-superpowers` first.
+- At the start of every new chat/session, invoke `using-superpowers` first; NEVER skip it; ONLY after using this skill, proceed with other tasks.
+- For any new non-trivial implementation task, ALWAYS invoke `brainstorming` before starting work to generate a wide range of ideas and approaches, even if the solution seems straightforward. This helps ensure creativity and thoroughness.
 - `nextjs`, `react-best-practices` and `security-best-practices` are core skills that should be invoked later in every session before any implementation work, to ensure the agent is primed with the right knowledge and guardrails.
-- Whenever implementing a new feauture that effects the whole system, use `system-design` to create a high-level design before starting implementation. This is especially important for features that touch multiple layers (e.g., API routes, database, and frontend) or require new architectural patterns.
-- For cross-session context, use `mem` to both recall and save: search memory first before asking the user to repeat information, and persist important new decisions, preferences, and snippets.
-- If the task touches any visual output (new components, layout changes, style updates, or new pages), load [PROJECT_STANDARD_CONSTANTS.md](PROJECT_STANDARD_CONSTANTS.md) first — if the file does not exist, notify the user and ask whether to create it or continue without it — then invoke these skills in order:
+- Whenever implementing a new feature that affects the whole system, use `system-design` to create a high-level design before starting implementation. This is especially important for features that touch multiple layers (e.g., API routes, database, and frontend) or require new architectural patterns.
+- For cross-session context, use `mem` to both recall and save: search memory first before asking the user to repeat information, and persist important new decisions, preferences, and snippets. After every important decision/output, save a very concise summary to memory with `mem` for future recall. Persist only long-term architectural decisions, user preferences, and project-wide conventions.
+- If the task touches any visual output (new components, layout changes, style updates, or new pages), load [PROJECT_STANDARD_CONSTANTS.md](PROJECT_STANDARD_CONSTANTS.md) first — if the file does not exist, notify the user and ask whether to create it or continue without it — then MUST invoke these skills (ALL) in order:
   1. `impeccable`
   2. `ui-ux-pro-max`
   3. `tailwind-design-system`
-- For implementation work, invoke `subagent-driven-development` and enforce this execution policy:
+- Before starting any implementation work, ALWAYS invoke `subagent-driven-development` and enforce this execution policy:
   1. Break work into subtasks each completable in a single file or a single well-defined function change, unless a natural larger boundary exists (e.g., a full API route).
   2. Delegate as many subtasks as possible to fresh subagents.
   3. Prefer parallel subagents for independent subtasks; keep sequential order only where dependencies require it.
   4. Keep the main agent as coordinator/reviewer, not primary implementer, unless delegation is blocked.
-- If a task qualifies as both UI/design and implementation work, run the UI skill sequence first (`impeccable`, `ui-ux-pro-max`, `tailwind-design-system`), then invoke `subagent-driven-development`. All branches still follow `using-superpowers` at session start.
 - Use `caveman` as the default response style for this user (full intensity) unless the user asks to stop or switch level. Apply caveman style to prose responses only; all code, file edits, and structured output must remain precise and professional.
 - **English only** — all agent communication must be in English unless the user explicitly requests otherwise.
 - Use `stop-slop` whenever the user requests to write text content for the website, product, or codebase but not actual code.
@@ -39,13 +39,13 @@ This repository is a batteries-included Next.js starter template. Keep this file
 
 Notes:
 
-- `pnpm build` runs `pnpm lint:fix` first via `prebuild`.
+- `pnpm build` runs `pnpm lint:fix` first via `prebuild`; so prefer `pnpm build` over `pnpm lint` for a more comprehensive check that also attempts auto-fixes.
 - There is no test script yet. If tests are added, document and enforce the command here.
 
 ## Project Shape
 
 - `src/app`: Next.js App Router route segments, layouts, and route entry points
-- `src/components`: reusable shared components
+- `src/components`: reusable global shared components
 - `src/app/globals.css`: Tailwind v4 import, global layer styles, and app-wide defaults
 - `src/app/*.module.css`: optional scoped styles for edge-case components/routes
 - `public/assets`: static assets (fonts, images)
@@ -58,14 +58,14 @@ Notes:
 - **Component placement** — global/reusable components live in `src/components/`, page-specific components are co-located in `app/<route>/components/`.
 - **Folder-per-component** — each component gets its own directory with `index.tsx` as the component entry point and co-located types.
 - Prefer path aliases from `tsconfig.json` (`@components/*`, `@hooks/*`, `@styles/*`, etc.) over deep relative imports.
-- Follow the module file pattern where practical: `index.tsx`, `types.ts`.
+- Follow the module file pattern where practical: `index.tsx`, `styles.ts` and `types.ts`.
 - Tailwind v4 is available and is the primary styling path for routes and components.
 - Use CSS modules optionally for edge cases where utility classes are not a good fit.
-- NEVER use anonymous/unnamed functions. Every function must be assigned to a named `const` or `function` declaration before being passed as a callback or handler. For example, `onClick={() => { return onTabChange("preview"); }}` is forbidden — extract to `const handleTabChange = () => onTabChange("preview")` first, then pass `onClick={handleTabChange}`.
+- NEVER use anonymous/unnamed functions. Every function must be assigned to a named `const` declaration before being passed as a callback or handler. For example, `onClick={() => { return onTabChange("preview"); }}` is forbidden — extract to `const handleTabChange = () => onTabChange("preview")` first, then pass `onClick={handleTabChange}`.
+- NEVER suppress Hydration Warnings with `suppressHydrationWarning`. If a hydration warning occurs, fix the underlying cause instead of silencing it.
 
 ## Quality Gates
 
-- Before finishing code changes, run at least: `pnpm lint`.
 - If adding build-time or runtime behavior, verify with: `pnpm build`.
 - If `pnpm lint` or `pnpm build` exits with errors, do not mark the task complete. Fix all reported errors before finishing, or explicitly surface the unresolved errors to the user with the full error output.
 - No generated or modified file shall exceed 150 lines of code. If a file exceeds 150 LOC, split it into a modular folder structure (index.tsx entry + focused sibling files). Apply this proactively — before writing, break large outputs into modules; after writing, audit and refactor any file that exceeds the limit.
@@ -83,24 +83,10 @@ Notes:
 - `next.config.js` currently has `images.remotePatterns` empty; remote image sources must be explicitly added.
 - TypeScript is strict via `@tsconfig/strictest` + `@tsconfig/next`; keep types explicit and avoid bypass patterns.
 
-## Template User: Update This File
-
-If you are using this starter for a real project, update this file in your repo with:
-
-1. Product/domain context and glossary.
-2. Testing stack and required test commands.
-3. Deployment workflow and environment requirements.
-4. Any security/compliance constraints.
-5. Feature-specific architecture notes.
-
-Treat this file as the first-stop guide for AI coding agents in your project.
-
 ## Design Context
 
 - [PRODUCT.md](PRODUCT.md): Strategic brief — register, users, brand personality, anti-references, design principles. **Edit this for your product.**
 - [DESIGN.md](DESIGN.md): Visual design system — colors, typography, elevation, components. **Swap tokens to rebrand.**
-- `.impeccable/design.json`: Machine-readable sidecar for live panel rendering. (generate if not present)
-- `.impeccable/live/config.json`: Live mode pre-config (Next.js App Router) (generate if not present)
 
 ## References
 
@@ -109,3 +95,5 @@ Treat this file as the first-stop guide for AI coding agents in your project.
 - [ESLint config](eslint.config.mjs)
 - [Next config](next.config.js)
 - [Project standard constants](PROJECT_STANDARD_CONSTANTS.md)
+- [Design system](DESIGN.md)
+- [Product brief](PRODUCT.md)

@@ -1,3 +1,4 @@
+import Link from "@components/link";
 import SectionWrapper from "./section-wrapper";
 
 const LandingStart = () => {
@@ -75,18 +76,22 @@ const LandingStart = () => {
         </div>
 
         <div className="mt-12 flex flex-wrap justify-center gap-4">
-          <a
+          <Link
             href="/wizard"
-            className="inline-flex items-center gap-2 font-mono text-sm font-medium tracking-widest uppercase px-8 py-4 rounded-lg bg-accent text-black hover:bg-accent-deep transition-all duration-200 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-accent/30"
+            size="m"
+            color="accent"
+            className="font-mono tracking-widest uppercase"
           >
             Configure Your Brand
-          </a>
-          <a
-            href="https://github.com/anomalyco/next-starter-template"
-            className="inline-flex items-center gap-2 font-mono text-sm font-medium tracking-widest uppercase px-8 py-4 rounded-lg bg-transparent text-grey-900 border border-grey-300 hover:bg-grey-200 transition-all duration-200 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-accent/30"
+          </Link>
+          <Link
+            href="https://github.com/theGobindSingh/next-starter-template"
+            variant="outlined"
+            size="m"
+            className="font-mono tracking-widest uppercase"
           >
             View on GitHub
-          </a>
+          </Link>
         </div>
       </div>
     </SectionWrapper>

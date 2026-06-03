@@ -42,10 +42,9 @@ export const generatePalette = (
   };
 
   const accentHue =
-    ((primary.get("hsl.h") * 360 + secondary.get("hsl.h") * 360) / 2 + 30) %
-    360;
+    ((primary.get("hsl.h") + secondary.get("hsl.h")) / 2 + 30) % 360;
 
-  const primaryHueDeg = primary.get("hsl.h") * 360;
+  const primaryHueDeg = primary.get("hsl.h");
   const neutralHue = Number.isNaN(primaryHueDeg) ? 30 : primaryHueDeg;
 
   const surface = chroma.hsl(neutralHue, 0.1, 0.87).hex();
@@ -184,7 +183,7 @@ export const generateHslBaseScale = (
   fixedSaturation?: number,
 ): Record<number, string> => {
   const c = chroma(hex);
-  const h = fixedHue ?? Math.round(c.get("hsl.h") * 360);
+  const h = fixedHue ?? Math.round(c.get("hsl.h"));
   const s = fixedSaturation ?? Math.round(c.get("hsl.s") * 100);
   const result: Record<number, string> = {} as Record<number, string>;
   for (const shade of SHADE_NUMBERS) {

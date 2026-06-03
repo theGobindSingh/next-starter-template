@@ -50,11 +50,11 @@ export const Step2Visual = () => {
               borderRadius: `${state.borderRadius}px`,
               boxShadow: [
                 "none",
-                "1px 1px 3px rgb(var(--shadow-rgb) / 0.15)",
-                "2px 2px 6px rgb(var(--shadow-rgb) / 0.2)",
-                "3px 4px 10px rgb(var(--shadow-rgb) / 0.25)",
-                "4px 6px 14px rgb(var(--shadow-rgb) / 0.3)",
-                "6px 8px 20px rgb(var(--shadow-rgb) / 0.35)",
+                "1px 1px 3px hsl(var(--shadow-hsl) / 0.15)",
+                "2px 2px 6px hsl(var(--shadow-hsl) / 0.2)",
+                "3px 4px 10px hsl(var(--shadow-hsl) / 0.25)",
+                "4px 6px 14px hsl(var(--shadow-hsl) / 0.3)",
+                "6px 8px 20px hsl(var(--shadow-hsl) / 0.35)",
               ][state.shadowIntensity],
             }}
           >

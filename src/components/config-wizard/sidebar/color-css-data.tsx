@@ -1,4 +1,5 @@
 import {
+  FIXED_COLOR_HUES,
   generateGreyHslBaseScale,
   generateHslBaseScale,
   generatePalette,
@@ -6,16 +7,6 @@ import {
   type Palette,
 } from "@/lib/color-palette";
 import type { WizardState } from "../types";
-
-const HARDCODED_HUES: Record<string, number> = {
-  primary: -1,
-  secondary: -1,
-  accent: -1,
-  success: 145,
-  caution: 30,
-  info: 200,
-  error: 0,
-};
 
 const COLOR_FAMILIES = [
   "primary",
@@ -55,7 +46,7 @@ export const generateColorCSS = (state: WizardState): string => {
   const familyScales: Record<string, Record<number, string>> = {};
   for (const family of COLOR_FAMILIES) {
     const hex = effectiveColors[family];
-    const fixedHue = HARDCODED_HUES[family];
+    const fixedHue = FIXED_COLOR_HUES[family];
     const hue = fixedHue && fixedHue >= 0 ? fixedHue : undefined;
     familyScales[family] = generateHslBaseScale(hex, hue);
   }

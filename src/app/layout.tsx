@@ -1,3 +1,4 @@
+import ThemeSetter from "@/app/theme-setter";
 import type { Metadata } from "next";
 import {
   DM_Mono as DmMono,
@@ -5,8 +6,8 @@ import {
   Nothing_You_Could_Do as NothingYouCouldDo,
   Poppins,
 } from "next/font/google";
-import Script from "next/script";
-import type { ReactNode } from "react";
+import { cookies } from "next/headers";
+import { type PropsWithChildren } from "react";
 import "./globals.css";
 
 const fontSansSerif = Inter({
@@ -39,30 +40,24 @@ export const metadata: Metadata = {
     "Starter template with Next.js, TypeScript, and Tailwind baseline.",
 };
 
-interface RootLayoutProps {
-  children: ReactNode;
-}
-
-const THEME_SCRIPT = `
-(function() {
-  var theme = localStorage.getItem('theme');
-  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
+const getTheme = async () => {
+  try {
+    const cookieStore = await cookies();
+    return cookieStore.get("theme")?.value ?? null;
+  } catch {
+    return null;
   }
-})();
-`;
+};
 
-const RootLayout = ({ children }: RootLayoutProps) => {
+const RootLayout = async ({ children }: PropsWithChildren<unknown>) => {
+  const theme = await getTheme();
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <Script id="theme-init" strategy="beforeInteractive">
-          {THEME_SCRIPT}
-        </Script>
-      </head>
+    <html lang="en" className={theme === "dark" ? "dark" : "light"}>
+      <head />
       <body
         className={`${fontSansSerif.variable} ${fontMono.variable} ${fontSans.variable} ${fontCursive.variable}`}
       >
+        <ThemeSetter />
         {children}
       </body>
     </html>
