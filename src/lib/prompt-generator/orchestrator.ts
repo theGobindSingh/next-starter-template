@@ -204,7 +204,7 @@ Confirm no errors.
     );
     if (state.brandName) {
       sections.unshift(
-        `This project is now "${state.brandName}" and not a template. This prompt is meant to update the project. Follow this prompt very closely to ensure the best results. Do not skip any instructions. This will also update the config for agent SKILLs.\n`,
+        `This project is now "${state.brandName}" and not a template. This prompt is meant to update the project. Follow this prompt very closely to ensure the best results. Do not skip any instructions. This will also update the config for agent SKILLs. Don't be rigid, update related configurations as needed.\n`,
       );
     }
     if (state.tagline) {
