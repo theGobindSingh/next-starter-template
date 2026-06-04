@@ -1,6 +1,7 @@
 # AGENTS.md
 
 This repository is a batteries-included Next.js starter template. Keep this file short, practical, and easy to extend.
+If you have been instructed to update this file/project, then make sure you update ALL the relevant files associated with the new rules or conventions you are adding. For example, if you changing the project name, make sure to update the README, DESIGN, PRODUCT, Package.json, and any other relevant files to reflect the new name consistently across the codebase and documentation.
 
 ## Scope
 
@@ -15,7 +16,7 @@ This repository is a batteries-included Next.js starter template. Keep this file
 - `nextjs`, `react-best-practices` and `security-best-practices` are core skills that should be invoked later in every session before any implementation work, to ensure the agent is primed with the right knowledge and guardrails.
 - Whenever implementing a new feature that affects the whole system, use `system-design` to create a high-level design before starting implementation. This is especially important for features that touch multiple layers (e.g., API routes, database, and frontend) or require new architectural patterns.
 - For cross-session context, use `mem` to both recall and save: search memory first before asking the user to repeat information, and persist important new decisions, preferences, and snippets. After every important decision/output, save a very concise summary to memory with `mem` for future recall. Persist only long-term architectural decisions, user preferences, and project-wide conventions.
-- If the task touches any visual output (new components, layout changes, style updates, or new pages), load [PROJECT_STANDARD_CONSTANTS.md](PROJECT_STANDARD_CONSTANTS.md) first — if the file does not exist, notify the user and ask whether to create it or continue without it — then MUST invoke these skills (ALL) in order:
+- If the task touches any visual output (new components, layout changes, style updates, or new pages), load [PROJECT_STANDARD_CONSTANTS.md](docs/PROJECT_STANDARD_CONSTANTS.md) first — if the file does not exist, notify the user and ask whether to create it or continue without it — then MUST invoke these skills (ALL) in order:
   1. `impeccable`
   2. `ui-ux-pro-max`
   3. `tailwind-design-system`
@@ -85,8 +86,8 @@ Notes:
 
 ## Design Context
 
-- [PRODUCT.md](PRODUCT.md): Strategic brief — register, users, brand personality, anti-references, design principles. **Edit this for your product.**
-- [DESIGN.md](DESIGN.md): Visual design system — colors, typography, elevation, components. **Swap tokens to rebrand.**
+- [PRODUCT.md](docs/PRODUCT.md): Strategic brief — register, users, brand personality, anti-references, design principles. **Edit this for your product.**
+- [DESIGN.md](docs/DESIGN.md): Visual design system — colors, typography, elevation, components. **Swap tokens to rebrand.**
 
 ## References
 
@@ -94,6 +95,6 @@ Notes:
 - [TypeScript config](tsconfig.json)
 - [ESLint config](eslint.config.mjs)
 - [Next config](next.config.js)
-- [Project standard constants](PROJECT_STANDARD_CONSTANTS.md)
-- [Design system](DESIGN.md)
-- [Product brief](PRODUCT.md)
+- [Project standard constants](docs/PROJECT_STANDARD_CONSTANTS.md)
+- [Design system](docs/DESIGN.md)
+- [Product brief](docs/PRODUCT.md)
