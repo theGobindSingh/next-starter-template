@@ -61,7 +61,7 @@ const generatePrompt = (state: WizardState): string => {
     appendSection(
       sections,
       order,
-      `\`PRODUCT.md\` — update product identity`,
+      `\`docs/PRODUCT.md\` — update product identity`,
       "markdown",
       generateProductMD(state),
     );
@@ -103,7 +103,7 @@ const generatePrompt = (state: WizardState): string => {
 
   if (hasMetadataChanges(state)) {
     designMDUpdates.push(
-      `Update \`DESIGN.md\` frontmatter:\n- \`name\`: "${state.brandName || ""}"\n- \`description\`: "${state.productDescription || ""}"`,
+      `Update \`docs/DESIGN.md\` frontmatter:\n- \`name\`: "${state.brandName || ""}"\n- \`description\`: "${state.productDescription || ""}"`,
     );
   }
 
@@ -117,7 +117,7 @@ const generatePrompt = (state: WizardState): string => {
         ? `**Creative North Star: "${state.creativeNorthStar}"**`
         : undefined;
     const overviewParts = [
-      "Update the **## 1. Overview** section in `DESIGN.md`.",
+      "Update the **## 1. Overview** section in `docs/DESIGN.md`.",
     ];
     if (starLine) {
       overviewParts.push(`\nSet the creative north star:\n\n${starLine}`);
@@ -137,13 +137,13 @@ const generatePrompt = (state: WizardState): string => {
 
   if (hasDesignComponentsChanges(state)) {
     designMDUpdates.push(
-      `Update the **## 6. Components** section in \`DESIGN.md\`.\n\n${state.componentVariants}`,
+      `Update the **## 6. Components** section in \`docs/DESIGN.md\`.\n\n${state.componentVariants}`,
     );
   }
 
   if (hasDesignDosDontsChanges(state)) {
     designMDUpdates.push(
-      `Update the **## 7. Do's and Don'ts** section in \`DESIGN.md\`.\n\n${state.dosAndDonts}`,
+      `Update the **## 7. Do's and Don'ts** section in \`docs/DESIGN.md\`.\n\n${state.dosAndDonts}`,
     );
   }
 
@@ -151,12 +151,14 @@ const generatePrompt = (state: WizardState): string => {
     const halfR = Math.round(state.borderRadius / 2);
     const oneAndHalfR = Math.round(state.borderRadius * 1.5);
     designMDUpdates.push(
-      `Update the \`rounded:\` frontmatter and **## Elevation** section in \`DESIGN.md\`:\n\n- Set \`rounded.sm\` to \`${halfR}px\`\n- Set \`rounded.md\` to \`${state.borderRadius}px\` (base)\n- Set \`rounded.lg\` to \`${oneAndHalfR}px\`\n- Set \`rounded.full\` to \`9999px\` (unchanged)\n- Shadow intensity: ${state.shadowIntensity}/5\n- Motion speed: ${state.motionSpeed}\n- Update any component \`rounded:\` references in the frontmatter to match the new scale`,
+      `Update the \`rounded:\` frontmatter and **## Elevation** section in \`docs/DESIGN.md\`:\n\n- Set \`rounded.sm\` to \`${halfR}px\`\n- Set \`rounded.md\` to \`${state.borderRadius}px\` (base)\n- Set \`rounded.lg\` to \`${oneAndHalfR}px\`\n- Set \`rounded.full\` to \`9999px\` (unchanged)\n- Shadow intensity: ${state.shadowIntensity}/5\n- Motion speed: ${state.motionSpeed}\n- Update any component \`rounded:\` references in the frontmatter to match the new scale`,
     );
   }
 
   if (designMDUpdates.length > 0) {
-    sections.push(`\n${order.value}. \`DESIGN.md\` — update design content`);
+    sections.push(
+      `\n${order.value}. \`docs/DESIGN.md\` — update design content`,
+    );
     sections.push(
       `\n**Colors:** Do not modify the existing \`colors:\` frontmatter block. It documents available color families and must stay in sync with \`src/app/globals.css\`.\n`,
     );

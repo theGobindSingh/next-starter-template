@@ -71,8 +71,8 @@ const LandingTokens = () => {
           className="font-serif text-lg leading-relaxed max-w-2xl mb-16"
           style={{ color: "var(--color-grey-500)" }}
         >
-          Every color token used across the system, captured in DESIGN.md as CSS
-          custom properties. Swap the hex values to rebrand the entire
+          Every color token used across the system, captured in docs/DESIGN.md
+          as CSS custom properties. Swap the hex values to rebrand the entire
           interface.
         </p>
 

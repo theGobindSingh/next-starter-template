@@ -184,7 +184,7 @@ export const FEATURES: FeatureItem[] = [
   {
     title: "Design System Ready",
     description:
-      "PRODUCT.md + DESIGN.md with full token set. Swap values to rebrand the entire system.",
+      "docs/PRODUCT.md + docs/DESIGN.md with full token set. Swap values to rebrand the entire system.",
     icon: "DS",
   },
 ];
@@ -192,7 +192,7 @@ export const FEATURES: FeatureItem[] = [
 export const CONFIG_STEPS: ConfigStep[] = [
   {
     title: "Product Identity",
-    file: "PRODUCT.md",
+    file: "docs/PRODUCT.md",
     description: "Define who this is for and how it should feel.",
     items: [
       "Register: brand or product?",
@@ -203,7 +203,7 @@ export const CONFIG_STEPS: ConfigStep[] = [
   },
   {
     title: "Visual Tokens",
-    file: "DESIGN.md + globals.css",
+    file: "docs/DESIGN.md + globals.css",
     description: "Swap every color, font, and spacing value.",
     items: [
       "Replace color hex values and OKLCH values",
@@ -236,7 +236,7 @@ export const CONFIG_STEPS: ConfigStep[] = [
   },
   {
     title: "Design System Docs",
-    file: "DESIGN.md",
+    file: "docs/DESIGN.md",
     description: "Refine the visual spec to match your brand.",
     items: [
       "Creative North Star metaphor",
