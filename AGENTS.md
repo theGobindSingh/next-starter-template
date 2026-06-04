@@ -28,6 +28,7 @@ If you have been instructed to update this file/project, then make sure you upda
 - Use `caveman` as the default response style for this user (full intensity) unless the user asks to stop or switch level. Apply caveman style to prose responses only; all code, file edits, and structured output must remain precise and professional.
 - **English only** — all agent communication must be in English unless the user explicitly requests otherwise.
 - Use `stop-slop` whenever the user requests to write text content for the website, product, or codebase but not actual code.
+- If the user asks for a design related to neomorphism or neumorphism, load the `neumorphism-ui` skill and use it along with other design-related skills to ensure the design adheres to neumorphic principles and best practices.
 
 ## Commands
 

@@ -61,6 +61,12 @@
       "skillPath": "skills/memory-merger/SKILL.md",
       "computedHash": "6d64cdfdbf2309c78905a6ab208cc5ccced0cb955f404d8fc124c9720ade6ac3"
     },
+    "neumorphism-ui": {
+      "source": "webadeva/webadeva-skills",
+      "sourceType": "github",
+      "skillPath": "skills/neumorphism-ui/SKILL.md",
+      "computedHash": "f13f61c301bf1328e5c7f65f2a94d40e8a296f5b046eee9d820f626c43b8ad70"
+    },
     "nextjs": {
       "source": "vercel/vercel-plugin",
       "sourceType": "github",
