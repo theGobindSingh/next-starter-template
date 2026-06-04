@@ -189,6 +189,9 @@ Note: Do not change other rules apart from what is mentioned here. Preserve all 
   }
 
   if (sections.length != 0) {
+    sections.push(`\n## README.md
+Update the README.md to reflect the new project identity and instructions. Use the existing README.md content as much as possible, but update sections related to project description, setup instructions, and any references to the old project name or template nature.
+  `);
     sections.push(`\n## Final verification
 \`\`\`
 pnpm install

@@ -1,6 +1,7 @@
 {
   "name": "next-starter-template",
   "version": "0.0.1",
+  "type": "module",
   "author": {
     "name": "Gobind Singh",
     "email": "thesinghgobind@gmail.com",
@@ -8,6 +9,7 @@
   },
   "private": true,
   "scripts": {
+    "prepare": "node scripts/skills.js",
     "prebuild": "pnpm run lint:fix",
     "dev": "next dev",
     "build": "next build",

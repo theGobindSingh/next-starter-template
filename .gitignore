@@ -42,3 +42,6 @@ package-lock.json
 *.map
 
 pnpm-lock.yaml
+
+docs/superpowers
+.claude/skills

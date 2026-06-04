@@ -3,7 +3,6 @@
 import { generatePrompt } from "@/lib/prompt-generator";
 import { copyToClipboard } from "@utils/clipboard";
 import { useCallback, useRef, useState } from "react";
-import { useKeyboardNavigation } from "../hooks/use-keyboard-navigation";
 import { useWizard } from "../hooks/use-wizard";
 import { WizardSidebar } from "../sidebar/wizard-sidebar";
 import { GeneratedPrompt } from "./generated-prompt";
@@ -40,8 +39,6 @@ const ConfigWizard = () => {
         return undefined;
       });
   }, [generatedPrompt, state]);
-
-  useKeyboardNavigation(currentStep, totalSteps, nextStep, prevStep);
 
   const handleGenerate = useCallback(() => {
     setGeneratedPrompt(generatePrompt(state));

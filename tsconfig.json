@@ -15,6 +15,8 @@
       "@hooks/*": ["./src/hooks/*"],
       "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/utils/*"],
+      "@icons": ["./src/icons/index.ts"],
+      "@icons/*": ["./src/icons/*"],
       "@/*": ["./src/*"]
     },
     "noPropertyAccessFromIndexSignature": false,
@@ -25,8 +27,9 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "./scripts/**/*.*",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     "eslint.config.mjs",
     "next.config.js"
   ],
