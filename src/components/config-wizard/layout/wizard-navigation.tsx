@@ -37,7 +37,7 @@ export const WizardNavigation = ({
     <div className="flex items-center justify-between mt-8 pt-6 border-t border-grey-300">
       <Button
         variant="outlined"
-        size="l"
+        size="lg"
         className="text-xs font-mono tracking-widest uppercase border-grey-300 text-grey-900 hover:bg-grey-200"
         onClick={onPrev}
       >
@@ -47,7 +47,7 @@ export const WizardNavigation = ({
 
       <Button
         variant="text"
-        size="s"
+        size="sm"
         className="text-[11px] font-mono tracking-widest uppercase text-grey-500 hover:text-red-500"
         onClick={onReset}
       >
@@ -60,7 +60,7 @@ export const WizardNavigation = ({
             <Button
               variant="filled"
               color="accent"
-              size="l"
+              size="lg"
               className="px-6 text-xs font-mono tracking-widest uppercase"
               onClick={onGenerate}
             >
@@ -69,7 +69,7 @@ export const WizardNavigation = ({
             {generatedPrompt && (
               <Button
                 variant="outlined"
-                size="l"
+                size="lg"
                 className="px-6 text-xs font-mono tracking-widest uppercase border-grey-300 text-grey-900 hover:bg-grey-200"
                 onClick={onCopy}
               >
@@ -91,7 +91,7 @@ export const WizardNavigation = ({
           <Button
             variant="filled"
             color="accent"
-            size="l"
+            size="lg"
             className="px-6 text-xs font-mono tracking-widest uppercase"
             onClick={onNext}
           >

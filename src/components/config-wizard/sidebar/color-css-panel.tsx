@@ -39,7 +39,7 @@ export const ColorCSSPanel = () => {
       headerRight={
         <Button
           variant="outlined"
-          size="xs"
+          size="sm"
           className="text-[10px] font-mono tracking-widest uppercase px-3 border-grey-300 text-grey-900 hover:bg-grey-50"
           onClick={handleCopy}
         >

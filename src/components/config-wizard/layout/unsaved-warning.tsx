@@ -26,7 +26,7 @@ export const UnsavedWarning = ({
         <Button
           variant="outlined"
           color="caution"
-          size="s"
+          size="sm"
           className="text-xs font-mono tracking-widest uppercase leading-none border-grey-300"
           onClick={onNavigate}
         >
@@ -35,7 +35,7 @@ export const UnsavedWarning = ({
         <Button
           variant="filled"
           color="primary"
-          size="s"
+          size="sm"
           className="text-xs font-mono tracking-widest uppercase leading-none border border-grey-300 hover:bg-primary/80"
           onClick={onSaveAndNavigate}
         >
@@ -43,7 +43,7 @@ export const UnsavedWarning = ({
         </Button>
         <Button
           variant="outlined"
-          size="s"
+          size="sm"
           className="text-xs font-mono tracking-widest uppercase leading-none border-grey-300 text-grey-900 hover:bg-grey-200"
           onClick={onCancel}
         >

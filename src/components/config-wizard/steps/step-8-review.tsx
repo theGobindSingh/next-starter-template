@@ -129,7 +129,7 @@ export const Step8Review = () => {
       <div className="flex justify-end">
         <Button
           variant="text"
-          size="s"
+          size="sm"
           className="font-mono tracking-widest uppercase text-grey-500 hover:text-error hover:bg-transparent"
           onClick={() => {
             return dispatch({ type: "RESET" });

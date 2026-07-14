@@ -1,4 +1,5 @@
 import ThemeSetter from "@/app/theme-setter";
+import "@styles/globals.css";
 import type { Metadata } from "next";
 import {
   DM_Mono as DmMono,
@@ -8,7 +9,6 @@ import {
 } from "next/font/google";
 import { cookies } from "next/headers";
 import { type PropsWithChildren } from "react";
-import "./globals.css";
 
 const fontSansSerif = Inter({
   variable: "--font-serif",

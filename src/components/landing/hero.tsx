@@ -39,7 +39,7 @@ const LandingHero = () => {
             href="#start"
             variant="filled"
             color="accent"
-            size="l"
+            size="lg"
             className="font-mono tracking-widest uppercase"
           >
             Get Started
@@ -47,7 +47,7 @@ const LandingHero = () => {
           <Link
             href="https://github.com/theGobindSingh/next-starter-template"
             variant="outlined"
-            size="l"
+            size="lg"
             className="font-mono tracking-widest uppercase"
           >
             View on GitHub
@@ -56,7 +56,7 @@ const LandingHero = () => {
             href="/wizard"
             variant="filled"
             color="primary"
-            size="l"
+            size="lg"
             className="font-mono tracking-widest uppercase"
           >
             Config Wizard

@@ -1,22 +1,19 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type {
+  ColorFamily,
+  ColorWeight,
+  InteractionSize,
+  InteractionVariant,
+} from "./styles";
 
-export type ButtonVariant = "filled" | "outlined" | "text";
-
-export type ButtonSize = "xs" | "s" | "m" | "l" | "xl";
-
-export type ButtonColor =
-  | "primary"
-  | "secondary"
-  | "accent"
-  | "success"
-  | "caution"
-  | "info"
-  | "error";
-
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  color?: ButtonColor;
-  loading?: boolean;
-  children?: ReactNode;
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: InteractionVariant | undefined;
+  size?: InteractionSize | undefined;
+  color?: ColorFamily | undefined;
+  colorWeight?: ColorWeight | undefined;
+  textColor?: ColorFamily | undefined;
+  textColorWeight?: ColorWeight | undefined;
+  hoverBgColor?: ColorFamily | undefined;
+  hoverBgColorWeight?: ColorWeight | undefined;
+  hoverTextColor?: ColorFamily | undefined;
+  hoverTextColorWeight?: ColorWeight | undefined;
 }

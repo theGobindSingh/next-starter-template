@@ -20,7 +20,7 @@ export const WelcomeStep = ({ onStart }: { onStart: () => void }) => {
       <Button
         variant="filled"
         color="accent"
-        size="l"
+        size="lg"
         className="font-mono tracking-widest uppercase"
         onClick={onStart}
       >

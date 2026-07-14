@@ -78,7 +78,7 @@ const LandingStart = () => {
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           <Link
             href="/wizard"
-            size="m"
+            size="md"
             color="accent"
             className="font-mono tracking-widest uppercase"
           >
@@ -87,7 +87,7 @@ const LandingStart = () => {
           <Link
             href="https://github.com/theGobindSingh/next-starter-template"
             variant="outlined"
-            size="m"
+            size="md"
             className="font-mono tracking-widest uppercase"
           >
             View on GitHub
