@@ -47,4 +47,4 @@ Payload CMS runs inside the app: the admin is at `/admin` and the REST API under
 
 ## Git
 
-Conventional Commits (`feat:`, `fix:`, `docs:`, …). Commit `pnpm-lock.yaml`.
+Conventional Commits (`feat:`, `fix:`, `docs:`, …), checked by commitlint in `.husky/commit-msg`. The same hook strips Claude and Anthropic co-author trailers. Commit `pnpm-lock.yaml`.

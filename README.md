@@ -8,6 +8,7 @@ A lean, batteries-included starter for [Next.js](https://nextjs.org/) apps. It s
 - TypeScript in strict mode (`@tsconfig/strictest`)
 - Tailwind CSS v4 with a small token system and light/dark themes
 - ESLint ([`@webadeva/eslint-config`](https://www.npmjs.com/package/@webadeva/eslint-config)) and Prettier
+- Husky and commitlint check commit messages against Conventional Commits
 - [Lucide](https://lucide.dev/) icons and [Lenis](https://lenis.darkroom.engineering/) smooth scrolling
 - [Payload CMS](https://payloadcms.com/) with a SQLite database, admin at `/admin`
 - Error and 404 pages, SEO basics (metadata, sitemap, robots, generated Open Graph image) and security headers

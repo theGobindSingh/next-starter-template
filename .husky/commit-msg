@@ -1,0 +1,5 @@
+# Strip AI attribution (Claude/Anthropic co-author trailers, "Generated with" lines)
+grep -viE '^co-authored-by:.*(claude|anthropic)|generated (with|by) .*claude' "$1" > "$1.tmp" || true
+mv "$1.tmp" "$1"
+
+pnpm exec commitlint --edit "$1"

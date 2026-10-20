@@ -34,6 +34,7 @@ Discover the rest from the code; path aliases are in `tsconfig.json`.
 - ESLint enforces a file-size limit. When it flags a file, split it into a folder (`index` + focused siblings) instead of disabling the rule.
 - Never read, print or commit `.env` files or secrets. Ask the user to set them; document new variables in `.env.example`.
 - When a change makes any doc wrong, update that doc in the same change.
+- Never credit Claude, Anthropic or any AI in commits or PRs: no `Co-Authored-By` trailers, no "Generated with" lines. `.husky/commit-msg` strips Claude and Anthropic ones anyway.
 - Don't edit `src/app/(payload)` or `src/payload-types.ts`; Payload generates them. After changing collections or config, run `pnpm generate:types`, and `pnpm generate:importmap` if you added admin components.
 
 ## Every code change
