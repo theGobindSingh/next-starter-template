@@ -1,63 +1,32 @@
-import ThemeSetter from "@/app/theme-setter";
+import { site } from "@/site";
+import SmoothScroll from "@components/smooth-scroll";
+import { fontVariables } from "@styles/fonts";
 import "@styles/globals.css";
+import { THEME_INIT_SCRIPT } from "@utils/theme";
 import type { Metadata } from "next";
-import {
-  DM_Mono as DmMono,
-  Inter,
-  Nothing_You_Could_Do as NothingYouCouldDo,
-  Poppins,
-} from "next/font/google";
-import { cookies } from "next/headers";
-import { type PropsWithChildren } from "react";
-
-const fontSansSerif = Inter({
-  variable: "--font-serif",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin", "latin-ext"],
-});
-
-const fontMono = DmMono({
-  variable: "--font-mono",
-  weight: ["400", "500"],
-  subsets: ["latin", "latin-ext"],
-});
-
-const fontSans = Poppins({
-  variable: "--font-sans",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin", "latin-ext"],
-});
-
-const fontCursive = NothingYouCouldDo({
-  variable: "--font-cursive",
-  weight: ["400"],
-  subsets: ["latin"],
-});
+import type { PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
-  title: "Next.js Starter Template",
-  description:
-    "Starter template with Next.js, TypeScript, and Tailwind baseline.",
+  metadataBase: new URL(site.url),
+  title: { default: site.name, template: `%s | ${site.name}` },
+  description: site.description,
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title: site.name,
+    description: site.description,
+  },
+  twitter: { card: "summary_large_image" },
 };
 
-const getTheme = async () => {
-  try {
-    const cookieStore = await cookies();
-    return cookieStore.get("theme")?.value ?? null;
-  } catch {
-    return null;
-  }
-};
-
-const RootLayout = async ({ children }: PropsWithChildren<unknown>) => {
-  const theme = await getTheme();
+const RootLayout = ({ children }: PropsWithChildren) => {
   return (
-    <html lang="en" className={theme === "dark" ? "dark" : "light"}>
-      <head />
-      <body
-        className={`${fontSansSerif.variable} ${fontMono.variable} ${fontSans.variable} ${fontCursive.variable}`}
-      >
-        <ThemeSetter />
+    <html lang="en" className={fontVariables}>
+      <head>
+        <script>{THEME_INIT_SCRIPT}</script>
+      </head>
+      <body>
+        <SmoothScroll />
         {children}
       </body>
     </html>

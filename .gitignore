@@ -25,8 +25,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
-.env*.local
+# env files
+.env
+.env.*
+!.env.example
 
 # vercel
 .vercel
@@ -40,7 +42,12 @@ package-lock.json
 *.log
 *.map
 
-pnpm-lock.yaml
-
-docs/superpowers
+# agent links (created by scripts/link-agents.js)
 .claude/skills
+CLAUDE.md
+
+# personal Claude Code settings
+.claude/settings.local.json
+
+# playwright mcp output
+.playwright-mcp

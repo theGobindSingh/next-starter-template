@@ -1,19 +1,17 @@
-import type {
-  ColorFamily,
-  ColorWeight,
-  InteractionSize,
-  InteractionVariant,
-} from "./styles";
+import type { ButtonHTMLAttributes } from "react";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export type InteractionVariant = "filled" | "outlined" | "text";
+export type InteractionSize = "sm" | "md" | "lg";
+export type ColorFamily =
+  "grey" | "accent" | "success" | "caution" | "info" | "error";
+
+export interface InteractionProps {
   variant?: InteractionVariant | undefined;
   size?: InteractionSize | undefined;
   color?: ColorFamily | undefined;
-  colorWeight?: ColorWeight | undefined;
-  textColor?: ColorFamily | undefined;
-  textColorWeight?: ColorWeight | undefined;
-  hoverBgColor?: ColorFamily | undefined;
-  hoverBgColorWeight?: ColorWeight | undefined;
-  hoverTextColor?: ColorFamily | undefined;
-  hoverTextColorWeight?: ColorWeight | undefined;
 }
+
+export interface ButtonProps
+  extends
+    InteractionProps,
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color"> {}

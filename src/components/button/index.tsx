@@ -1,33 +1,20 @@
 import { colorStyleVars, interactionStyles } from "./styles";
 import type { ButtonProps } from "./types";
 
-export const Button = ({
-  variant = "outlined",
+const Button = ({
+  variant = "filled",
   size = "md",
   color = "accent",
-  colorWeight = 600,
-  textColor,
-  textColorWeight,
-  hoverBgColor,
-  hoverBgColorWeight,
-  hoverTextColor,
-  hoverTextColorWeight,
+  type = "button",
   className,
+  style,
   children,
   ...rest
 }: ButtonProps) => {
   return (
     <button
-      style={colorStyleVars({
-        color,
-        colorWeight,
-        textColor,
-        textColorWeight,
-        hoverBgColor,
-        hoverBgColorWeight,
-        hoverTextColor,
-        hoverTextColorWeight,
-      })}
+      type={type}
+      style={{ ...colorStyleVars(color), ...style }}
       className={interactionStyles({ variant, size, className })}
       {...rest}
     >
@@ -35,3 +22,5 @@ export const Button = ({
     </button>
   );
 };
+
+export default Button;

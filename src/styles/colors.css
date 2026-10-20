@@ -1,0 +1,172 @@
+/*
+ * Raw color ramps as space-separated HSL triplets, so any stop can take an alpha:
+ *   hsl(var(--color-grey-900-base) / 0.1)
+ * globals.css turns each triplet into a solid color + Tailwind utility.
+ * Dark mode (see @utils/theme) only swaps the triplets (50 ↔ 950); nothing else changes.
+ */
+
+:root {
+  --color-black-base: 0 0% 0%;
+  --color-white-base: 0 0% 100%;
+
+  /* grey */
+  --color-grey-50-base: 210 12% 97%;
+  --color-grey-100-base: 210 13% 91%;
+  --color-grey-200-base: 210 13% 82%;
+  --color-grey-300-base: 208 14% 76%;
+  --color-grey-400-base: 211 14% 68%;
+  --color-grey-500-base: 211 11% 59%;
+  --color-grey-600-base: 209 9% 50%;
+  --color-grey-700-base: 209 12% 38%;
+  --color-grey-800-base: 209 14% 25%;
+  --color-grey-900-base: 210 22% 15%;
+  --color-grey-950-base: 210 17.5% 5%;
+
+  /* accent */
+  --color-accent-50-base: 15 100% 95%;
+  --color-accent-100-base: 15 100% 88%;
+  --color-accent-200-base: 16 100% 82%;
+  --color-accent-300-base: 17 100% 74%;
+  --color-accent-400-base: 18 100% 64%;
+  --color-accent-500-base: 16 100% 47%;
+  --color-accent-600-base: 15 100% 40.75%;
+  --color-accent-700-base: 14 100% 19%;
+  --color-accent-800-base: 14 100% 9%;
+  --color-accent-900-base: 14 100% 4%;
+  --color-accent-950-base: 14 100% 2%;
+
+  /* success */
+  --color-success-50-base: 145 88% 98%;
+  --color-success-100-base: 145 88% 96%;
+  --color-success-200-base: 145 88% 93%;
+  --color-success-300-base: 145 88% 85%;
+  --color-success-400-base: 145 88% 70%;
+  --color-success-500-base: 145 88% 56%;
+  --color-success-600-base: 145 88% 42%;
+  --color-success-700-base: 145 88% 28%;
+  --color-success-800-base: 145 88% 14%;
+  --color-success-900-base: 145 88% 5%;
+  --color-success-950-base: 145 88% 2%;
+
+  /* caution */
+  --color-caution-50-base: 30 88% 98%;
+  --color-caution-100-base: 30 88% 96%;
+  --color-caution-200-base: 30 88% 93%;
+  --color-caution-300-base: 30 88% 85%;
+  --color-caution-400-base: 30 88% 70%;
+  --color-caution-500-base: 30 88% 56%;
+  --color-caution-600-base: 30 88% 42%;
+  --color-caution-700-base: 30 88% 28%;
+  --color-caution-800-base: 30 88% 14%;
+  --color-caution-900-base: 30 88% 5%;
+  --color-caution-950-base: 30 88% 2%;
+
+  /* info */
+  --color-info-50-base: 200 88% 98%;
+  --color-info-100-base: 200 88% 96%;
+  --color-info-200-base: 200 88% 93%;
+  --color-info-300-base: 200 88% 85%;
+  --color-info-400-base: 200 88% 70%;
+  --color-info-500-base: 200 88% 56%;
+  --color-info-600-base: 200 88% 42%;
+  --color-info-700-base: 200 88% 28%;
+  --color-info-800-base: 200 88% 14%;
+  --color-info-900-base: 200 88% 5%;
+  --color-info-950-base: 200 88% 2%;
+
+  /* error */
+  --color-error-50-base: 357 100% 95%;
+  --color-error-100-base: 357 100% 86%;
+  --color-error-200-base: 357 100% 79%;
+  --color-error-300-base: 356 100% 71%;
+  --color-error-400-base: 357 100% 60%;
+  --color-error-500-base: 4 100% 50%;
+  --color-error-600-base: 6 100% 33%;
+  --color-error-700-base: 6 100% 16%;
+  --color-error-800-base: 6 100% 8%;
+  --color-error-900-base: 6 100% 4%;
+  --color-error-950-base: 6 100% 2%;
+}
+
+:root:has(meta[name="color-scheme"][content="dark"]) {
+  --color-black-base: 0 0% 100%;
+  --color-white-base: 0 0% 0%;
+
+  /* grey */
+  --color-grey-50-base: 210 17.5% 5%;
+  --color-grey-100-base: 210 22% 15%;
+  --color-grey-200-base: 209 14% 25%;
+  --color-grey-300-base: 209 12% 38%;
+  --color-grey-400-base: 209 9% 50%;
+  --color-grey-500-base: 211 11% 59%;
+  --color-grey-600-base: 211 14% 68%;
+  --color-grey-700-base: 208 14% 76%;
+  --color-grey-800-base: 210 13% 82%;
+  --color-grey-900-base: 210 13% 91%;
+  --color-grey-950-base: 210 12% 97%;
+
+  /* accent */
+  --color-accent-50-base: 14 100% 2%;
+  --color-accent-100-base: 14 100% 4%;
+  --color-accent-200-base: 14 100% 9%;
+  --color-accent-300-base: 14 100% 19%;
+  --color-accent-400-base: 15 100% 40.75%;
+  --color-accent-500-base: 16 100% 47%;
+  --color-accent-600-base: 18 100% 64%;
+  --color-accent-700-base: 17 100% 74%;
+  --color-accent-800-base: 16 100% 82%;
+  --color-accent-900-base: 15 100% 88%;
+  --color-accent-950-base: 15 100% 95%;
+
+  /* success */
+  --color-success-50-base: 145 88% 2%;
+  --color-success-100-base: 145 88% 5%;
+  --color-success-200-base: 145 88% 14%;
+  --color-success-300-base: 145 88% 28%;
+  --color-success-400-base: 145 88% 42%;
+  --color-success-500-base: 145 88% 56%;
+  --color-success-600-base: 145 88% 70%;
+  --color-success-700-base: 145 88% 85%;
+  --color-success-800-base: 145 88% 93%;
+  --color-success-900-base: 145 88% 96%;
+  --color-success-950-base: 145 88% 98%;
+
+  /* caution */
+  --color-caution-50-base: 30 88% 2%;
+  --color-caution-100-base: 30 88% 5%;
+  --color-caution-200-base: 30 88% 14%;
+  --color-caution-300-base: 30 88% 28%;
+  --color-caution-400-base: 30 88% 42%;
+  --color-caution-500-base: 30 88% 56%;
+  --color-caution-600-base: 30 88% 70%;
+  --color-caution-700-base: 30 88% 85%;
+  --color-caution-800-base: 30 88% 93%;
+  --color-caution-900-base: 30 88% 96%;
+  --color-caution-950-base: 30 88% 98%;
+
+  /* info */
+  --color-info-50-base: 200 88% 2%;
+  --color-info-100-base: 200 88% 5%;
+  --color-info-200-base: 200 88% 14%;
+  --color-info-300-base: 200 88% 28%;
+  --color-info-400-base: 200 88% 42%;
+  --color-info-500-base: 200 88% 56%;
+  --color-info-600-base: 200 88% 70%;
+  --color-info-700-base: 200 88% 85%;
+  --color-info-800-base: 200 88% 93%;
+  --color-info-900-base: 200 88% 96%;
+  --color-info-950-base: 200 88% 98%;
+
+  /* error */
+  --color-error-50-base: 6 100% 2%;
+  --color-error-100-base: 6 100% 4%;
+  --color-error-200-base: 6 100% 8%;
+  --color-error-300-base: 6 100% 16%;
+  --color-error-400-base: 6 100% 33%;
+  --color-error-500-base: 4 100% 50%;
+  --color-error-600-base: 357 100% 60%;
+  --color-error-700-base: 356 100% 71%;
+  --color-error-800-base: 357 100% 79%;
+  --color-error-900-base: 357 100% 86%;
+  --color-error-950-base: 357 100% 95%;
+}

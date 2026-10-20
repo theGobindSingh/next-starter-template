@@ -5,22 +5,15 @@
     "@tsconfig/next/tsconfig.json"
   ],
   "compilerOptions": {
-    "target": "es2017",
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@assets/*": ["./public/assets/*"],
-      "@images/*": ["./public/assets/images/*"],
-      "@public/*": ["./public/*"],
+      "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      "@hooks/*": ["./src/hooks/*"],
       "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/utils/*"],
-      "@icons": ["./src/icons/index.ts"],
-      "@icons/*": ["./src/icons/*"],
-      "@/*": ["./src/*"]
+      "@public/*": ["./public/*"]
     },
     "noPropertyAccessFromIndexSignature": false,
-    "ignoreDeprecations": "5.0",
     "verbatimModuleSyntax": false,
     "allowUnusedLabels": true,
     "noFallthroughCasesInSwitch": true

@@ -4,7 +4,15 @@
   "mcp": {
     "playwright": {
       "type": "local",
-      "command": ["npx", "-y", "@playwright/mcp@latest", "--isolated"],
+      "command": [
+        "pnpm",
+        "exec",
+        "playwright-mcp",
+        "--browser",
+        "chromium",
+        "--headless",
+        "--isolated",
+      ],
       "enabled": true,
     },
   },

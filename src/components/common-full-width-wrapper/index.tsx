@@ -1,3 +1,4 @@
+import { tw } from "@utils/tw";
 import {
   createElement,
   type CSSProperties,
@@ -20,10 +21,6 @@ export interface CommonFullWidthWrapperProps {
 }
 
 type WrapperStyle = CSSProperties;
-
-const cn = (...classes: (string | undefined)[]) => {
-  return classes.filter(Boolean).join(" ");
-};
 
 const CommonFullWidthWrapper = ({
   children,
@@ -55,7 +52,7 @@ const CommonFullWidthWrapper = ({
 
   return (
     <div
-      className={cn(className, wrapperClassName)}
+      className={tw(className, wrapperClassName)}
       style={mergedWrapperStyle}
       {...restWrapperProps}
     >
