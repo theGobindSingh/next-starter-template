@@ -57,5 +57,5 @@
     "node": ">=24"
   },
   "packageManager": "pnpm@12.14.0",
-  "description": "A lean, batteries-included Next.js starter with TypeScript, Tailwind CSS v4 and strict linting."
+  "description": "A lean, batteries-included Next.js starter with TypeScript, Tailwind CSS v4, Payload CMS and strict linting."
 }

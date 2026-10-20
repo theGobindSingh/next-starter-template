@@ -32,7 +32,7 @@ An inline script in the root layout's `<head>` adds `<meta name="color-scheme">`
 ## Pages, SEO and security
 
 - Site name, description and URL live in `src/site.ts`; metadata, `robots.ts`, `sitemap.ts` and `opengraph-image.tsx` read from it. Give each page its own `metadata.title`, and add public routes to `sitemap.ts`.
-- `global-not-found.tsx`, `error.tsx` and `global-error.tsx` are thin wrappers around `@components/status-page` and `@components/error-content`.
+- The 404 and error pages are thin wrappers around `@components/status-page`: `global-not-found.tsx` (unmatched URLs) and `(frontend)/not-found.tsx` (`notFound()` calls) share `@components/not-found-content`, and `error.tsx` and `global-error.tsx` share `@components/error-content`.
 - Security headers, including a static CSP, are set in `next.config.js`. When adding a third-party script, font, image host or API, allow its origin in the CSP.
 - Scrolling is smoothed by Lenis (`@components/smooth-scroll`). Mark nested scroll containers (modals, menus) with `data-lenis-prevent`.
 

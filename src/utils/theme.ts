@@ -22,7 +22,11 @@ export const getActiveTheme = (): Theme => {
 export const applyTheme = (theme: Theme): void => {
   const meta = getSchemeMeta();
   if (meta) meta.content = theme;
-  localStorage.setItem(THEME_KEY, theme);
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch {
+    // Storage blocked (e.g. all cookies blocked): the switch still applies.
+  }
 };
 
 /**
@@ -31,14 +35,14 @@ export const applyTheme = (theme: Theme): void => {
  * users who never toggle keep following their OS setting.
  */
 export const THEME_INIT_SCRIPT = `(function initTheme() {
-  var theme = "light";
+  let theme = "light";
   try {
     theme = localStorage.getItem("${THEME_KEY}");
-    if (theme !== "light" && theme !== "dark") {
-      theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    }
-  } catch (error) {}
-  var meta = document.createElement("meta");
+  } catch {}
+  if (theme !== "light" && theme !== "dark") {
+    theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  let meta = document.createElement("meta");
   meta.name = "color-scheme";
   meta.content = theme;
   document.head.appendChild(meta);

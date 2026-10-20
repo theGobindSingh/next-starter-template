@@ -3,7 +3,12 @@ import type { MetadataRoute } from "next";
 
 const robots = (): MetadataRoute.Robots => {
   return {
-    rules: { userAgent: "*", allow: "/", disallow: ["/admin", "/api"] },
+    rules: {
+      userAgent: "*",
+      // Uploads are served from the API; keep them indexable.
+      allow: ["/", "/api/media/file/"],
+      disallow: ["/admin", "/api"],
+    },
     sitemap: new URL("/sitemap.xml", site.url).href,
   };
 };

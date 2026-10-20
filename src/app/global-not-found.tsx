@@ -1,6 +1,5 @@
 import { site } from "@/site";
-import Link from "@components/link";
-import StatusPage from "@components/status-page";
+import NotFoundContent from "@components/not-found-content";
 import { fontVariables } from "@styles/fonts";
 import "@styles/globals.css";
 import { THEME_INIT_SCRIPT } from "@utils/theme";
@@ -19,15 +18,7 @@ const GlobalNotFound = () => {
         <script>{THEME_INIT_SCRIPT}</script>
       </head>
       <body>
-        <StatusPage
-          code="404"
-          title="Page not found"
-          description="The page you are looking for doesn't exist or has moved."
-        >
-          <Link href="/" variant="filled">
-            Go home
-          </Link>
-        </StatusPage>
+        <NotFoundContent />
       </body>
     </html>
   );
