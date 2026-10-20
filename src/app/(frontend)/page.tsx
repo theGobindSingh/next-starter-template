@@ -16,8 +16,9 @@ const HomePage = () => {
       </h1>
 
       <p className="text-lg text-fg-muted">
-        Edit <code className="font-mono text-fg">src/app/page.tsx</code> to
-        begin. Read <code className="font-mono text-fg">AGENTS.md</code> and{" "}
+        Edit{" "}
+        <code className="font-mono text-fg">src/app/(frontend)/page.tsx</code>{" "}
+        to begin. Read <code className="font-mono text-fg">AGENTS.md</code> and{" "}
         <code className="font-mono text-fg">docs/</code> for the conventions.
       </p>
 

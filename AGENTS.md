@@ -10,10 +10,12 @@ A lean Next.js starter (App Router, TypeScript strict, Tailwind v4, pnpm). It gi
 - `pnpm dev` — dev server
 - `pnpm build` — auto-fixes lint, then builds; the main quality gate
 - `pnpm lint` / `pnpm lint:fix` — Prettier + ESLint on `src/`
+- `pnpm payload` — Payload CLI (migrations, type and import-map generation)
 
 ## Where things live
 
-- `src/app` — routes and Next.js special files only; route-only UI sits beside its route, shared code lives in the folders below
+- `src/app` — routes and Next.js special files only. The site lives in `(frontend)`, the Payload admin and API in `(payload)`. Route-only UI sits beside its route; shared code lives in the folders below
+- `src/payload.config.ts`, `src/collections` — Payload CMS config and collections
 - `src/components` — shared components
 - `src/utils` — small framework-agnostic helpers
 - `src/styles` — design tokens (`globals.css`), fonts, base styles, component CSS
@@ -25,12 +27,14 @@ Discover the rest from the code; path aliases are in `tsconfig.json`.
 ## Rules
 
 - Read [docs/CONVENTIONS.md](docs/CONVENTIONS.md) before writing code and [docs/DESIGN.md](docs/DESIGN.md) before visual work.
+- All content goes in Payload: page text, images, posts, SEO fields. Add a collection or global for it and read it with the Local API; never hardcode content in components.
 - Style through the tokens in `src/styles/globals.css`; no raw colors in components.
 - No anonymous functions: name every callback/handler as a `const` before passing it.
 - Never use `suppressHydrationWarning`; fix the cause.
 - ESLint enforces a file-size limit. When it flags a file, split it into a folder (`index` + focused siblings) instead of disabling the rule.
 - Never read, print or commit `.env` files or secrets. Ask the user to set them; document new variables in `.env.example`.
 - When a change makes any doc wrong, update that doc in the same change.
+- Don't edit `src/app/(payload)` or `src/payload-types.ts`; Payload generates them. After changing collections or config, run `pnpm generate:types`, and `pnpm generate:importmap` if you added admin components.
 
 ## Every code change
 

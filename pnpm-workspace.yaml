@@ -1,4 +1,6 @@
 allowBuilds:
+  # sass dependency; ships prebuilt binaries, so its build script isn't needed
+  '@parcel/watcher': false
   core-js: true
   esbuild: true
   sharp: true

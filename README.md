@@ -9,6 +9,7 @@ A lean, batteries-included starter for [Next.js](https://nextjs.org/) apps. It s
 - Tailwind CSS v4 with a small token system and light/dark themes
 - ESLint ([`@webadeva/eslint-config`](https://www.npmjs.com/package/@webadeva/eslint-config)) and Prettier
 - [Lucide](https://lucide.dev/) icons and [Lenis](https://lenis.darkroom.engineering/) smooth scrolling
+- [Payload CMS](https://payloadcms.com/) with a SQLite database, admin at `/admin`
 - Error and 404 pages, SEO basics (metadata, sitemap, robots, generated Open Graph image) and security headers
 - Rules, skills and tools for AI coding agents (see [AI agents](#ai-agents))
 
@@ -20,19 +21,22 @@ Node.js and pnpm versions are pinned in `package.json` (`engines`, `packageManag
 
 ```bash
 pnpm install
+cp .env.example .env   # then set PAYLOAD_SECRET, e.g. from `openssl rand -hex 32`
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) for the site and [http://localhost:3000/admin](http://localhost:3000/admin) to create the first Payload user. Data goes in `payload.db`, which git ignores.
 
-| Command                | What it does                         |
-| ---------------------- | ------------------------------------ |
-| `pnpm dev`             | Start the dev server                 |
-| `pnpm build`           | Auto-fix lint, then production build |
-| `pnpm start`           | Serve the production build           |
-| `pnpm lint`            | Check formatting and lint            |
-| `pnpm lint:fix`        | Fix formatting and lint              |
-| `pnpm browser:install` | Download Chromium for Playwright MCP |
+| Command                | What it does                                  |
+| ---------------------- | --------------------------------------------- |
+| `pnpm dev`             | Start the dev server                          |
+| `pnpm build`           | Auto-fix lint, then production build          |
+| `pnpm start`           | Serve the production build                    |
+| `pnpm lint`            | Check formatting and lint                     |
+| `pnpm lint:fix`        | Fix formatting and lint                       |
+| `pnpm browser:install` | Download Chromium for Playwright MCP          |
+| `pnpm generate:types`  | Regenerate Payload types after schema changes |
+| `pnpm payload`         | Payload CLI, e.g. `pnpm payload migrate`      |
 
 ## AI agents
 
@@ -48,8 +52,8 @@ Context7 works without an account. For higher rate limits, run `npx ctx7@latest 
 
 ## Make it yours
 
-1. Rename the project in `package.json`, `src/site.ts` and this README. Set `SITE_URL` in production (see `.env.example`).
-2. Replace `src/app/page.tsx` with your own home page.
+1. Rename the project in `package.json`, `src/site.ts` and this README. Set `SITE_URL` and `PAYLOAD_SECRET` in production (see `.env.example`).
+2. Replace `src/app/(frontend)/page.tsx` with your own home page, and add collections in `src/collections`.
 3. Set your colors and fonts. See [docs/DESIGN.md](docs/DESIGN.md).
 4. Fill in [docs/PRODUCT.md](docs/PRODUCT.md) and add product-specific rules to [AGENTS.md](AGENTS.md).
 5. Add remote image hosts to `images.remotePatterns`, and any third-party origins to the CSP, in `next.config.js`.

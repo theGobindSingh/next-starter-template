@@ -1,3 +1,5 @@
+import { withPayload } from "@payloadcms/next/withPayload";
+
 const isDev = process.env.NODE_ENV === "development";
 
 // Static CSP (no nonces), so pages stay statically rendered. 'unsafe-inline'
@@ -43,10 +45,16 @@ const nextConfig = {
   allowedDevOrigins: [process.env.DEV_SERVER_ORIGIN].filter(Boolean),
   images: {
     remotePatterns: [],
+    // Payload serves uploads from its API.
+    localPatterns: [{ pathname: "/api/media/file/**" }],
+  },
+  experimental: {
+    // One 404 for the site and the admin, which have separate root layouts.
+    globalNotFound: true,
   },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
 };
 
-export default nextConfig;
+export default withPayload(nextConfig, { devBundleServerPackages: false });

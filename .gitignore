@@ -51,3 +51,8 @@ CLAUDE.md
 
 # playwright mcp output
 .playwright-mcp
+
+# payload: local SQLite database and uploads
+*.db
+*.db-*
+/media
